@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>平台概况</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="css/defalut.css" />
+		<link rel="stylesheet" href="css/content.css" />
+		<script type="text/javascript" src="js/jquery-2.1.0.js"></script>
+		<script type="text/javascript" src="js/swiper.min.js"></script>
+		<script type="text/javascript" src="js/base.js"></script>
+		<script type="text/javascript" src="js/avalon.js"></script>
+	</head>
+	<body>
+		<div class="survey" ms-controller="content">
+			<!--头部-->
+			<div class="sur-heag">
+				<img onclick="window.history.back(-1);" src="img/g_03.png">
+				<span>平台概况</span>
+			</div>
+			<!--头部-->
+			<!--平台介绍-->
+			<div class="intro">
+				<div class="intro-content">
+					<h3>平台介绍</h3>
+					<p>{{introduction.ifContent}}</p>
+				</div>
+			</div>
+			<!--平台介绍-->
+			<!--主要专家团队-->
+			<div class="team">
+				<div class="team-title">
+					<span>主要专家团队</span>
+				</div>
+				<ul>
+					<li ms-for="($index,el) in @projectTeam" ms-key="$index">
+						<a href="#">
+							<img ms-attr="{src:@imgUrl+el.ifImg}"/>
+							<div class="txt">
+								<div class="name"><span>{{el.ifName}}</span><span></span></div>
+								<p>{{el.ifCreateUName}}</p>
+							</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<!--主要专家团队-->
+			<!--学生风采-->
+			<div class="mien">
+				<div class="team-title">
+					<span>学生风采</span>
+				</div>
+				<ul>
+					<li ms-for="($index,el) in @studentDemeanor" ms-key="$index">
+						<a href="#">
+							<img ms-attr="{src:@imgUrl+el.ifImg}"/>
+							<span>{{el.ifName}}</span>
+						</a>
+					</li>					
+				</ul>
+			</div>
+			<!--学生风采-->
+		</div>
+	</body>
+	<script>
+		var vm = avalon.define({
+			$id: 'content',
+			imgUrl: imgUrl,//图片地址
+			projectTeam:[],//项目团队
+			studentDemeanor:[],//学生风采
+			introduction:{},//简介
+			//栏目信息
+			newsList: function() {
+				$.ajax({
+					type: "GET",
+
+					url: apiUrl + "/front/getAllColumnInfo",
+					success: function(response) {
+						vm.columnData =response;
+						//平台概况
+						let survey = response.PTGK;
+						for(var i in survey.list.pic){
+							if(survey.list.pic[i].colName=='项目团队'){
+								vm.projectTeam.push(survey.list.pic[i]);
+							}else{
+								if(survey.list.pic[i].colName=='学生风采'){
+									vm.studentDemeanor.push(survey.list.pic[i]);
+								}
+							}
+						}
+						vm.introduction=survey.list.single[0];
+						
+						
+						
+					},
+					error: function(res) {
+
+						alert('系统错误，请联系管理员');
+
+					}
+				})
+			},
+		});
+		vm.$watch('onReady', function() {
+			vm.newsList();
+		});
+	</script>
+</html>

@@ -1,0 +1,6 @@
+<resources>
+    <dimen name="font_size_item_project_name">14sp</dimen>
+    <dimen name="font_size_item_project_xueke">12sp</dimen>
+    <dimen name="font_size_item_chapter">16sp</dimen>
+    <dimen name="font_size_item_section">14sp</dimen>
+</resources>

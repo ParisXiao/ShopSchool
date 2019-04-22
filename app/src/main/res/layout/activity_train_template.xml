@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             android:layout_width="match_parent"
+                                             android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+    <include
+            android:id="@+id/title"
+            layout="@layout/layout_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+    <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/project_refresh"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title"
+            >
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title"
+                >
+
+            <LinearLayout
+                    android:id="@+id/train_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:background="@drawable/train_search_bg"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginTop="8dp"
+                    >
+
+                <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_search_black"
+                        />
+
+                <TextView
+                        android:id="@+id/train_search_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="搜索实训"
+                        android:textColor="#ff787878"
+                        android:textSize="12sp"
+                        android:layout_marginLeft="5dp"
+                        />
+            </LinearLayout>
+
+            <android.support.design.widget.TabLayout
+                    android:id="@+id/train_tab"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:fillViewport="false"
+                    android:layout_marginTop="20dp"
+                    app:layout_scrollFlags="scroll"
+                    app:tabIndicatorColor="#ff2267b1"
+                    app:tabIndicatorHeight="3dp"
+                    app:tabSelectedTextColor="#ff2267b1"
+                    app:tabTextColor="#ff666666"
+                    app:tabTextAppearance="@style/TabLayoutTextStyle"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    >
+            </android.support.design.widget.TabLayout>
+
+            <android.support.v7.widget.RecyclerView
+                    android:id="@+id/train_recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    ></android.support.v7.widget.RecyclerView>
+        </LinearLayout>
+    </android.support.v4.widget.SwipeRefreshLayout>
+</android.support.constraint.ConstraintLayout>

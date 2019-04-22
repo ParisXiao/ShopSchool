@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <title>跨境电商实训平台</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="css/swiper.min.css"/>
+    <link rel="stylesheet" href="css/index.css"/>
+    <link rel="stylesheet" href="css/defalut.css"/>
+    <script type="text/javascript" src="js/jquery-2.1.0.js"></script>
+    <script type="text/javascript" src="js/swiper.min.js"></script>
+    <script type="text/javascript" src="js/base.js"></script>
+    <script type="text/javascript" src="js/avalon.js"></script>
+</head>
+
+<body>
+<div class="index" ms-controller="content">
+    <div class="index-content">
+        <!--搜索-->
+        <!--banner-->
+        <div class="banner">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" ms-for="($index,el) in @bannerImg" ms-key="$index">
+                        <a>
+                            <img ms-attr="{src:el}">
+                        </a>
+                    </div>
+                </div>
+                <!-- 如果需要分页器 -->
+                <div class="swiper-pagination swiper-page" style="bottom: 10px;">
+                </div>
+            </div>
+        </div>
+        <!--banner-->
+        <div class="me">
+            <a :click="@newsReturn(el.ifId,el.ifLink)" ms-for="($index,el) in @notice.list" ms-key="$index">
+                <div class="me-1">
+                    <b class="m1"></b>
+                    <span>{{el.ifName}}</span>
+                </div>
+
+                <b class="timer">{{el.ifReleaseTime}}</b>
+            </a>
+        </div>
+        <!--导航-->
+        <div class="nav">
+            <ul>
+                <li ms-for="($index,el) in @navData">
+                    <a :click="@navLink(el.id)">
+                        <img ms-attr="{src:el.img}">
+                        <span ms-html="el.title"></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!--导航-->
+        <!--新闻资讯-->
+        <div class="information">
+            <div class="in-title">
+                <div class="in-txt">
+                    <b></b>
+                    <span>新闻资讯</span>
+                </div>
+                <img onclick="app.newMore()" src="img/o_37.png">
+            </div>
+            <div class="in-banner">
+                <img src="img/o_24.png">
+            </div>
+            <ul>
+                <li class="bors" ms-for="($index,el) in @news.list" ms-key="$index">
+                    <a :click="@newsReturn(el.ifId,el.ifLink)">
+                        <h3>{{el.ifName}}</h3>
+                        <p>{{el.ifCreateUName}}</p>
+                        <b>{{el.ifReleaseTime}}</b>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!--新闻资讯-->
+        <!--敦煌网..-->
+        <div class="type">
+            <ul>
+                <li>
+                    <a onclick="app.netsReturn(0)">
+                        <img src="img/o_27.png">
+                        <span>敦煌网</span>
+                        <b>全球领先的跨境电商出口平台</b>
+                    </a>
+                </li>
+                <li>
+                    <a onclick="app.netsReturn(1)">
+                        <img src="img/o_29.png">
+                        <span>速卖通</span>
+                        <b>品牌出海 首选平台 </b>
+                    </a>
+                </li>
+                <li>
+                    <a onclick="app.netsReturn(2)">
+                        <img src="img/o_31.png">
+                        <span>阿里国际</span>
+                        <b>中国最大的电子商务门户 </b>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!--敦煌网..-->
+        <!--学科竞赛-->
+        <div class="competition">
+            <div class="com-title">
+                <div class="c-txt">
+                    <b></b>
+                    <div class="chose">
+                        <span :class="(@tabIndex==0? 'c-active':'')" :click="@tabClick(0)">学科竞赛</span>
+                        <span :class="(@tabIndex==1? 'c-active':'')" :click="@tabClick(1)">创业孵化</span>
+                    </div>
+                </div>
+                <!--<img src="img/o_37.png">-->
+            </div>
+            <ul class="c1" ms-if="@tabIndex==0">
+                <img src="img/o_37.png" class="more" onclick="app.XKJSMore()">
+                <li ms-for="($index,el) in @subject.list" ms-key="$index">
+                    <a :click="@xkjsReturn(el.colId)">
+                        <span>{{el.colName}}</span>
+                        <img src="img/o_41.png">
+                    </a>
+                </li>
+            </ul>
+            <ul class="c1" ms-if="@tabIndex==1">
+                <img src="img/o_37.png" class="more" onclick="CYFHMore()">
+                <li ms-for="($index,el) in @entrepreneurship.list" ms-key="$index">
+                    <a :click="@cyfhReturn(el.colId)">
+                        <span>{{el.colName}}</span>
+                        <img src="img/o_41.png">
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!--学科竞赛..-->
+        <!--线下实验室-->
+        <div class="under">
+            <div class="in-title">
+                <div class="in-txt">
+                    <b></b>
+                    <span>{{laboratory.colName}}</span>
+                </div>
+            </div>
+            <div class="un-banner" :click="@xxsysReturn(laboratory.colId)">
+                <img src="img/o_45.png" ms-attr="{src:@imgUrl+laboratory.colImg}">
+                <span>{{laboratory.colName}}</span>
+            </div>
+            <div class="task">
+                <h3>任务简要：</h3>
+                <p>{{laboratory.colDesc}}</p>
+                <a onclick="app.XXSYSMore()">查看更多+</a>
+            </div>
+        </div>
+        <!--线下实验室-->
+        <!--虚拟仿真示范项目-->
+        <div class="item">
+            <div class="in-title">
+                <div class="in-txt">
+                    <b></b>
+                    <span>虚拟仿真示范项目</span>
+                </div>
+                <img onclick="app.XNFZMore()" src="img/o_37.png">
+            </div>
+            <div class="scrolls">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide" ms-for="($index,el) in @fictitious.list" :click="@xnfzReturn(el.colId)">
+                            <a >
+                                <img ms-attr="{src:@imgUrl+el.colImg}">
+                            </a>
+                        </div>
+                    </div>
+                    <!-- 如果需要分页器 -->
+                    <div class="swiper-pagination swiper-page" style="bottom: 10px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--虚拟仿真示范项目-->
+        <!--学习资源-->
+        <div class="study">
+            <div class="in-title">
+                <div class="in-txt">
+                    <b></b>
+                    <span>学习资源</span>
+                </div>
+            </div>
+            <div class="s1">
+                <div class="s1-nav">
+                    <ul>
+                        <li>
+                            <h3>科目<img src="img/o_52.png"></h3>
+                            <div class="list">
+                                <div class="(@classType.kmType==''?'active list-item':'')"
+                                     :click="@classinfo('',@classType.colType,@classType.time,1,2)">
+                                    <span>不限</span>
+                                </div>
+                                <div :class="(@classType.kmType==el.tpId?'active list-item':'')"
+                                     ms-for="($index,el) in @kmType" ms-key="$index"
+                                     :click="@classinfo(el.tpId,@classType.colType,@classType.time,1,2)">
+                                    <span>{{el.tpName}}</span>
+                                </div>
+
+                            </div>
+                        </li>
+                        <li>
+                            <h3>类型<img src="img/o_52.png"></h3>
+                            <div class="list">
+                                <div class="(@classType.kmType==''?'active list-item':'')"
+                                     :click="@classinfo(@classType.kmType,'',@classType.time,1,2)">
+                                    <span>不限</span>
+                                </div>
+                                <div :class="(@classType.kmType==el.tpId?'active list-item':'')"
+                                     ms-for="($index,el) in @colData" ms-key="$index"
+                                     :click="@classinfo(@classType.kmType,el.tpId,@classType.time,1,2)">
+                                    <span>{{el.tpName}}</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <h3 :click="@classTime()">时间<img src="img/o_52.png"></h3>
+                        </li>
+                    </ul>
+                </div>
+                <div class="s1-txt">
+                    <ul>
+                        <li ms-for="($index,el) in @classList" ms-key="$index">
+                            <a :click="@xxzyReturn(el.lsId)">
+                                <h3>{{el.lsName}}<span ms-repeat="el.lsUsuTypeName">{{el.lsUsuTypeName}}</span></h3>
+                                <div class="a1-type">
+                                    <span>科目：{{el.lsName}}</span>
+                                    <span>类型：{{el.lsUsuTypeName}}</span>
+                                    <b><img src="img/u_03.png">{{el.lsCreateTime}}</b>
+                                </div>
+                                <p>{{el.lsDscb}}</p>
+                            </a>
+                        </li>
+                    </ul>
+                    <a onclick="app.XXZYMore()" class="mores">
+                        <img src="img/o_56.png">
+                        <span>点击加载更多教材</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!--学习资源-->
+    </div>
+</div>
+</body>
+
+<script>
+		var vm = avalon.define({
+			$id: 'content',
+			imgUrl: imgUrl,//图片地址
+			bannerImg: [],//banner
+			columnData: [],//所有栏目
+			navData: [
+			{id:0,img:'img/o_04.png',title:'平台概况',links:'survey.html'},
+			{id:1,img:'img/o_06.png',title:'在线学习',links:''},
+			{id:2,img:'img/o_08.png',title:'仿真实训',links:''},
+			{id:3,img:'img/o_10.png',title:'虚拟仿真<br/>示范项目',links:''},
+			{id:4,img:'img/o_16.png',title:'创业孵化',links:''},
+			{id:5,img:'img/o_17.png',title:'学科竞赛',links:''},
+			{id:6,img:'img/o_18.png',title:'校企合作',links:''},
+			{id:7,img:'img/o_19.png',title:'课堂作业',links:''},
+			
+			], //导航
+			notice: {}, //通知公告
+			news: {}, //新闻中心
+			tabIndex: 0,
+			subject: {}, //学科竞赛
+			entrepreneurship: {}, //创业孵化
+			laboratory: {}, //线下实验室
+			kmType: [], //科目
+			colData: [], //通用分类
+			classList: [], //课程
+			totalRows: 0,//课程总数
+			page: 1,//分页
+			classType: {
+				kmType: '',
+				colType: '',
+				time: true
+			},
+			fictitious:{},//虚拟仿真
+			//banner
+			bannerList: function() {
+				$.ajax({
+					type: "GET",
+					url: apiUrl + '/front/getSysInformationAll',
+					contentType: "application/x-www-form-urlencoded",
+					success: function(res) {
+						if(res.code == 0) {
+							var list = res.data[0].sysImg.split(" ");
+							for(var i in list) {
+								if(list[i] != "") {
+									vm.bannerImg.push(imgUrl + list[i]);
+								}
+							}
+							var mySwiper = new Swiper('.banner .swiper-container', {
+								//	direction: 'vertical',
+								loop: true,
+								autoplay: true,
+								// 如果需要分页器
+								pagination: {
+									el: '.swiper-pagination',
+									clickable: true,
+								},
+							});
+						} else {
+							alert(res.meg);
+						}
+					},
+					error: function(res) {
+
+						alert('系统错误，请联系管理员');
+
+					}
+				})
+			},
+			//课程分类
+			getnewsList: function() {
+				$.ajax({
+					type: "GET",
+					url: apiUrl + "/front/firstType",
+					success: function(response) {
+						if(response.code == 0) {
+							vm.kmType = response.data;
+						} else {
+							alert(response.msg);
+						}
+					}
+				})
+			},
+			//通用分类
+			colType: function() {
+				$.ajax({
+					type: "GET",
+					url: apiUrl + "/front/lsTypeCommon",
+					success: function(response) {
+						if(response.code == 0) {
+							vm.colData = response.data;
+						} else {
+							alert(response.msg)
+						}
+					}
+				})
+			},
+			//栏目信息
+			newsList: function() {
+				$.ajax({
+					type: "GET",
+
+					url: apiUrl + "/front/getAllColumnInfo",
+					success: function(response) {
+						vm.columnData =response;
+						//通知公告
+						let notice = response.TZGG;
+						let noticeList = [];
+						for(let i in notice.list.news) {
+							var time = notice.list.news[i].ifReleaseTime.split(" ");
+							notice.list.news[i].ifReleaseTime = time[0];
+							if(i < 2) {
+								noticeList.push(notice.list.news[i]);
+							}
+						}
+						vm.notice = {
+							list: noticeList,
+							info: notice.info
+						};
+						//新闻中心
+						let news = response.XWZX;
+						let newsList = [];
+						for(let i in news.list.news) {
+							news.list.news[i].ifReleaseTime = news.list.news[
+								i
+							].ifReleaseTime.split(" ")[0];
+							if(i < 2) {
+								newsList.push(news.list.news[i]);
+							}
+						}
+						vm.news = {
+							list: newsList,
+							info: news.info
+						};
+
+						//学科竞赛
+						let subject = response.XKJS;
+						let subjectList = [];
+						for(let i in subject.list.company) {
+							if(i < 5) {
+								subjectList.push(subject.list.company[i]);
+							}
+						}
+						vm.subject = {
+							list: subjectList,
+							info: subject.info
+						};
+
+						//创业孵化
+						let entrepreneurship = response.CYFH;
+						let entrepreneurshipList = [];
+						for(let i in entrepreneurship.list.company) {
+							if(entrepreneurship.list.company[i].colName == "线下实验室") {
+								vm.laboratory = entrepreneurship.list.company[i];
+							}
+							if(i < 5) {
+								entrepreneurshipList.push(entrepreneurship.list.company[i]);
+							}
+						}
+						vm.entrepreneurship = {
+							list: entrepreneurshipList,
+							info: entrepreneurship.info
+						};
+						
+						//虚拟仿真
+						let fictitious=response.XNFZSFXM;
+						vm.fictitious={
+							list:fictitious.list.company,
+							info:fictitious.info
+						}
+					
+						var mySwiper1 = new Swiper('.scrolls .swiper-container', {
+							//direction: 'vertical',
+							loop: false,
+							autoplay: true,
+							// 如果需要分页器
+							pagination: {
+								el: '.swiper-pagination',
+								clickable: true,
+							},
+						});
+					},
+					error: function(res) {
+
+						alert('系统错误，请联系管理员');
+
+					}
+				})
+			},
+			//课程查询
+			classinfo: function(type, common, time, pageNo,a) {
+				$.ajax({
+					type: "POST",
+					url: apiUrl + '/front/getLessonSelective',
+					contentType: "application/x-www-form-urlencoded",
+					data: {
+						type: type,
+						common: common,
+						time: time,
+						pageNo: pageNo
+					},
+					success: function(data) {
+						if(a==1){
+							for(var i in data.resultList) {
+								data.resultList[i].lsCreateTime=data.resultList[i].lsCreateTime.split(' ')[0];
+								vm.classList.push(data.resultList[i]);
+							}
+						}else{
+							for(var i in data.resultList) {
+								data.resultList[i].lsCreateTime=data.resultList[i].lsCreateTime.split(' ')[0];								
+							}
+							vm.classList=data.resultList;
+							$(".list").slideUp();
+						}
+						
+
+						vm.totalRows = data.totalRows;
+					},
+					error: function(jqXHR) {}
+				});
+				vm.classType.kmType = type;
+				vm.classType.colType = common;
+				vm.classType.time = time;
+			},
+			//加载更多
+			classMore: function() {
+				if(vm.classList.length == vm.totalRows) {
+					alert('没有更多数据了')
+				} else {
+					vm.page = vm.page + 1
+					vm.classinfo(vm.classType.kmType, vm.classType.colType, vm.classType.time, vm.page,1);
+				}
+
+			},
+			//时间查询
+			classTime:function(){
+				if(vm.classType.time){
+					vm.classinfo(vm.classType.kmType, vm.classType.colType, false, 1,2);
+					vm.classType.time=false;
+				}else{
+					vm.classinfo(vm.classType.kmType, vm.classType.colType, true, 1,2);
+					vm.classType.time=true;
+				}
+			},
+			//tab切换
+		    tabClick:function(a) {
+		      vm.tabIndex = a;
+		    },
+		    //虚拟仿真图片链接
+		    xnfzReturn:function(a){
+		        app.XNFZReturn(a)
+		    },
+			//学习资源详情
+			xxzyReturn:function(a){
+			   app.XXZYReturn(a);
+			},
+			//导航链接
+			navLink:function(a){
+				app.divReturn(a);
+			},
+			//学科竞赛详情
+			xkjsReturn:function(a){
+				 app.XKJSReturn(a);
+			},
+			//创业孵化
+			cyfhReturn:function(a){
+				 app.CYFHReturn(a);
+			},
+			//线下实验室
+			xxsysReturn:function(a){
+				 app.XXSYSReturn(a);
+			},
+			//新闻详情
+			newsReturn:function(a,b){
+				 app.newsReturn(a,b);
+			}
+
+		});
+		vm.$watch('onReady', function() {
+			console.log(apiUrl)
+			vm.bannerList();
+			vm.getnewsList();
+			vm.newsList();
+			//		    vm.colType();
+			vm.classinfo(null, null, true, 1);
+
+			
+			$(".chose span").on("click", function() {
+				$(this).addClass("c-active").siblings().removeClass("c-active");
+				$(".c1").hide().eq($(this).index()).show();
+			});
+			$(".s1-nav ul li h3").on("click", function() {
+				$(this).siblings(".list").slideDown()
+			});
+			$(".list-item").on("click", function() {
+				$(this).addClass("active").siblings().removeClass("active");
+				$(this).parent(".list").slideUp();
+			});
+
+		});
+
+</script>
+
+</html>

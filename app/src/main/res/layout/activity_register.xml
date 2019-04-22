@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             android:layout_width="match_parent"
+                                             android:layout_height="match_parent"
+       >
+
+    <include
+            android:id="@+id/title"
+            layout="@layout/layout_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            app:layout_constraintBottom_toBottomOf="@+id/guideline3"
+            android:layout_marginTop="40dp"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/title">
+
+        <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_layout_reg_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_weight="1"
+                >
+
+            <android.support.design.widget.TextInputEditText
+                    android:id="@+id/input_edit_reg_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/icon_regsiter_username"
+                    android:drawableStart="@drawable/icon_regsiter_username"
+                    android:drawablePadding="15dp"
+                    android:textSize="18sp"
+                    android:hint="请输入用户名"
+                    android:maxLength="8"
+                    android:singleLine="true"
+                    />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_layout_reg_userid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_weight="1"
+                >
+
+            <android.support.design.widget.TextInputEditText
+                    android:id="@+id/input_edit_reg_userid"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/icon_regsiter_userid"
+                    android:drawableStart="@drawable/icon_regsiter_userid"
+                    android:drawablePadding="15dp"
+                    android:textSize="18sp"
+                    android:hint="请输入学籍号"
+                    android:maxLength="8"
+                    android:singleLine="true"
+                    android:inputType="number"
+                    />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_layout_reg_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_weight="1"
+                app:passwordToggleEnabled="true"
+                >
+
+            <android.support.design.widget.TextInputEditText
+                    android:id="@+id/input_edit_reg_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/icon_register_password"
+                    android:drawableStart="@drawable/icon_register_password"
+                    android:drawablePadding="15dp"
+                    android:textSize="18sp"
+                    android:hint="请输入密码"
+                    android:inputType="textPassword"
+                    android:maxLength="16"
+                    android:singleLine="true"
+                    />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_layout_reg_usernum"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_weight="1"
+                >
+
+            <android.support.design.widget.TextInputEditText
+                    android:id="@+id/input_edit_reg_usernum"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/icon_regsiter_usernum"
+                    android:drawableStart="@drawable/icon_regsiter_usernum"
+                    android:drawablePadding="15dp"
+                    android:textSize="18sp"
+                    android:inputType="number"
+                    android:hint="请输入身份证号"
+                    android:singleLine="true"
+                    android:maxLength="20"
+                    />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_layout_reg_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                >
+
+            <android.support.design.widget.TextInputEditText
+                    android:id="@+id/input_edit_reg_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/icon_mail"
+                    android:drawableStart="@drawable/icon_mail"
+                    android:drawablePadding="15dp"
+                    android:textSize="18sp"
+                    android:inputType="phone"
+                    android:singleLine="true"
+                    android:maxLength="11"
+                    android:hint="请输入邮箱地址，用于找回密码"
+                    />
+        </android.support.design.widget.TextInputLayout>
+    </LinearLayout>
+
+    <android.support.constraint.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/guideline3"
+            app:layout_constraintGuide_percent="0.7"
+            android:orientation="horizontal"/>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@+id/guideline3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="40dp"
+            android:orientation="vertical">
+
+        <Button
+                android:id="@+id/btn_register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/login_btn"
+                android:text="立即注册"
+                android:textColor="#ffffffff"
+                android:textSize="18sp"
+                />
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="20dp"
+                >
+
+            <TextView
+                    android:id="@+id/text_register_login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="或用已有账号登录"
+                    android:textColor="#ff999999"
+                    android:textSize="15sp"
+                    android:padding="5dp"
+                    android:layout_centerInParent="true"
+                    />
+
+            <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#999"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/text_register_login"
+                    />
+
+            <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#999"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/text_register_login"
+                    />
+        </RelativeLayout>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
