@@ -12,10 +12,13 @@
             android:roundIcon="@drawable/ic_round_radis_logo"
             android:supportsRtl="true"
             android:theme="@style/AppTheme.Main"
-            tools:replace="android:icon">
+            tools:replace="android:icon"
+            >
         <meta-data
                 android:name="android.max_aspect"
-                android:value="2.1"/>
+                android:value="2.1"
+                tools:replace="android:value"
+                />
         <provider
                 android:name="android.support.v4.content.FileProvider"
                 android:authorities="${applicationId}.fileProvider"
@@ -83,6 +86,9 @@
                   android:windowSoftInputMode="stateHidden|adjustPan"
                   android:screenOrientation="portrait"/>
         <activity android:name=".view.activity.PdfActivity"
+                  android:windowSoftInputMode="stateHidden|adjustPan"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".view.activity.MyScoreActivity"
                   android:windowSoftInputMode="stateHidden|adjustPan"
                   android:screenOrientation="portrait"/>
 

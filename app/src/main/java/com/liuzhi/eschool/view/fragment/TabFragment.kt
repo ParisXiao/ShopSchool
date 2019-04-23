@@ -15,6 +15,7 @@ import com.liuzhi.eschool.entity.*
 import com.liuzhi.eschool.entity.convert.*
 import com.liuzhi.eschool.utils.common.DateUtil
 import com.liuzhi.eschool.utils.common.SPUtils
+import com.liuzhi.eschool.view.activity.ClassDetailActivity
 import com.liuzhi.eschool.view.activity.PdfActivity
 import com.liuzhi.eschool.view.activity.WebActivity
 import com.lzy.okgo.OkGo
@@ -177,7 +178,7 @@ class TabFragment : BaseFragment() {
                 view.tab_recycler.layoutManager = layoutManager
                 view.tab_recycler.adapter = myCourseAdapter
                 myCourseAdapter.setOnItemClickListener { adapter, view, position ->
-
+                    getClassDetailById(courseStudyings[position].lsId)
                 }
                 myCourseAdapter.setOnLoadMoreListener {
                     pageNo++
@@ -190,6 +191,9 @@ class TabFragment : BaseFragment() {
                 var layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(activity)
                 view.tab_recycler.layoutManager = layoutManager
                 view.tab_recycler.adapter = myCourseAdapter
+                myCourseAdapter.setOnItemClickListener { adapter, view, position ->
+                    getClassDetailById(courseStudyeds[position].lsId)
+                }
                 myCourseAdapter.setOnLoadMoreListener {
                     pageNo++
                     getCourseList()
@@ -862,6 +866,45 @@ class TabFragment : BaseFragment() {
                 }
 
                 override fun onComplete() {
+                }
+            })
+    }
+    fun getClassDetailById(id:Long) {
+        var classDetailByIdConvert = ClassDetailByIdConvert()
+        var detailByIdObservableResponse = ObservableResponse<ClassDetailByIdEntity>()
+        OkGo.get<ClassDetailByIdEntity>(UrlConstans.LessonDetailById)
+            .headers("Content-Type", "application/json;charset=UTF-8")
+            .params("lsId", id)
+            .converter(classDetailByIdConvert)
+            .adapt(detailByIdObservableResponse)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(object : DisposableObserver<Response<ClassDetailByIdEntity>>() {
+                override fun onNext(response: Response<ClassDetailByIdEntity>) {
+                    var entity = response.body()
+
+                    if (entity != null) {
+                        if (entity.code == 0) {
+                            var classDetail=ClassDetailEntity.ResultListBean()
+                            classDetail.lsName=entity.data.lessonInfo.lsName
+                            classDetail.lsCreateUName=entity.data.lessonInfo.lsCreateUName
+                            classDetail.lsCreateTime=entity.data.lessonInfo.lsCreateTime
+                            classDetail.lsDscb=entity.data.lessonInfo.lsDscb
+                            classDetail.lsImg=entity.data.lessonInfo.lsImg
+                            classDetail.lsId=entity.data.lessonInfo.lsId
+                            var intent=Intent(activity, ClassDetailActivity::class.java)
+                            intent.putExtra("LessonDetail",classDetail)
+                            startActivity(intent)
+                        }
+                    }
+                }
+
+                override fun onError(e: Throwable) {
+                    Log.e("OKGO", e.message)
+                }
+
+                override fun onComplete() {
+
                 }
             })
     }

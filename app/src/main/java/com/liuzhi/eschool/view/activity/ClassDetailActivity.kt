@@ -24,9 +24,9 @@ import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_classdelist.*
 import kotlinx.android.synthetic.main.layout_title.*
 
-class ClassDetailActivity:BaseActivity(){
+class ClassDetailActivity : BaseActivity() {
     lateinit var intentLessionDetail: ResultListBean
-    lateinit var classMenuAdapter:ClassMenuAdapter
+    lateinit var classMenuAdapter: ClassMenuAdapter
     val data = ArrayList<MultiItemEntity>()
     override fun getLayoutId(): Int {
         return R.layout.activity_classdelist
@@ -42,26 +42,21 @@ class ClassDetailActivity:BaseActivity(){
             //左上角加上一个返回图标
             actionBar.setDisplayHomeAsUpEnabled(true)
         }
-        intentLessionDetail= intent.getSerializableExtra("LessonDetail") as ResultListBean
-        if (intentLessionDetail==null){
-            relativeLayout2.visibility= View.GONE
-            class_detail_line.visibility= View.GONE
-            linearLayout3.visibility= View.GONE
-            class_detail_introduce.visibility= View.GONE
-            class_detail_line2.visibility= View.GONE
-            text_catalog.visibility= View.GONE
-            class_detail_line3.visibility= View.GONE
-        }else {
-            class_detail_name.text = intentLessionDetail.lsName
-            title_name.text = intentLessionDetail.lsName
-            class_detail_teacher.text = "授课人：" + intentLessionDetail.lsCreateUName
-            class_detail_subject.text = "所属学科：" + intentLessionDetail.lsFirstTypeName
-            class_detail_teach_time.text = "创建时间：" + intentLessionDetail.lsCreateTime
-            class_detail_introduce.text = intentLessionDetail.lsDscb
-            ImageUtils.setImageBitmapUrl(this@ClassDetailActivity, class_detail_img, UrlConstans.BaseUrl + intentLessionDetail.lsImg)
-            getMenuData(intentLessionDetail.lsId.toLong())
-        }
+        intentLessionDetail = intent.getSerializableExtra("LessonDetail") as ResultListBean
+        class_detail_name.text = intentLessionDetail.lsName
+        title_name.text = intentLessionDetail.lsName
+        class_detail_teacher.text = "授课人：" + intentLessionDetail.lsCreateUName
+        class_detail_subject.text = "所属学科：" + intentLessionDetail.lsFirstTypeName
+        class_detail_teach_time.text = "创建时间：" + intentLessionDetail.lsCreateTime
+        class_detail_introduce.text = intentLessionDetail.lsDscb
+        ImageUtils.setImageBitmapUrl(
+            this@ClassDetailActivity,
+            class_detail_img,
+            UrlConstans.BaseUrl + intentLessionDetail.lsImg
+        )
+        getMenuData(intentLessionDetail.lsId.toLong())
     }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Pass the event to ActionBarDrawerToggle, if it returns
         // true, then it has handled the app icon_star touch event
@@ -75,9 +70,10 @@ class ClassDetailActivity:BaseActivity(){
     override fun initData() {
 
     }
-    fun getMenuData(lsId:Long){
+
+    fun getMenuData(lsId: Long) {
         var classMenuConvert = ClassMenuConvert()
-       var classMenuResponse = ObservableResponse<ClassMenuEntity>()
+        var classMenuResponse = ObservableResponse<ClassMenuEntity>()
         OkGo.get<ClassMenuEntity>(UrlConstans.LessonDetail)
             .headers("Content-Type", "application/x-www-form-urlencoded")
             .params("lsId", lsId)
@@ -89,42 +85,43 @@ class ClassDetailActivity:BaseActivity(){
                 override fun onNext(response: Response<ClassMenuEntity>) {
                     Log.e("result", "response ==> " + response.body().toString())
                     var listEntity = response.body()
-                    if (listEntity.code==0) {
+                    if (listEntity.code == 0) {
                         getExpandListData(listEntity.data)
                     }
 
                 }
 
                 override fun onError(e: Throwable) {
-                    Log.e("OKGO",e.message)
+                    Log.e("OKGO", e.message)
                 }
 
                 override fun onComplete() {
                 }
             })
     }
-    fun getExpandListData(bean: ClassMenuEntity.DataBean){
-        var sectionList=ArrayList<ClassMenuEntity.DataBean.LessonBean.SectionsBean>()
-        for (chapterBean in bean.lesson){
-          var chapterEntity= ChapterEntity()
-            chapterEntity.chapterId=chapterBean.chapter.cpId
-            chapterEntity.chapterName=chapterBean.chapter.cpName
-            if (chapterBean.sections.size>0){
-                chapterEntity.isHaveSc=true
+
+    fun getExpandListData(bean: ClassMenuEntity.DataBean) {
+        var sectionList = ArrayList<ClassMenuEntity.DataBean.LessonBean.SectionsBean>()
+        for (chapterBean in bean.lesson) {
+            var chapterEntity = ChapterEntity()
+            chapterEntity.chapterId = chapterBean.chapter.cpId
+            chapterEntity.chapterName = chapterBean.chapter.cpName
+            if (chapterBean.sections.size > 0) {
+                chapterEntity.isHaveSc = true
             }
-            sectionList= chapterBean.sections as ArrayList<ClassMenuEntity.DataBean.LessonBean.SectionsBean>
-            for (sectionBean in sectionList){
-                var sectionEntity=SectionEntity()
-                sectionEntity.sectionId=sectionBean.scId
-                sectionEntity.sectionName=sectionBean.scName
+            sectionList = chapterBean.sections as ArrayList<ClassMenuEntity.DataBean.LessonBean.SectionsBean>
+            for (sectionBean in sectionList) {
+                var sectionEntity = SectionEntity()
+                sectionEntity.sectionId = sectionBean.scId
+                sectionEntity.sectionName = sectionBean.scName
                 chapterEntity.addSubItem(sectionEntity)
             }
             data.add(chapterEntity)
         }
-        classMenuAdapter= ClassMenuAdapter(data)
-        var layoutManager: RecyclerView.LayoutManager  = LinearLayoutManager(this)
+        classMenuAdapter = ClassMenuAdapter(data)
+        var layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(this)
         class_catalog_recycler.layoutManager = layoutManager
-        class_catalog_recycler.adapter=classMenuAdapter
+        class_catalog_recycler.adapter = classMenuAdapter
     }
 
 }

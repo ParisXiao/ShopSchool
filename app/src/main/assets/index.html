@@ -121,7 +121,7 @@
                 <!--<img src="img/o_37.png">-->
             </div>
             <ul class="c1" ms-if="@tabIndex==0">
-                <img src="img/o_37.png" class="more" onclick="app.XKJSMore()">
+                <img src="img/o_37.png" class="more" onclick="app.XKJSMore(0)">
                 <li ms-for="($index,el) in @subject.list" ms-key="$index">
                     <a :click="@xkjsReturn(el.colId)">
                         <span>{{el.colName}}</span>
@@ -130,7 +130,7 @@
                 </li>
             </ul>
             <ul class="c1" ms-if="@tabIndex==1">
-                <img src="img/o_37.png" class="more" onclick="CYFHMore()">
+                <img src="img/o_37.png" class="more" onclick="app.XKJSMore(1)">
                 <li ms-for="($index,el) in @entrepreneurship.list" ms-key="$index">
                     <a :click="@cyfhReturn(el.colId)">
                         <span>{{el.colName}}</span>
@@ -243,7 +243,7 @@
                             </a>
                         </li>
                     </ul>
-                    <a onclick="app.XXZYMore()" class="mores">
+                    <a :click="@classMore()" class="mores">
                         <img src="img/o_56.png">
                         <span>点击加载更多教材</span>
                     </a>

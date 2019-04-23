@@ -80,4 +80,10 @@ public class DateUtil {
         sf = new SimpleDateFormat("MM", Locale.getDefault());
         return sf.format(d);
     }
+    //获得月
+    public static String getPicKinit(long time){
+        Date d = new Date(time);
+        sf = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault());
+        return sf.format(d);
+    }
 }

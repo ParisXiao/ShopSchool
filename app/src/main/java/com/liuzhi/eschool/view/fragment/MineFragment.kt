@@ -14,6 +14,7 @@ import com.liuzhi.eschool.entity.convert.UserInfoConvert
 import com.liuzhi.eschool.utils.common.DateUtil
 import com.liuzhi.eschool.utils.common.ImageUtils
 import com.liuzhi.eschool.view.activity.MineListActivity
+import com.liuzhi.eschool.view.activity.MyScoreActivity
 import com.liuzhi.eschool.view.activity.UserInfoSetActivity
 import com.lzy.okgo.OkGo
 import com.lzy.okgo.model.Response
@@ -78,11 +79,15 @@ class MineFragment : BaseFragment(), View.OnClickListener {
                 activity.startActivity(intent)
             }
             mine_data_manager -> {
-                    var intent = Intent(activity, UserInfoSetActivity::class.java)
+                var intent = Intent(activity, UserInfoSetActivity::class.java)
                 intent.putExtra("UserInfo", userInfoEntity)
-                if (userInfoEntity!=null) {
+                if (userInfoEntity != null) {
                     activity.startActivity(intent)
                 }
+            }
+            mine_score -> {
+                var intent = Intent(activity, MyScoreActivity::class.java)
+                activity.startActivity(intent)
             }
         }
     }
@@ -104,6 +109,7 @@ class MineFragment : BaseFragment(), View.OnClickListener {
         view.mine_browse_record.setOnClickListener(this)
         view.mine_syllabus.setOnClickListener(this)
         view.mine_data_manager.setOnClickListener(this)
+        view.mine_score.setOnClickListener(this)
     }
 
     override fun initData() {
@@ -170,6 +176,7 @@ class MineFragment : BaseFragment(), View.OnClickListener {
                 }
             })
     }
+
     fun getHistoryList() {
         var historyConvert = HistoryConvert()
         var historyObservableResponse = ObservableResponse<HistoryEntity>()
@@ -188,7 +195,7 @@ class MineFragment : BaseFragment(), View.OnClickListener {
 
                     if (entity != null) {
                         if (entity.code == 0) {
-                            view!!.browse_record.text=""+entity.data.size
+                            view!!.browse_record.text = "" + entity.data.size
                         }
                     }
                 }
