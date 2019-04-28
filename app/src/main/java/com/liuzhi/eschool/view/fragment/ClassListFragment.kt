@@ -13,6 +13,7 @@ import com.liuzhi.eschool.constants.UrlConstans
 import com.liuzhi.eschool.entity.ClassDetailEntity
 import com.liuzhi.eschool.entity.convert.ClassDetailConvert
 import com.liuzhi.eschool.view.activity.ClassDetailActivity
+import com.liuzhi.eschool.view.activity.LoginActivity
 import com.lzy.okgo.OkGo
 import com.lzy.okgo.model.Response
 import com.lzy.okrx2.adapter.ObservableResponse
@@ -90,6 +91,11 @@ class ClassListFragment : BaseFragment() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableObserver<Response<ClassDetailEntity>>() {
                 override fun onNext(response: Response<ClassDetailEntity>) {
+                    if (response.code()==302){
+                        var intent =Intent(activity, LoginActivity::class.java)
+                        startActivity(intent)
+                        return
+                    }
                     Log.e("result", "response ==> " + response.body().toString())
                     var listEntity = response.body()
                     if (listEntity.resultList==null) {

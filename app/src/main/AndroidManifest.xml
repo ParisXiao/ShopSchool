@@ -91,6 +91,12 @@
         <activity android:name=".view.activity.MyScoreActivity"
                   android:windowSoftInputMode="stateHidden|adjustPan"
                   android:screenOrientation="portrait"/>
+        <activity android:name=".view.activity.MsgDetailActivity"
+                  android:windowSoftInputMode="stateHidden|adjustPan"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".view.activity.DisGroupDetailActivity"
+                  android:windowSoftInputMode="stateHidden|adjustPan"
+                  android:screenOrientation="portrait"/>
 
     </application>
 

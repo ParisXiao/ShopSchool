@@ -1,5 +1,6 @@
 package com.liuzhi.eschool
 
+import android.annotation.SuppressLint
 import android.annotation.TargetApi
 import android.os.Build
 import android.support.design.widget.BottomNavigationView
@@ -12,10 +13,13 @@ import com.liuzhi.eschool.view.fragment.HomeFragment
 import com.liuzhi.eschool.view.fragment.MineFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
+
+
 class MainActivity : BaseActivity() {
     val homeFragment = HomeFragment()
     val classFragment = ClassFragment()
     val mineFragment = MineFragment()
+    lateinit var navigation:BottomNavigationView
     private var fragments: Array<Fragment>? = null    //Fragment数组
     private var lastShowFragment = 0   //表示最后一个显示的Fragment
     override fun getLayoutId(): Int {
@@ -24,41 +28,41 @@ class MainActivity : BaseActivity() {
 
     @TargetApi(Build.VERSION_CODES.KITKAT)
     override fun initView() {
-        BottomNavigationViewHelper.disableShiftMode(bottom_navigation)
-        bottom_navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        navigation= findViewById(R.id.bottom_navigation) as BottomNavigationView
+        BottomNavigationViewHelper.disableShiftMode(navigation)
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
     }
 
     override fun initData() {
         initFragments()
     }
+    private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
+        when (item.itemId) {
+            R.id.navigation_home -> {
+                if (lastShowFragment != 0) {
+                    switchFrament(lastShowFragment, 0)
+                    lastShowFragment = 0
 
-    private val mOnNavigationItemSelectedListener: BottomNavigationView.OnNavigationItemSelectedListener =
-        object : BottomNavigationView.OnNavigationItemSelectedListener {
-            override fun onNavigationItemSelected(p0: MenuItem): Boolean {
-                when (p0.itemId) {
-                    R.id.navigation_home -> {
-                        if (lastShowFragment != 0) {
-                            switchFrament(lastShowFragment, 0)
-                            lastShowFragment = 0
-                        }
-                    }
-                    R.id.navigation_class -> {
-                        if (lastShowFragment != 1) {
-                            switchFrament(lastShowFragment, 1)
-                            lastShowFragment = 1
-                        }
-                    }
-                    R.id.navigation_mine -> {
-                        if (lastShowFragment != 2) {
-                            switchFrament(lastShowFragment, 2)
-                            lastShowFragment = 2
-                        }
-                    }
                 }
-                return false
+                return@OnNavigationItemSelectedListener true
             }
-
+            R.id.navigation_class -> {
+                if (lastShowFragment != 1) {
+                    switchFrament(lastShowFragment, 1)
+                    lastShowFragment = 1
+                }
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.navigation_mine -> {
+                if (lastShowFragment != 2) {
+                    switchFrament(lastShowFragment, 2)
+                    lastShowFragment = 2
+                }
+                return@OnNavigationItemSelectedListener true
+            }
         }
+        false
+    }
 
     /**
      * 切换Fragment

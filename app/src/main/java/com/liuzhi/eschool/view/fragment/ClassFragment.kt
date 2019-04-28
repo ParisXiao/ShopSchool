@@ -1,5 +1,6 @@
 package com.liuzhi.eschool.view.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.FragmentManager
 import android.support.v7.widget.LinearLayoutManager
@@ -11,6 +12,7 @@ import com.liuzhi.eschool.constants.UrlConstans
 import com.liuzhi.eschool.entity.ClassEntity
 import com.liuzhi.eschool.entity.convert.ClassConvert
 import com.liuzhi.eschool.utils.common.DialogUtils
+import com.liuzhi.eschool.view.activity.LoginActivity
 import com.liuzhi.eschool.view.widget.VpSwipeRefreshLayout
 import com.lzy.okgo.OkGo
 import com.lzy.okgo.model.Response
@@ -71,6 +73,11 @@ class ClassFragment : BaseFragment() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableObserver<Response<ClassEntity>>() {
                 override fun onNext(response: Response<ClassEntity>) {
+                    if (response.code()==302){
+                        var intent =Intent(activity,LoginActivity::class.java)
+                        startActivity(intent)
+                        return
+                    }
                     var entity = response.body()
                     if (entity.code == 0) {
                         classLists.clear()

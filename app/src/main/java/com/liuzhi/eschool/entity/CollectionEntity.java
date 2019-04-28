@@ -57,7 +57,7 @@ public class CollectionEntity {
         private String coUId;
         private String coIId;
         private String lsName;
-        private Object ifName;
+        private String ifName;
 
         public String getCoId() {
             return coId;
@@ -115,11 +115,11 @@ public class CollectionEntity {
             this.lsName = lsName;
         }
 
-        public Object getIfName() {
+        public String getIfName() {
             return ifName;
         }
 
-        public void setIfName(Object ifName) {
+        public void setIfName(String ifName) {
             this.ifName = ifName;
         }
     }

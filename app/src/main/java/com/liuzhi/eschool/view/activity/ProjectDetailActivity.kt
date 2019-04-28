@@ -1,5 +1,6 @@
 package com.liuzhi.eschool.view.activity
 
+import android.content.Intent
 import android.support.design.widget.TabLayout
 import android.util.Log
 import android.view.MenuItem
@@ -82,6 +83,11 @@ class ProjectDetailActivity : BaseActivity() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableObserver<Response<ProjectInfoColEntity>>() {
                 override fun onNext(response: Response<ProjectInfoColEntity>) {
+                    if (response.code()==302){
+                        var intent = Intent(this@ProjectDetailActivity,LoginActivity::class.java)
+                        startActivity(intent)
+                        return
+                    }
                     var entity = response.body()
 
                     if (entity.code == 0) {

@@ -115,6 +115,11 @@ class ProjectListActivity : BaseActivity() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableObserver<Response<AllProjectEntity>>() {
                 override fun onNext(response: Response<AllProjectEntity>) {
+                    if (response.code()==302){
+                        var intent =Intent(this@ProjectListActivity,LoginActivity::class.java)
+                        startActivity(intent)
+                        return
+                    }
                     var entity = response.body()
                     if (entity.code == 0) {
                         allProjectLists=entity.data
@@ -146,6 +151,11 @@ class ProjectListActivity : BaseActivity() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableObserver<Response<ProjectColumEntity>>() {
                 override fun onNext(response: Response<ProjectColumEntity>) {
+                    if (response.code()==302){
+                        var intent =Intent(this@ProjectListActivity,LoginActivity::class.java)
+                        startActivity(intent)
+                        return
+                    }
                     var entity = response.body()
                     if (entity.code == 0) {
                         projectColumLists=entity.data

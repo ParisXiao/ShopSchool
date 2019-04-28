@@ -74,7 +74,7 @@ public class DialogUtils {
     }
 
     public void dismisDialog() {
-        if (mDialog != null && mDialog.isShowing()) {
+        if (mDialog != null) {
             mDialog.dismiss();
         }
     }

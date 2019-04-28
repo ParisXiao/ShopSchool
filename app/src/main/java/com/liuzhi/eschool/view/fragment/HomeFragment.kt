@@ -5,6 +5,7 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.net.http.SslError
 import android.os.Build
+import android.support.design.widget.TabLayout
 import android.support.v7.app.AlertDialog
 import android.util.Log
 import android.view.View
@@ -12,7 +13,24 @@ import android.view.ViewGroup
 import android.webkit.*
 import android.widget.EditText
 import com.liuzhi.eschool.R
-import com.liuzhi.eschool.view.activity.ProjectListActivity
+import com.liuzhi.eschool.constants.UrlConstans
+import com.liuzhi.eschool.constants.UserInfoConstans
+import com.liuzhi.eschool.entity.AllProjectEntity
+import com.liuzhi.eschool.entity.ClassDetailByIdEntity
+import com.liuzhi.eschool.entity.ClassDetailEntity
+import com.liuzhi.eschool.entity.ProjectColumEntity
+import com.liuzhi.eschool.entity.convert.AllProjectConvert
+import com.liuzhi.eschool.entity.convert.ClassDetailByIdConvert
+import com.liuzhi.eschool.entity.convert.ProjectColumConvert
+import com.liuzhi.eschool.utils.common.SPUtils
+import com.liuzhi.eschool.view.activity.*
+import com.lzy.okgo.OkGo
+import com.lzy.okgo.model.Response
+import com.lzy.okrx2.adapter.ObservableResponse
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.observers.DisposableObserver
+import io.reactivex.schedulers.Schedulers
+import kotlinx.android.synthetic.main.activity_train_template.*
 
 
 class HomeFragment : BaseFragment() {
@@ -176,9 +194,15 @@ class HomeFragment : BaseFragment() {
             when (divId) {
                 0->{
 
+                    var intentWeb=Intent(activity,WebActivity::class.java)
+                    intentWeb.putExtra("WebTitle", "平台概况")
+                    intentWeb.putExtra("WebHtml", UrlConstans.BaseUrl+"/html/column/630935159025176576.html")
+                    startActivity(intentWeb)
                 }
                 1->{
-
+                    var intent = Intent(activity, MineListActivity::class.java)
+                    intent.putExtra("MineListType", 1)
+                    activity.startActivity(intent)
                 }
                 2 -> {
                     intent.putExtra("ProjectName", "FZSX")
@@ -200,6 +224,11 @@ class HomeFragment : BaseFragment() {
                     intent.putExtra("ProjectName", "XQHZ")
                     activity.startActivity(intent)
                 }
+                7->{
+                    var intent = Intent(activity, MineListActivity::class.java)
+                    intent.putExtra("MineListType", 5)
+                    activity.startActivity(intent)
+                }
             }
         }
 
@@ -211,43 +240,64 @@ class HomeFragment : BaseFragment() {
         @JavascriptInterface
         fun newsReturn(newsId: String, newLink: String) {
             Log.e(TAG, "newsId$newsId  newLink$newLink")
+            var intentWeb=Intent(activity,WebActivity::class.java)
+            intentWeb.putExtra("WebTitle", "新闻详情")
+            intentWeb.putExtra("WebHtml", UrlConstans.BaseUrl+"/html/text/"+newsId+".html")
+            startActivity(intentWeb)
         }
 
         @JavascriptInterface
         fun newMore() {
             Log.e(TAG, "newMore")
-        }
-
-        @JavascriptInterface
-        fun XKJSMore() {
-            Log.e(TAG, "XKJSMore")
-            intent = Intent(activity, ProjectListActivity::class.java)
-            intent.putExtra("ProjectName", "XKJS")
+            intent.putExtra("ProjectName", "XWZX")
             activity.startActivity(intent)
         }
 
         @JavascriptInterface
+        fun XKJSMore(code:Int) {
+            Log.e(TAG, "XKJSMore")
+            if (code==0){
+                intent.putExtra("ProjectName", "XKJS")
+                activity.startActivity(intent)
+            }else{
+                intent.putExtra("ProjectName", "CYFH")
+                activity.startActivity(intent)
+            }
+
+        }
+
+        @JavascriptInterface
         fun XKJSReturn(id: String) {
+//            630857371081510912
             Log.e(TAG, "XKJSReturn$id")
+            Log.e(TAG, "XKJSMore")
+            getAllProject("630857371081510912",id)
+        }
+        @JavascriptInterface
+        fun CYFHReturn(id: String) {
+//            630598952319717376
+            Log.e(TAG, "XKJSReturn$id")
+            Log.e(TAG, "XKJSMore")
+            getAllProject("630598952319717376",id)
         }
 
         @JavascriptInterface
         fun XXSYSMore() {
             Log.e(TAG, "XXSYSMore")
-            intent = Intent(activity, ProjectListActivity::class.java)
-            intent.putExtra("ProjectName", "XKJS")
+            intent.putExtra("ProjectName", "XXSYS")
             activity.startActivity(intent)
         }
 
         @JavascriptInterface
         fun XXSYSReturn(id: String) {
             Log.e(TAG, "XXSYSReturn$id")
+            getAllProject("631320964306571264",id)
         }
 
         @JavascriptInterface
         fun XNFZMore() {
             Log.e(TAG, "XNFZMore")
-            intent.putExtra("ProjectName", "FZSX")
+            intent.putExtra("ProjectName", "XNFZ")
             activity.startActivity(intent)
         }
 
@@ -256,14 +306,148 @@ class HomeFragment : BaseFragment() {
             Log.e(TAG, "XNFZReturn$id")
         }
 
-        @JavascriptInterface
-        fun XXZYMore() {
-            Log.e(TAG, "XXZYMore")
-        }
+//        @JavascriptInterface
+//        fun XXZYMore() {
+//            Log.e(TAG, "XXZYMore")
+//        }
 
         @JavascriptInterface
         fun XXZYReturn(id: String) {
             Log.e(TAG, "XXZYReturn$id")
+            getClassDetailById(id.toLong())
         }
     }
+    fun getAllProject(projectClId: String,id:String) {
+        var allProjectConvert = AllProjectConvert()
+        var allProjectResponse = ObservableResponse<AllProjectEntity>()
+        OkGo.get<AllProjectEntity>(UrlConstans.AllProject)
+            .headers("Content-Type", "application/json;charset=UTF-8")
+            .params("colId", projectClId)
+            .converter(allProjectConvert)
+            .adapt(allProjectResponse)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(object : DisposableObserver<Response<AllProjectEntity>>() {
+                override fun onNext(response: Response<AllProjectEntity>) {
+                    if (response.code()==302){
+                        var intent =Intent(activity, LoginActivity::class.java)
+                        startActivity(intent)
+                        return
+                    }
+                    var entity = response.body()
+                    if (entity.code == 0) {
+                        for (bean in entity.data){
+                            if (id.equals(bean.colId)){
+                                var intent=Intent(activity, ProjectDetailActivity::class.java)
+                                intent.putExtra("ProjectBean",bean)
+                                startActivity(intent)
+                                break
+                            }
+                        }
+                    }
+                }
+
+                override fun onError(e: Throwable) {
+                    Log.e("OKGO",e.message)
+                }
+
+                override fun onComplete() {
+                    if (project_refresh.isRefreshing) {
+                        project_refresh.isRefreshing=false
+                    }
+                }
+            })
+    }
+    fun getClassDetailById(id:Long) {
+        var classDetailByIdConvert = ClassDetailByIdConvert()
+        var detailByIdObservableResponse = ObservableResponse<ClassDetailByIdEntity>()
+        OkGo.get<ClassDetailByIdEntity>(UrlConstans.LessonDetailById)
+            .headers("Content-Type", "application/json;charset=UTF-8")
+            .params("lsId", id)
+            .converter(classDetailByIdConvert)
+            .adapt(detailByIdObservableResponse)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(object : DisposableObserver<Response<ClassDetailByIdEntity>>() {
+                override fun onNext(response: Response<ClassDetailByIdEntity>) {
+                    if (response.code()==302){
+                        var intent =Intent(activity,LoginActivity::class.java)
+                        startActivity(intent)
+                        return
+                    }
+                    var entity = response.body()
+
+                    if (entity != null) {
+                        if (entity.code == 0) {
+                            var classDetail= ClassDetailEntity.ResultListBean()
+                            classDetail.lsName=entity.data.lessonInfo.lsName
+                            classDetail.lsCreateUName=entity.data.lessonInfo.lsCreateUName
+                            classDetail.lsCreateTime=entity.data.lessonInfo.lsCreateTime
+                            classDetail.lsDscb=entity.data.lessonInfo.lsDscb
+                            classDetail.lsImg=entity.data.lessonInfo.lsImg
+                            classDetail.lsId=entity.data.lessonInfo.lsId
+                            var intent=Intent(activity, ClassDetailActivity::class.java)
+                            intent.putExtra("LessonDetail",classDetail)
+                            startActivity(intent)
+                        }
+                    }
+                }
+
+                override fun onError(e: Throwable) {
+                    Log.e("OKGO", e.message)
+                }
+
+                override fun onComplete() {
+
+                }
+            })
+    }
+//    fun getProjectColumn(projectName: String) {
+//        var  projectColumConvert = ProjectColumConvert()
+//        var  projectColumResponse = ObservableResponse()
+//        var    projectColumLists=ArrayList()
+//        OkGo.get<ProjectColumEntity>(UrlConstans.ProjectColumn)
+//            .headers("Content-Type", "application/json;charset=UTF-8")
+//            .params("colSign", projectName)
+//            .converter(projectColumConvert)
+//            .adapt(projectColumResponse)
+//            .subscribeOn(Schedulers.io())
+//            .observeOn(AndroidSchedulers.mainThread())
+//            .subscribe(object : DisposableObserver<Response<ProjectColumEntity>>() {
+//                override fun onNext(response: Response<ProjectColumEntity>) {
+//                    if (response.code()==302){
+//                        var intent =Intent(this@ProjectListActivity,LoginActivity::class.java)
+//                        startActivity(intent)
+//                        return
+//                    }
+//                    var entity = response.body()
+//                    if (entity.code == 0) {
+//                        projectColumLists=entity.data
+//                        if (entity.data.size>1) {
+//                            train_tab.visibility= View.VISIBLE
+//                            for (item in entity.data) {
+//                                train_tab.addTab(TabLayout(this@ProjectListActivity).newTab().setText(item.colName))
+//                            }
+//                        }else{
+//                            train_tab.visibility= View.GONE
+//                        }
+//                        getAllProject(projectColumLists[0].colId)
+//                    }else{
+//                        if (project_refresh.isRefreshing) {
+//                            project_refresh.isRefreshing=false
+//                        }
+//                    }
+//                }
+//
+//                override fun onError(e: Throwable) {
+//                    Log.e("OKGO",e.message)
+//                    if (project_refresh.isRefreshing) {
+//                        project_refresh.isRefreshing=false
+//                    }
+//                }
+//
+//                override fun onComplete() {
+//                }
+//            })
+//    }
 }

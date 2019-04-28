@@ -15,9 +15,7 @@ import com.liuzhi.eschool.entity.*
 import com.liuzhi.eschool.entity.convert.*
 import com.liuzhi.eschool.utils.common.DateUtil
 import com.liuzhi.eschool.utils.common.SPUtils
-import com.liuzhi.eschool.view.activity.ClassDetailActivity
-import com.liuzhi.eschool.view.activity.PdfActivity
-import com.liuzhi.eschool.view.activity.WebActivity
+import com.liuzhi.eschool.view.activity.*
 import com.lzy.okgo.OkGo
 import com.lzy.okgo.model.Response
 import com.lzy.okrx2.adapter.ObservableResponse
@@ -154,6 +152,11 @@ class TabFragment : BaseFragment() {
                 var layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(activity)
                 view.tab_recycler.layoutManager = layoutManager
                 view.tab_recycler.adapter = disGroupAdapter
+                disGroupAdapter.setOnItemClickListener { adapter, view, position ->
+                    var intent =Intent(activity,DisGroupDetailActivity::class.java)
+                    intent.putExtra("DisGroupDetail",noComments[position])
+                    startActivity(intent)
+                }
                 disGroupAdapter.setOnLoadMoreListener {
                     pageNo++
                     getDisGroupList()
@@ -166,6 +169,11 @@ class TabFragment : BaseFragment() {
                 var layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(activity)
                 view.tab_recycler.layoutManager = layoutManager
                 view.tab_recycler.adapter = disGroupAdapter
+                disGroupAdapter.setOnItemClickListener { adapter, view, position ->
+                    var intent =Intent(activity,DisGroupDetailActivity::class.java)
+                    intent.putExtra("DisGroupDetail",isComments[position])
+                    startActivity(intent)
+                }
                 disGroupAdapter.setOnLoadMoreListener {
                     pageNo++
                     getDisGroupList()
@@ -240,11 +248,14 @@ class TabFragment : BaseFragment() {
                 view.tab_recycler.layoutManager = layoutManager
                 view.tab_recycler.adapter = historyAdapter
                 historyAdapter.setOnItemClickListener { adapter, view, position ->
-                    val name:String = if (TextUtils.isEmpty(historys[position].getLsName())) historys[position].getIfName().toString() else historys[position].getLsName().toString()
-                    var intent= Intent(activity,WebActivity::class.java)
-                    intent.putExtra("WebTitle", name)
-                    intent.putExtra("WebHtml",UrlConstans.BaseUrl+historys[position].hUrl)
-                    startActivity(intent)
+                    if (!TextUtils.isEmpty(historys[position].getLsName())) {
+                        getClassDetailById(historys[position].hiId.toLong())
+                    }else{
+                        var intent= Intent(activity,WebActivity::class.java)
+                        intent.putExtra("WebTitle", historys[position].ifName)
+                        intent.putExtra("WebHtml", UrlConstans.BaseUrl+"/html/text/"+historys[position].hiId+".html")
+                        startActivity(intent)
+                    }
                 }
             }
             12 -> {
@@ -253,6 +264,9 @@ class TabFragment : BaseFragment() {
                 var layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(activity)
                 view.tab_recycler.layoutManager = layoutManager
                 view.tab_recycler.adapter = collectionAdapter
+                collectionAdapter.setOnItemClickListener { adapter, view, position ->
+                    getClassDetailById(collectionLessions[position].coId.toLong())
+                }
             }
             13 -> {
                 collectionAdapter = CollectionAdapter(activity, collectionNews)
@@ -260,6 +274,12 @@ class TabFragment : BaseFragment() {
                 var layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(activity)
                 view.tab_recycler.layoutManager = layoutManager
                 view.tab_recycler.adapter = collectionAdapter
+                collectionAdapter.setOnItemClickListener { adapter, view, position ->
+                    var intent= Intent(activity,WebActivity::class.java)
+                    intent.putExtra("WebTitle", collectionNews[position].ifName)
+                    intent.putExtra("WebHtml", UrlConstans.BaseUrl+"/html/text/"+collectionNews[position].coId+".html")
+                    startActivity(intent)
+                }
             }
             14 -> {
                 systemMsgAdapter = SystemMsgAdapter(activity, systemMsgs)
@@ -267,6 +287,11 @@ class TabFragment : BaseFragment() {
                 var layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(activity)
                 view.tab_recycler.layoutManager = layoutManager
                 view.tab_recycler.adapter = systemMsgAdapter
+                systemMsgAdapter.setOnItemClickListener { adapter, view, position ->
+                    var intent=Intent(activity,MsgDetailActivity::class.java)
+                    intent.putExtra("MsgDetail",systemMsgs[position])
+                    startActivity(intent)
+                }
                 systemMsgAdapter.setOnLoadMoreListener {
                     pageNo++
                     getSystemMsgList()
@@ -311,6 +336,11 @@ class TabFragment : BaseFragment() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableObserver<Response<ExamiationEntity>>() {
                 override fun onNext(response: Response<ExamiationEntity>) {
+                    if (response.code()==302){
+                        var intent =Intent(activity,LoginActivity::class.java)
+                        startActivity(intent)
+                        return
+                    }
                     var entity = response.body()
                     if (entity != null) {
                         if (1 == pageNo) {
@@ -356,6 +386,11 @@ class TabFragment : BaseFragment() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableObserver<Response<SimulationEntity>>() {
                 override fun onNext(response: Response<SimulationEntity>) {
+                    if (response.code()==302){
+                        var intent =Intent(activity,LoginActivity::class.java)
+                        startActivity(intent)
+                        return
+                    }
                     var entity = response.body()
 
                     if (entity != null) {
@@ -402,6 +437,11 @@ class TabFragment : BaseFragment() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableObserver<Response<QuestionEntity>>() {
                 override fun onNext(response: Response<QuestionEntity>) {
+                    if (response.code()==302){
+                        var intent =Intent(activity,LoginActivity::class.java)
+                        startActivity(intent)
+                        return
+                    }
                     var entity = response.body()
 
                     if (entity != null) {
@@ -473,6 +513,11 @@ class TabFragment : BaseFragment() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableObserver<Response<DisGroupEntity>>() {
                 override fun onNext(response: Response<DisGroupEntity>) {
+                    if (response.code()==302){
+                        var intent =Intent(activity,LoginActivity::class.java)
+                        startActivity(intent)
+                        return
+                    }
                     var entity = response.body()
 
 
@@ -544,6 +589,11 @@ class TabFragment : BaseFragment() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableObserver<Response<MyCourseEntity>>() {
                 override fun onNext(response: Response<MyCourseEntity>) {
+                    if (response.code()==302){
+                        var intent =Intent(activity,LoginActivity::class.java)
+                        startActivity(intent)
+                        return
+                    }
                     var entity = response.body()
 
                     if (entity != null) {
@@ -615,6 +665,11 @@ class TabFragment : BaseFragment() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableObserver<Response<WorkingEntity>>() {
                 override fun onNext(response: Response<WorkingEntity>) {
+                    if (response.code()==302){
+                        var intent =Intent(activity,LoginActivity::class.java)
+                        startActivity(intent)
+                        return
+                    }
                     var entity = response.body()
 
                     if (entity != null) {
@@ -663,6 +718,11 @@ class TabFragment : BaseFragment() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableObserver<Response<FinishWorkEntity>>() {
                 override fun onNext(response: Response<FinishWorkEntity>) {
+                    if (response.code()==302){
+                        var intent =Intent(activity,LoginActivity::class.java)
+                        startActivity(intent)
+                        return
+                    }
                     var entity = response.body()
 
 
@@ -715,6 +775,11 @@ class TabFragment : BaseFragment() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableObserver<Response<HistoryEntity>>() {
                 override fun onNext(response: Response<HistoryEntity>) {
+                    if (response.code()==302){
+                        var intent =Intent(activity,LoginActivity::class.java)
+                        startActivity(intent)
+                        return
+                    }
                     var entity = response.body()
 
                     if (entity != null) {
@@ -748,6 +813,11 @@ class TabFragment : BaseFragment() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableObserver<Response<CollectionEntity>>() {
                 override fun onNext(response: Response<CollectionEntity>) {
+                    if (response.code()==302){
+                        var intent =Intent(activity,LoginActivity::class.java)
+                        startActivity(intent)
+                        return
+                    }
                     var entity = response.body()
 
                     if (entity != null && entity.code == 0) {
@@ -788,6 +858,11 @@ class TabFragment : BaseFragment() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableObserver<Response<SystemMsgEntity>>() {
                 override fun onNext(response: Response<SystemMsgEntity>) {
+                    if (response.code()==302){
+                        var intent =Intent(activity,LoginActivity::class.java)
+                        startActivity(intent)
+                        return
+                    }
                     var entity = response.body()
 
                     if (entity != null&&entity.code==0) {
@@ -835,6 +910,11 @@ class TabFragment : BaseFragment() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableObserver<Response<ClassTimeEntity>>() {
                 override fun onNext(response: Response<ClassTimeEntity>) {
+                    if (response.code()==302){
+                        var intent =Intent(activity,LoginActivity::class.java)
+                        startActivity(intent)
+                        return
+                    }
                     var entity = response.body()
 
                     if (entity != null) {
@@ -881,6 +961,11 @@ class TabFragment : BaseFragment() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableObserver<Response<ClassDetailByIdEntity>>() {
                 override fun onNext(response: Response<ClassDetailByIdEntity>) {
+                    if (response.code()==302){
+                        var intent =Intent(activity,LoginActivity::class.java)
+                        startActivity(intent)
+                        return
+                    }
                     var entity = response.body()
 
                     if (entity != null) {

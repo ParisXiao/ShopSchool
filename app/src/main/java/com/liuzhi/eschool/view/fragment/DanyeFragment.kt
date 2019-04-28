@@ -1,5 +1,6 @@
 package com.liuzhi.eschool.view.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -13,6 +14,7 @@ import com.liuzhi.eschool.adapter.DanyeAdapter
 import com.liuzhi.eschool.constants.UrlConstans
 import com.liuzhi.eschool.entity.ProjectInfoByEntity
 import com.liuzhi.eschool.entity.convert.ProjectInfoByConvert
+import com.liuzhi.eschool.view.activity.LoginActivity
 import com.lzy.okgo.OkGo
 import com.lzy.okgo.model.Response
 import com.lzy.okrx2.adapter.ObservableResponse
@@ -81,8 +83,12 @@ class DanyeFragment : BaseFragment() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableObserver<Response<ProjectInfoByEntity>>() {
                 override fun onNext(response: Response<ProjectInfoByEntity>) {
+                    if (response.code()==302){
+                        var intent = Intent(activity, LoginActivity::class.java)
+                        startActivity(intent)
+                        return
+                    }
                     var entity = response.body()
-
                     if (1 == pageNo) {
                         projectInfoByList.clear()
                         projectInfoByList = entity.resultList

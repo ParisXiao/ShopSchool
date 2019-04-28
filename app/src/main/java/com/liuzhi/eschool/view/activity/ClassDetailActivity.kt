@@ -1,5 +1,6 @@
 package com.liuzhi.eschool.view.activity
 
+import android.content.Intent
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
@@ -14,8 +15,10 @@ import com.liuzhi.eschool.entity.ClassDetailEntity.ResultListBean
 import com.liuzhi.eschool.entity.ClassMenuEntity
 import com.liuzhi.eschool.entity.SectionEntity
 import com.liuzhi.eschool.entity.convert.ClassMenuConvert
+import com.liuzhi.eschool.utils.common.DialogUtils
 import com.liuzhi.eschool.utils.common.ImageUtils
 import com.lzy.okgo.OkGo
+import com.lzy.okgo.convert.StringConvert
 import com.lzy.okgo.model.Response
 import com.lzy.okrx2.adapter.ObservableResponse
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -23,8 +26,17 @@ import io.reactivex.observers.DisposableObserver
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_classdelist.*
 import kotlinx.android.synthetic.main.layout_title.*
+import org.json.JSONObject
 
-class ClassDetailActivity : BaseActivity() {
+class ClassDetailActivity : BaseActivity(),View.OnClickListener {
+    override fun onClick(p0: View?) {
+        when(p0){
+            collect_class->{
+                collectionClass(intentLessionDetail.lsDscb)
+            }
+        }
+    }
+
     lateinit var intentLessionDetail: ResultListBean
     lateinit var classMenuAdapter: ClassMenuAdapter
     val data = ArrayList<MultiItemEntity>()
@@ -68,7 +80,6 @@ class ClassDetailActivity : BaseActivity() {
     }
 
     override fun initData() {
-
     }
 
     fun getMenuData(lsId: Long) {
@@ -83,6 +94,11 @@ class ClassDetailActivity : BaseActivity() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableObserver<Response<ClassMenuEntity>>() {
                 override fun onNext(response: Response<ClassMenuEntity>) {
+                    if (response.code()==302){
+                        var intent = Intent(this@ClassDetailActivity,LoginActivity::class.java)
+                        startActivity(intent)
+                        return
+                    }
                     Log.e("result", "response ==> " + response.body().toString())
                     var listEntity = response.body()
                     if (listEntity.code == 0) {
@@ -119,9 +135,49 @@ class ClassDetailActivity : BaseActivity() {
             data.add(chapterEntity)
         }
         classMenuAdapter = ClassMenuAdapter(data)
+        classMenuAdapter.setItemOnclickInter(object :ClassMenuAdapter.ItemOnclickInter{
+            override fun itemOnclick(scId: String?) {
+
+            }
+
+        })
         var layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(this)
         class_catalog_recycler.layoutManager = layoutManager
         class_catalog_recycler.adapter = classMenuAdapter
     }
+    fun collectionClass(lsId:String){
+        OkGo.get<String>(UrlConstans.LessonCollect)
+            .headers("Content-Type", "application/x-www-form-urlencoded")
+            .params("lsId", lsId)
+            .params("url", "/html/lesson/id/$lsId.html")
+            .converter(StringConvert())
+            .adapt(ObservableResponse<String>())
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(object : DisposableObserver<Response<String>>() {
+                override fun onNext(response: Response<String>) {
+                    if (response.code()==302){
+                        var intent =Intent(this@ClassDetailActivity,LoginActivity::class.java)
+                        startActivity(intent)
+                        return
+                    }
+                    Log.e("result", "response ==> " + response.body().toString())
+                    var listEntity:JSONObject =JSONObject(response.body())
+                    if (listEntity.optInt("code") == 0) {
+                        collect_class.setText("已收藏")
+                        DialogUtils.getInstance(this@ClassDetailActivity).shortToast("收藏成功")
+                    }else{
+                        DialogUtils.getInstance(this@ClassDetailActivity).shortToast(listEntity.optString("msg"))
+                    }
 
+                }
+
+                override fun onError(e: Throwable) {
+                    Log.e("OKGO", e.message)
+                }
+
+                override fun onComplete() {
+                }
+            })
+    }
 }

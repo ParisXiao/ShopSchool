@@ -1,8 +1,10 @@
 package com.liuzhi.eschool.view.activity
 
+import android.content.Intent
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
+import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
 import com.liuzhi.eschool.R
@@ -23,20 +25,21 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DisposableObserver
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_myscore.*
+import kotlinx.android.synthetic.main.layout_title.*
 import org.json.JSONObject
 
 class MyScoreActivity:BaseActivity(),View.OnClickListener{
     override fun onClick(p0: View?) {
         when(p0){
             time_spinner->{
-                customDatePicker.show("请选择时间")
+                customDatePicker.show(time_spinner.text.toString().trim())
             }
 
         }
     }
 
     lateinit var customDatePicker:CustomDatePicker
-    private val chooseTime: String=""
+    private var chooseTime: String=""
     lateinit var paperAdapter:PaperAdapter
     var types:MutableList<String> = ArrayList()
     var paperTypes:MutableList<PaperTypeEntity.DataBean> = ArrayList()
@@ -46,9 +49,30 @@ class MyScoreActivity:BaseActivity(),View.OnClickListener{
     }
 
     override fun initView() {
-
+        toolbar.title = ""
+        setSupportActionBar(toolbar)
+        val actionBar = supportActionBar
+        if (actionBar != null) {
+            //设置左上角图标是否可点击
+            actionBar.setHomeButtonEnabled(true)
+            //左上角加上一个返回图标
+            actionBar.setDisplayHomeAsUpEnabled(true)
+        }
+        toolbar.setBackgroundColor(resources.getColor(R.color.main_blue_color))
+        title_name.setTextColor(resources.getColor(R.color.white))
+        title_name.text="成绩查询"
+        time_spinner.text= DateUtil.getPicKinit(System.currentTimeMillis())
+        time_spinner.setOnClickListener(this)
     }
-
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Pass the event to ActionBarDrawerToggle, if it returns
+        // true, then it has handled the app icon_star touch event
+        if (item.itemId == android.R.id.home) {
+            finish()
+            return true
+        }
+        return super.onOptionsItemSelected(item)
+    }
     override fun initData() {
         getPaperTypeList()
         initDatePicker()
@@ -75,9 +99,11 @@ class MyScoreActivity:BaseActivity(),View.OnClickListener{
     }
 
     private fun initDatePicker() {
+        chooseTime=DateUtil.getPicKinit2(System.currentTimeMillis())
         customDatePicker = CustomDatePicker(this@MyScoreActivity, object : CustomDatePicker.ResultHandler {
           override  fun handle(time: String) { // 回调接口，获得选中的时间
-                time_spinner.setText(time)
+              var newTime=time.substring(0,time.length-6)
+                time_spinner.setText(newTime)
               if (time_spinner.text.toString().trim().isNotEmpty()&&pm_spinner.text.toString().trim().isNotEmpty()){
                   for (bean in paperTypes){
                       if (pm_spinner.text.equals(bean.ptName)){
@@ -87,7 +113,7 @@ class MyScoreActivity:BaseActivity(),View.OnClickListener{
 
               }
             }
-        },DateUtil.getPicKinit(System.currentTimeMillis()), chooseTime) // 初始化日期格式请用：yyyy-MM-dd HH:mm，否则不能正常运行
+        },"2018-01-01 00:00", chooseTime) // 初始化日期格式请用：yyyy-MM-dd HH:mm，否则不能正常运行
         customDatePicker.showSpecificTime(false) // 显示时和分
         customDatePicker.setIsLoop(true) // 不允许循环滚动
     }
@@ -102,6 +128,11 @@ class MyScoreActivity:BaseActivity(),View.OnClickListener{
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableObserver<Response<PaperTypeEntity>>() {
                 override fun onNext(response: Response<PaperTypeEntity>) {
+                    if (response.code()==302){
+                        var intent = Intent(this@MyScoreActivity,LoginActivity::class.java)
+                        startActivity(intent)
+                        return
+                    }
                     var entity = response.body()
                     if (entity!=null&&entity.data.size>0) {
                         paperTypes=entity.data
@@ -134,6 +165,11 @@ class MyScoreActivity:BaseActivity(),View.OnClickListener{
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableObserver<Response<PaperTotalEntity>>() {
                 override fun onNext(response: Response<PaperTotalEntity>) {
+                    if (response.code()==302){
+                        var intent =Intent(this@MyScoreActivity,LoginActivity::class.java)
+                        startActivity(intent)
+                        return
+                    }
                     var entity = response.body()
                     if (entity!=null) {
                         paperTotals=entity.resultList

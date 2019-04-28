@@ -1,8 +1,9 @@
 package com.liuzhi.eschool.constants;
 
 public class UserInfoConstans {
-    public static final String USERID="USERID";
-    public static final String USERPASSWORD="USERPASSWORD";
-    public static final String CookieId="CookieId";
+    public static  String USERID="USERID";
+    public static  String USERNAME="USERName";
+    public static  String USERPASSWORD="USERPASSWORD";
+    public static  String CookieId="CookieId";
 
 }

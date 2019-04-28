@@ -1,5 +1,6 @@
 package com.liuzhi.eschool.view.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.text.TextUtils
@@ -9,6 +10,7 @@ import com.liuzhi.eschool.adapter.ClassTypeAdapter
 import com.liuzhi.eschool.constants.UrlConstans
 import com.liuzhi.eschool.entity.ClassTypeEntity
 import com.liuzhi.eschool.entity.convert.ClassTypeConvert
+import com.liuzhi.eschool.view.activity.LoginActivity
 import com.lzy.okgo.OkGo
 import com.lzy.okgo.model.Response
 import com.lzy.okrx2.adapter.ObservableResponse
@@ -64,6 +66,11 @@ class ClassTypeFragment : BaseFragment() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableObserver<Response<ClassTypeEntity>>() {
                 override fun onNext(response: Response<ClassTypeEntity>) {
+                    if (response.code()==302){
+                        var intent = Intent(activity, LoginActivity::class.java)
+                        startActivity(intent)
+                        return
+                    }
                     var entity:ClassTypeEntity=response.body()
                     classTypes=entity.data
                     classTypeAdapter.setDataList(classTypes)

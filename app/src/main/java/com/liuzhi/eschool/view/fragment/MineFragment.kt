@@ -3,8 +3,10 @@ package com.liuzhi.eschool.view.fragment
 import android.content.Intent
 import android.util.Log
 import android.view.View
+import cn.pedant.SweetAlert.SweetAlertDialog
 import com.liuzhi.eschool.R
 import com.liuzhi.eschool.constants.UrlConstans
+import com.liuzhi.eschool.constants.UserInfoConstans
 import com.liuzhi.eschool.entity.HistoryEntity
 import com.liuzhi.eschool.entity.SystemMsgEntity
 import com.liuzhi.eschool.entity.UserInfoEntity
@@ -13,10 +15,12 @@ import com.liuzhi.eschool.entity.convert.SystemMsgConvert
 import com.liuzhi.eschool.entity.convert.UserInfoConvert
 import com.liuzhi.eschool.utils.common.DateUtil
 import com.liuzhi.eschool.utils.common.ImageUtils
+import com.liuzhi.eschool.view.activity.LoginActivity
 import com.liuzhi.eschool.view.activity.MineListActivity
 import com.liuzhi.eschool.view.activity.MyScoreActivity
 import com.liuzhi.eschool.view.activity.UserInfoSetActivity
 import com.lzy.okgo.OkGo
+import com.lzy.okgo.convert.StringConvert
 import com.lzy.okgo.model.Response
 import com.lzy.okrx2.adapter.ObservableResponse
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -24,6 +28,8 @@ import io.reactivex.observers.DisposableObserver
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_mine.*
 import kotlinx.android.synthetic.main.fragment_mine.view.*
+import org.json.JSONException
+import org.json.JSONObject
 
 class MineFragment : BaseFragment(), View.OnClickListener {
     override fun onClick(p0: View?) {
@@ -89,6 +95,17 @@ class MineFragment : BaseFragment(), View.OnClickListener {
                 var intent = Intent(activity, MyScoreActivity::class.java)
                 activity.startActivity(intent)
             }
+            mine_exit -> {
+                SweetAlertDialog(activity, SweetAlertDialog.WARNING_TYPE)
+                    .setTitleText("注销登录")
+                    .setContentText("确定注销当前账号")
+                    .setConfirmText("确定")
+                    .setConfirmClickListener { sDialog ->
+                        var intent = Intent(activity, LoginActivity::class.java)
+                        activity.startActivity(intent)
+                    }.show()
+
+            }
         }
     }
 
@@ -110,6 +127,7 @@ class MineFragment : BaseFragment(), View.OnClickListener {
         view.mine_syllabus.setOnClickListener(this)
         view.mine_data_manager.setOnClickListener(this)
         view.mine_score.setOnClickListener(this)
+        view.mine_exit.setOnClickListener(this)
     }
 
     override fun initData() {
@@ -129,12 +147,18 @@ class MineFragment : BaseFragment(), View.OnClickListener {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableObserver<Response<UserInfoEntity>>() {
                 override fun onNext(response: Response<UserInfoEntity>) {
+                    if (response.code()==302){
+                        var intent =Intent(activity, LoginActivity::class.java)
+                        startActivity(intent)
+                        return
+                    }
                     var entity = response.body()
                     if (entity != null) {
                         userInfoEntity = entity
                         mine_username.text = entity.getaUserName()
                         mine_usermajor.text = entity.mjName
                         ImageUtils.setImageBitmapUrl(activity, user_icon, UrlConstans.BaseUrl + entity.getaPhotoUrl())
+                        UserInfoConstans.USERNAME=entity.getaUserName()
                     }
                 }
 
@@ -160,6 +184,11 @@ class MineFragment : BaseFragment(), View.OnClickListener {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableObserver<Response<SystemMsgEntity>>() {
                 override fun onNext(response: Response<SystemMsgEntity>) {
+                    if (response.code()==302){
+                        var intent =Intent(activity,LoginActivity::class.java)
+                        startActivity(intent)
+                        return
+                    }
                     var entity = response.body()
 
                     if (entity != null && entity.code == 0) {
@@ -191,6 +220,11 @@ class MineFragment : BaseFragment(), View.OnClickListener {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableObserver<Response<HistoryEntity>>() {
                 override fun onNext(response: Response<HistoryEntity>) {
+                    if (response.code()==302){
+                        var intent =Intent(activity,LoginActivity::class.java)
+                        startActivity(intent)
+                        return
+                    }
                     var entity = response.body()
 
                     if (entity != null) {

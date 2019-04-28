@@ -189,6 +189,11 @@ class UserInfoSetActivity:BaseActivity(),CommonPopWindow.ViewClickListener,View.
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableObserver<Response<String>>() {
                 override fun onNext(response: Response<String>) {
+                    if (response.code()==302){
+                        var intent =Intent(this@UserInfoSetActivity,LoginActivity::class.java)
+                        startActivity(intent)
+                        return
+                    }
                     Log.e("OKGO", response.body())
                     var entity:JSONObject =JSONObject(response.body())
 

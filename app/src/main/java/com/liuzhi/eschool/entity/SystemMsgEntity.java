@@ -1,8 +1,9 @@
 package com.liuzhi.eschool.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class SystemMsgEntity {
+public class SystemMsgEntity implements Serializable {
 
     /**
      * code : 0
@@ -38,7 +39,7 @@ public class SystemMsgEntity {
         this.data = data;
     }
 
-    public static class DataBean {
+    public static class DataBean implements Serializable {
         /**
          * pageSize : 10
          * totalRows : 5
@@ -123,7 +124,7 @@ public class SystemMsgEntity {
             this.resultList = resultList;
         }
 
-        public static class ResultListBean {
+        public static class ResultListBean implements Serializable {
             /**
              * ctId : 634462296055222275
              * ctRoomId : 634462296055222276

@@ -1,8 +1,9 @@
 package com.liuzhi.eschool.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class DisGroupEntity {
+public class DisGroupEntity implements Serializable {
 
     /**
      * pageSize : 10
@@ -88,7 +89,7 @@ public class DisGroupEntity {
         this.resultList = resultList;
     }
 
-    public static class ResultListBean {
+    public static class ResultListBean implements Serializable {
         /**
          * psId : 625876864073732096
          * uId : 20181342745

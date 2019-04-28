@@ -124,6 +124,7 @@ class LoginActivity:BaseActivity(),View.OnClickListener{
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableObserver<Response<ImgCodeEntity>>() {
                 override fun onNext(response: Response<ImgCodeEntity>) {
+
                     var entity = response.body()
                     if (entity!=null&&entity.code == 0) {
                         login_imgcode_show.setImageBitmap(BitmapUtils.stringToBitmap(entity.data.imgCode))
@@ -153,14 +154,15 @@ class LoginActivity:BaseActivity(),View.OnClickListener{
                     Log.e("OKGO",response.body().toString())
                     var jsonObject = JSONObject(response.body())
                     if (jsonObject.optInt("code") == 0) {
+                      var data=jsonObject.optString("data")
+                        var jsonObject1=JSONObject(data)
+                        var LZSESSIONID=jsonObject1.optString("LZSESSIONID")
                         DialogUtils.getInstance(this@LoginActivity).shortToast("登陆成功")
                         var intent=Intent(this@LoginActivity,MainActivity::class.java)
+                        intent.flags=Intent.FLAG_ACTIVITY_NEW_TASK
                         startActivity(intent)
-                        var cookie:Cookie? =null
-                        cookie= OkGo.getInstance().cookieJar.cookieStore.allCookie[0]
-                        var id=cookie.value()
-                        Log.e("CookieId",id+"  size"+OkGo.getInstance().cookieJar.cookieStore.allCookie.size)
-                        SPUtils.getInstance().set(this@LoginActivity,UserInfoConstans.CookieId,id)
+                        finish()
+                        SPUtils.getInstance().set(this@LoginActivity,UserInfoConstans.CookieId,LZSESSIONID)
                     }else{
                         DialogUtils.getInstance(this@LoginActivity).shortToast("登陆失败："+jsonObject.optString("msg"))
                         getImgCode()

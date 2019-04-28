@@ -33,5 +33,8 @@ class UrlConstans{
         val PaperTypeList= "$BaseUrl/front/getPaperTypeList"
         val PersonalGradeList= "$BaseUrl/front/getPersonalGradeList"
         val LessonDetailById= "$BaseUrl/front/getLessonDetail"
+        val LessonCollect= "$BaseUrl/center/lessonCollect"
+        val GetForum= "$BaseUrl/front/idGetForum"
+        val UserPost= "$BaseUrl/center/userpost"
     }
 }
