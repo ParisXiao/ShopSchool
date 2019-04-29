@@ -59,10 +59,21 @@ class RegisterActivity:BaseActivity(),View.OnClickListener{
                     DialogUtils.getInstance(this@RegisterActivity). shortToast("请输入正确的手机号")
                     return
                 }
+                if (!check_agreement.isChecked) {
+                    DialogUtils.getInstance(this@RegisterActivity).shortToast("请同意服务使用协议")
+                    return
+                }
+
                 //注册接口
                 DialogUtils.getInstance(this@RegisterActivity).showLoadDialog("正在注册...")
                 regist(input_edit_reg_username.text.toString().trim(),input_edit_reg_userid.text.toString().trim(),
                     input_edit_reg_password.text.toString().trim(),input_edit_reg_usernum.text.toString().trim() ,input_edit_reg_phone.text.toString().trim())
+            }
+            text_agreement->{
+                if (BtnClickUtils.isDouableClick()) {
+                    return
+                }
+                //打开协议详情
             }
         }
     }
@@ -83,6 +94,7 @@ class RegisterActivity:BaseActivity(),View.OnClickListener{
         }
         title_name.text="注册"
         btn_register.setOnClickListener(this)
+        text_agreement.setOnClickListener(this)
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Pass the event to ActionBarDrawerToggle, if it returns

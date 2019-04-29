@@ -233,7 +233,7 @@ class TabFragment : BaseFragment() {
                 workFinishAdapter.setOnItemClickListener { adapter, view, position ->
                     var intent= Intent(activity,WebActivity::class.java)
                     intent.putExtra("WebTitle", workFinishs[position].cwName)
-                    intent.putExtra("WebHtml",UrlConstans.BaseUrl+"/exam/classwork/"+workFinishs[position].cwId+".html?jsessionid="+SPUtils.getInstance().getString(activity,UserInfoConstans.CookieId))
+                    intent.putExtra("WebHtml",UrlConstans.BaseUrl+"/exam/classwork/"+workFinishs[position].cwId+".html?LZSESSIONID="+SPUtils.getInstance().getString(activity,UserInfoConstans.CookieId))
                     startActivity(intent)
                 }
                 workFinishAdapter.setOnLoadMoreListener {

@@ -10,6 +10,7 @@ class UrlConstans{
         val LessonDetail= "$BaseUrl/front/getLessonDetail"
         val Login= "$BaseUrl/login"
         val ProjectColumn= "$BaseUrl/front/getProjectColumn"
+        val ColInfo= "$BaseUrl/front/getColInfo"
         val AllProject= "$BaseUrl/front/getAllProject"
         val ProjectInfoCol= "$BaseUrl/front/getProjectInfoCol"
         val InformationByCol= "$BaseUrl/front/getInformationByCol"

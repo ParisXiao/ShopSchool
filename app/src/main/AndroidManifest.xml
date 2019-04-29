@@ -26,8 +26,9 @@
                 android:grantUriPermissions="true">
             <meta-data
                     android:name="android.support.FILE_PROVIDER_PATHS"
-                    android:resource="@xml/provider_paths" />
+                    android:resource="@xml/provider_paths"/>
         </provider>
+
         <activity
                 android:name=".view.activity.LoginActivity"
                 android:windowSoftInputMode="stateHidden|adjustPan"
@@ -39,15 +40,16 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"
-        android:windowSoftInputMode="stateHidden|adjustPan"
-        android:screenOrientation="portrait"
-        />
+        <activity
+                android:name=".MainActivity"
+                android:windowSoftInputMode="stateHidden|adjustPan"
+                android:screenOrientation="portrait"
+                />
         <!--<activity-->
-                <!--android:name=".view.activity.LoginActivity"-->
-                <!--android:windowSoftInputMode="stateHidden|adjustPan"-->
-                <!--android:screenOrientation="portrait"-->
-                <!--/>-->
+        <!--android:name=".view.activity.LoginActivity"-->
+        <!--android:windowSoftInputMode="stateHidden|adjustPan"-->
+        <!--android:screenOrientation="portrait"-->
+        <!--/>-->
         <activity
                 android:name=".view.activity.RegisterActivity"
                 android:windowSoftInputMode="stateHidden|adjustPan"
@@ -72,32 +74,50 @@
                 android:name=".view.activity.ProjectDetailActivity"
                 android:windowSoftInputMode="stateHidden|adjustPan"
                 android:screenOrientation="portrait"/>
-        <activity android:name=".view.activity.MineListActivity"
-                  android:windowSoftInputMode="stateHidden|adjustPan"
-                  android:screenOrientation="portrait"
+        <activity
+                android:name=".view.activity.MineListActivity"
+                android:windowSoftInputMode="stateHidden|adjustPan"
+                android:screenOrientation="portrait"
                 />
-        <activity android:name=".view.activity.UserInfoSetActivity"
-                  android:windowSoftInputMode="stateHidden|adjustPan"
-                  android:screenOrientation="portrait"/>
-        <activity android:name=".view.activity.WebActivity"
-                  android:windowSoftInputMode="stateHidden|adjustPan"
-                  android:screenOrientation="portrait"/>
-        <activity android:name=".view.activity.FileDisplayActivity"
-                  android:windowSoftInputMode="stateHidden|adjustPan"
-                  android:screenOrientation="portrait"/>
-        <activity android:name=".view.activity.PdfActivity"
-                  android:windowSoftInputMode="stateHidden|adjustPan"
-                  android:screenOrientation="portrait"/>
-        <activity android:name=".view.activity.MyScoreActivity"
-                  android:windowSoftInputMode="stateHidden|adjustPan"
-                  android:screenOrientation="portrait"/>
-        <activity android:name=".view.activity.MsgDetailActivity"
-                  android:windowSoftInputMode="stateHidden|adjustPan"
-                  android:screenOrientation="portrait"/>
-        <activity android:name=".view.activity.DisGroupDetailActivity"
-                  android:windowSoftInputMode="stateHidden|adjustPan"
-                  android:screenOrientation="portrait"/>
-
+        <activity
+                android:name=".view.activity.UserInfoSetActivity"
+                android:windowSoftInputMode="stateHidden|adjustPan"
+                android:screenOrientation="portrait"/>
+        <activity
+                android:name=".view.activity.WebActivity"
+                android:windowSoftInputMode="stateHidden|adjustPan"
+                android:screenOrientation="portrait"/>
+        <activity
+                android:name=".view.activity.FileDisplayActivity"
+                android:windowSoftInputMode="stateHidden|adjustPan"
+                android:screenOrientation="portrait"/>
+        <activity
+                android:name=".view.activity.PdfActivity"
+                android:windowSoftInputMode="stateHidden|adjustPan"
+                android:screenOrientation="portrait"/>
+        <activity
+                android:name=".view.activity.MyScoreActivity"
+                android:windowSoftInputMode="stateHidden|adjustPan"
+                android:screenOrientation="portrait"/>
+        <activity
+                android:name=".view.activity.MsgDetailActivity"
+                android:windowSoftInputMode="stateHidden|adjustPan"
+                android:screenOrientation="portrait"/>
+        <activity
+                android:name=".view.activity.DisGroupDetailActivity"
+                android:windowSoftInputMode="stateHidden|adjustPan"
+                android:screenOrientation="portrait"/>
+        <activity
+                android:name="com.tencent.smtt.sdk.VideoActivity"
+                android:configChanges="orientation|screenSize|keyboardHidden"
+                android:exported="false"
+                android:launchMode="singleTask"
+                android:alwaysRetainTaskState="true">
+            <intent-filter>
+                <action android:name="com.tencent.smtt.tbs.video.PLAY"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

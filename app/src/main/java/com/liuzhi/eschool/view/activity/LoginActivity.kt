@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Build
 import android.text.Editable
 import android.text.InputType
+import android.text.TextUtils
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
@@ -94,6 +95,13 @@ class LoginActivity:BaseActivity(),View.OnClickListener{
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
             login_password_show.visibility=View.GONE
         }
+        if (!TextUtils.isEmpty( SPUtils.getInstance().getString(this@LoginActivity,UserInfoConstans.USERID))) {
+            input_edit_userid.setText(SPUtils.getInstance().getString(this@LoginActivity,UserInfoConstans.USERID))
+        }
+        if (!TextUtils.isEmpty( SPUtils.getInstance().getString(this@LoginActivity,UserInfoConstans.USERPASSWORD))) {
+            input_edit_password.setText(SPUtils.getInstance().getString(this@LoginActivity,UserInfoConstans.USERPASSWORD))
+        }
+
         input_edit_userid.addTextChangedListener(object :TextWatcher{
             override fun afterTextChanged(s: Editable?) {
             }
@@ -163,6 +171,8 @@ class LoginActivity:BaseActivity(),View.OnClickListener{
                         startActivity(intent)
                         finish()
                         SPUtils.getInstance().set(this@LoginActivity,UserInfoConstans.CookieId,LZSESSIONID)
+                        SPUtils.getInstance().set(this@LoginActivity,UserInfoConstans.USERID,userId)
+                        SPUtils.getInstance().set(this@LoginActivity,UserInfoConstans.USERPASSWORD,password)
                     }else{
                         DialogUtils.getInstance(this@LoginActivity).shortToast("登陆失败："+jsonObject.optString("msg"))
                         getImgCode()
