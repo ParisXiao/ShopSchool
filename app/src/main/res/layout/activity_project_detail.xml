@@ -64,6 +64,7 @@
                     android:textSize="@dimen/font_size_item_project_name"
                     android:textColor="@color/white"
                     android:text="点击进入"
+                    android:visibility="invisible"
                     />
         </LinearLayout>
 

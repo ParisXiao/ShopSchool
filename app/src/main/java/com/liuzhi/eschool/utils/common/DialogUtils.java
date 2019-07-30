@@ -22,12 +22,17 @@ public class DialogUtils {
     }
 
     public void showLoadDialog(String s) {
-        dismisDialog();
-        mDialog = new SweetAlertDialog(context, SweetAlertDialog.PROGRESS_TYPE);
-        mDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
-        mDialog.setTitleText(s);
-        mDialog.setCancelable(false);
-        mDialog.show();
+        try {
+            dismisDialog();
+            mDialog = new SweetAlertDialog(context, SweetAlertDialog.PROGRESS_TYPE);
+            mDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
+            mDialog.setTitleText(s);
+            mDialog.setCancelable(false);
+            mDialog.show();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 
     public void showSuccessDialog(String s) {

@@ -102,7 +102,9 @@ class MineFragment : BaseFragment(), View.OnClickListener {
                     .setConfirmText("确定")
                     .setConfirmClickListener { sDialog ->
                         var intent = Intent(activity, LoginActivity::class.java)
+                        intent.flags=Intent.FLAG_ACTIVITY_NEW_TASK
                         activity.startActivity(intent)
+                        activity.finish()
                     }.show()
 
             }
@@ -131,11 +133,15 @@ class MineFragment : BaseFragment(), View.OnClickListener {
     }
 
     override fun initData() {
-        getUserInfo()
+
         getHistoryList()
         getSystemMsgList()
     }
 
+    override fun onResume() {
+        super.onResume()
+        getUserInfo()
+    }
     fun getUserInfo() {
         var userInfoConvert = UserInfoConvert()
         var userInfoObservableResponse = ObservableResponse<UserInfoEntity>()
@@ -147,17 +153,17 @@ class MineFragment : BaseFragment(), View.OnClickListener {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableObserver<Response<UserInfoEntity>>() {
                 override fun onNext(response: Response<UserInfoEntity>) {
-                    if (response.code()==302){
-                        var intent =Intent(activity, LoginActivity::class.java)
+                    var entity = response.body()
+                    if (entity==null){
+                        var intent =Intent(activity,LoginActivity::class.java)
                         startActivity(intent)
                         return
                     }
-                    var entity = response.body()
                     if (entity != null) {
                         userInfoEntity = entity
-                        mine_username.text = entity.getaUserName()
+                        mine_username.text = entity.getaName()
                         mine_usermajor.text = entity.mjName
-                        ImageUtils.setImageBitmapUrl(activity, user_icon, UrlConstans.BaseUrl + entity.getaPhotoUrl())
+                        ImageUtils.setImageBitmapUrl(activity, user_icon, UrlConstans.BaseUrl + entity.getaPhoto())
                         UserInfoConstans.USERNAME=entity.getaUserName()
                     }
                 }
@@ -184,12 +190,12 @@ class MineFragment : BaseFragment(), View.OnClickListener {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableObserver<Response<SystemMsgEntity>>() {
                 override fun onNext(response: Response<SystemMsgEntity>) {
-                    if (response.code()==302){
+                    var entity = response.body()
+                    if (entity==null){
                         var intent =Intent(activity,LoginActivity::class.java)
                         startActivity(intent)
                         return
                     }
-                    var entity = response.body()
 
                     if (entity != null && entity.code == 0) {
                         view!!.msg_record.text = entity.data.totalRows.toString()
@@ -220,12 +226,12 @@ class MineFragment : BaseFragment(), View.OnClickListener {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableObserver<Response<HistoryEntity>>() {
                 override fun onNext(response: Response<HistoryEntity>) {
-                    if (response.code()==302){
+                    var entity = response.body()
+                    if (entity==null){
                         var intent =Intent(activity,LoginActivity::class.java)
                         startActivity(intent)
                         return
                     }
-                    var entity = response.body()
 
                     if (entity != null) {
                         if (entity.code == 0) {

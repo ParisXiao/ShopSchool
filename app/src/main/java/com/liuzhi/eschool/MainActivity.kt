@@ -5,8 +5,11 @@ import android.annotation.TargetApi
 import android.os.Build
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
+import android.view.KeyEvent
 import android.view.MenuItem
+import android.widget.Toast
 import com.liuzhi.eschool.other.BottomNavigationViewHelper
+import com.liuzhi.eschool.utils.common.DialogUtils
 import com.liuzhi.eschool.view.activity.BaseActivity
 import com.liuzhi.eschool.view.fragment.ClassFragment
 import com.liuzhi.eschool.view.fragment.HomeFragment
@@ -81,7 +84,7 @@ class MainActivity : BaseActivity() {
 
     private fun initFragments() {
         fragments = arrayOf(homeFragment, classFragment, mineFragment)
-        lastShowFragment = 0;
+        lastShowFragment = 0
         getSupportFragmentManager()
             .beginTransaction()
             .add(R.id.main_view, homeFragment)
@@ -89,5 +92,23 @@ class MainActivity : BaseActivity() {
             .commit()
     }
 
+    private var exitTime: Long = 0
 
+    override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (supportFragmentManager.backStackEntryCount == 0) {
+                if (System.currentTimeMillis() - exitTime > 2000) {
+                    //弹出提示，可以有多种方式
+                    DialogUtils.getInstance(this@MainActivity).shortToast("再按一次退出")
+                    exitTime = System.currentTimeMillis()
+                } else {
+                    super.onBackPressed() //退出
+                }
+            } else {
+                supportFragmentManager.popBackStack() //fragment 出栈
+            }
+            return false
+        }
+        return super.onKeyDown(keyCode, event)
+    }
 }

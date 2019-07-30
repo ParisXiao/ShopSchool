@@ -6,11 +6,18 @@ import android.os.Handler;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.github.barteksc.pdfviewer.PDFView;
-import com.github.barteksc.pdfviewer.listener.OnPageChangeListener;
 import com.liuzhi.eschool.R;
 import com.liuzhi.eschool.utils.common.DialogUtils;
+import es.voghdev.pdfviewpager.library.PDFViewPager;
+import es.voghdev.pdfviewpager.library.RemotePDFViewPager;
+import es.voghdev.pdfviewpager.library.adapter.PDFPagerAdapter;
+import es.voghdev.pdfviewpager.library.remote.DownloadFile;
+import es.voghdev.pdfviewpager.library.util.FileUtil;
 import okhttp3.*;
 
 import java.io.File;
@@ -23,14 +30,16 @@ import java.io.InputStream;
  * Created by Administrator on 2018/3/15 0015.
  */
 
-public class PdfActivity extends BaseActivity implements OnPageChangeListener {
-    private String path = "";
+public class PdfActivity extends BaseActivity implements DownloadFile.Listener {
     private String url = "";
     private String name = "";
     private TextView title_name;
     private Toolbar toolbar;
-    private PDFView pdfView;
-
+    private RelativeLayout pdf_root;
+    private ProgressBar pb_bar;
+    private RemotePDFViewPager remotePDFViewPager;
+    private PDFPagerAdapter adapter;
+    private TextView pdf_page;
     @Override
     protected int getLayoutId() {
         return R.layout.activity_pdf;
@@ -38,10 +47,11 @@ public class PdfActivity extends BaseActivity implements OnPageChangeListener {
 
     @Override
     protected void initView() {
-        DialogUtils.getInstance(PdfActivity.this).showLoadDialog("正在加载PDF文件...");
         title_name= (TextView) findViewById(R.id.title_name);
+        pdf_page= (TextView) findViewById(R.id.pdf_page);
         toolbar= (Toolbar) findViewById(R.id.toolbar);
-        pdfView= (PDFView) findViewById(R.id.pdfView);
+        pb_bar = (ProgressBar) findViewById(R.id.pb_bar);
+        pdf_root = (RelativeLayout) findViewById(R.id.remote_pdf_root);
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
@@ -67,91 +77,14 @@ public class PdfActivity extends BaseActivity implements OnPageChangeListener {
     @Override
     protected void initData() {
 
-        path = Environment.getExternalStorageDirectory() + "";
         url = getIntent().getStringExtra("PDFUrl");
         name = getIntent().getStringExtra("PDFName");
         title_name.setText(name);
-
-        getPDF();
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                showPDF();
-            }
-        }, 5000);
-
-
+        setDownloadListener();
+        pdf_page.setText("左右滑动翻页");
     }
 
-    private void getPDF() {
 
-        Request request = new Request.Builder().url(url).build();
-        new OkHttpClient().newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        DialogUtils.getInstance(PdfActivity.this).showFailDialog("加载失败","PDF文件解析报错");
-                    }
-                });
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                InputStream is = null;
-                byte[] bytes = new byte[2048];
-                int len = 0;
-                FileOutputStream o = null;
-                try {
-                    is = response.body().byteStream();
-                    long total = response.body().contentLength();
-                    final File file = new File(path, "class.pdf");
-                    o = new FileOutputStream(file);
-                    long sum = 0;
-                    while ((len = is.read(bytes)) != -1) {
-                        o.write(bytes, 0, len);
-                        sum += len;
-                        int progress = (int) (sum * 1.0f / total * 100);
-                        if (progress == 100) {
-                        }
-                    }
-                    o.flush();
-
-
-                } catch (Exception e) {
-                } finally {
-                    try {
-                        if (is != null)
-                            is.close();
-                    } catch (Exception e) {
-
-                    }
-                    try {
-                        if (o != null)
-                            o.close();
-                    } catch (Exception e) {
-
-                    }
-
-
-                }
-
-
-            }
-        });
-
-    }
-
-    private void showPDF() {
-//        DialogUtils.getInstance(PdfActivity.this).dismisDialog();
-        File file = new File(path, "class.pdf");
-        pdfView.fromFile(file)
-                //                .pages(0, 0, 0, 0, 0, 0) // 默认全部显示，pages属性可以过滤性显示
-                .defaultPage(0)//默认展示第一页
-                .onPageChange(this)//监听页面切换
-                .load();
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -160,14 +93,38 @@ public class PdfActivity extends BaseActivity implements OnPageChangeListener {
     }
 
 
-    @Override
-    public void onPageChanged(int i, int i1) {
-//        text.setText((i + 1) + "/" + i1);
-    }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        DialogUtils.getInstance(PdfActivity.this).dismisDialog();
+    }
+    /*设置监听*/
+    protected void setDownloadListener() {
+        final DownloadFile.Listener listener = this;
+        remotePDFViewPager = new RemotePDFViewPager(this, url, listener);
+        remotePDFViewPager.setId(R.id.pdfViewPager);
+    }
+    /*加载成功调用*/
+    @Override
+    public void onSuccess(String url, String destinationPath) {
+        pb_bar.setVisibility(View.GONE);
+        adapter = new PDFPagerAdapter(this, FileUtil.extractFileNameFromURL(url));
+        remotePDFViewPager.setAdapter(adapter); updateLayout();
+    }
+
+    /*更新视图*/
+    private void updateLayout() {
+        pdf_root.removeAllViewsInLayout();
+        pdf_root.addView(remotePDFViewPager, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+    }
+    /*加载失败调用*/
+    @Override
+    public void onFailure(Exception e) {
+        pb_bar.setVisibility(View.GONE);
+        DialogUtils.getInstance(PdfActivity.this).shortToast( "数据加载错误");
+    }
+    @Override
+    public void onProgressUpdate(int progress, int total) {
+
     }
 }

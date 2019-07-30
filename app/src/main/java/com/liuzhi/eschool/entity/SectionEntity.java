@@ -6,6 +6,15 @@ import com.liuzhi.eschool.adapter.ClassMenuAdapter;
 public class SectionEntity implements MultiItemEntity {
     private String sectionId;
     private String sectionName;
+    private String classUrl;
+
+    public String getClassUrl() {
+        return classUrl;
+    }
+
+    public void setClassUrl(String classUrl) {
+        this.classUrl = classUrl;
+    }
 
     public String getSectionId() {
         return sectionId;

@@ -28,11 +28,16 @@ import kotlinx.android.synthetic.main.activity_classdelist.*
 import kotlinx.android.synthetic.main.layout_title.*
 import org.json.JSONObject
 
-class ClassDetailActivity : BaseActivity(),View.OnClickListener {
+class ClassDetailActivity : BaseActivity(), View.OnClickListener {
+    private var isCollected=false
     override fun onClick(p0: View?) {
-        when(p0){
-            collect_class->{
-                collectionClass(intentLessionDetail.lsDscb)
+        when (p0) {
+            collect_class -> {
+                if (!isCollected) {
+                    collectionClass(intentLessionDetail.lsId)
+                }else{
+                    DialogUtils.getInstance(this@ClassDetailActivity).shortToast("该课程已收藏")
+                }
             }
         }
     }
@@ -80,6 +85,7 @@ class ClassDetailActivity : BaseActivity(),View.OnClickListener {
     }
 
     override fun initData() {
+        collect_class.setOnClickListener(this)
     }
 
     fun getMenuData(lsId: Long) {
@@ -94,14 +100,18 @@ class ClassDetailActivity : BaseActivity(),View.OnClickListener {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableObserver<Response<ClassMenuEntity>>() {
                 override fun onNext(response: Response<ClassMenuEntity>) {
-                    if (response.code()==302){
-                        var intent = Intent(this@ClassDetailActivity,LoginActivity::class.java)
+                    var listEntity = response.body()
+                    if (listEntity==null){
+                        var intent =Intent(this@ClassDetailActivity,LoginActivity::class.java)
                         startActivity(intent)
                         return
                     }
                     Log.e("result", "response ==> " + response.body().toString())
-                    var listEntity = response.body()
-                    if (listEntity.code == 0) {
+                    if (listEntity.code == 0&&listEntity.data!=null) {
+                        isCollected=listEntity.data.isIsCollect
+                        if (isCollected){
+                            collect_class.setText("已收藏")
+                        }
                         getExpandListData(listEntity.data)
                     }
 
@@ -120,8 +130,10 @@ class ClassDetailActivity : BaseActivity(),View.OnClickListener {
         var sectionList = ArrayList<ClassMenuEntity.DataBean.LessonBean.SectionsBean>()
         for (chapterBean in bean.lesson) {
             var chapterEntity = ChapterEntity()
-            chapterEntity.chapterId = chapterBean.chapter.cpId
-            chapterEntity.chapterName = chapterBean.chapter.cpName
+            if (chapterBean.chapter!=null) {
+                chapterEntity.chapterId = chapterBean.chapter.cpId
+                chapterEntity.chapterName = chapterBean.chapter.cpName
+            }
             if (chapterBean.sections.size > 0) {
                 chapterEntity.isHaveSc = true
             }
@@ -129,24 +141,41 @@ class ClassDetailActivity : BaseActivity(),View.OnClickListener {
             for (sectionBean in sectionList) {
                 var sectionEntity = SectionEntity()
                 sectionEntity.sectionId = sectionBean.scId
+                sectionEntity.classUrl = sectionBean.scAttachPath
                 sectionEntity.sectionName = sectionBean.scName
                 chapterEntity.addSubItem(sectionEntity)
             }
             data.add(chapterEntity)
         }
         classMenuAdapter = ClassMenuAdapter(data)
-        classMenuAdapter.setItemOnclickInter(object :ClassMenuAdapter.ItemOnclickInter{
-            override fun itemOnclick(scId: String?) {
-
+        classMenuAdapter.setItemOnclickInter(object : ClassMenuAdapter.ItemOnclickInter {
+            override fun itemOnclick(id: String?, className: String?, classUrl: String?) {
+                setSectionLog(id!!)
+                if (classUrl!!.trim().contains(".pdf")) {
+                    var intent =Intent(this@ClassDetailActivity, PdfActivity::class.java)
+                    intent.putExtra("PDFName",className)
+                    intent.putExtra("PDFUrl",UrlConstans.BaseUrl+classUrl)
+                    startActivity(intent)
+                } else if (classUrl!!.trim().contains(".mp4")) {
+                    var intent =Intent(this@ClassDetailActivity, SimplePlayer::class.java)
+                    intent.putExtra("videoName",className)
+                    intent.putExtra("videoUrl",UrlConstans.BaseUrl+classUrl)
+                    startActivity(intent)
+                } else {
+                    DialogUtils.getInstance(this@ClassDetailActivity).shortToast("该小节没有内容")
+                }
             }
+
+
 
         })
         var layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(this)
         class_catalog_recycler.layoutManager = layoutManager
         class_catalog_recycler.adapter = classMenuAdapter
     }
-    fun collectionClass(lsId:String){
-        OkGo.get<String>(UrlConstans.LessonCollect)
+
+    fun collectionClass(lsId: String) {
+        OkGo.post<String>(UrlConstans.LessonCollect)
             .headers("Content-Type", "application/x-www-form-urlencoded")
             .params("lsId", lsId)
             .params("url", "/html/lesson/id/$lsId.html")
@@ -156,19 +185,48 @@ class ClassDetailActivity : BaseActivity(),View.OnClickListener {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableObserver<Response<String>>() {
                 override fun onNext(response: Response<String>) {
-                    if (response.code()==302){
+                    var listEntity: JSONObject = JSONObject(response.body())
+                    if (listEntity==null){
                         var intent =Intent(this@ClassDetailActivity,LoginActivity::class.java)
                         startActivity(intent)
                         return
                     }
                     Log.e("result", "response ==> " + response.body().toString())
-                    var listEntity:JSONObject =JSONObject(response.body())
+
                     if (listEntity.optInt("code") == 0) {
                         collect_class.setText("已收藏")
                         DialogUtils.getInstance(this@ClassDetailActivity).shortToast("收藏成功")
-                    }else{
+                    } else {
                         DialogUtils.getInstance(this@ClassDetailActivity).shortToast(listEntity.optString("msg"))
                     }
+
+                }
+
+                override fun onError(e: Throwable) {
+                    Log.e("OKGO", e.message)
+                }
+
+                override fun onComplete() {
+                }
+            })
+    }
+    fun setSectionLog(lsId: String) {
+        OkGo.get<String>(UrlConstans.SectionLog)
+            .headers("Content-Type", "application/x-www-form-urlencoded")
+            .params("lsId", lsId)
+            .converter(StringConvert())
+            .adapt(ObservableResponse<String>())
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(object : DisposableObserver<Response<String>>() {
+                override fun onNext(response: Response<String>) {
+                    var listEntity: JSONObject = JSONObject(response.body())
+                    if (listEntity==null){
+                        var intent =Intent(this@ClassDetailActivity,LoginActivity::class.java)
+                        startActivity(intent)
+                        return
+                    }
+                    Log.e("result", "response ==> " + response.body().toString())
 
                 }
 

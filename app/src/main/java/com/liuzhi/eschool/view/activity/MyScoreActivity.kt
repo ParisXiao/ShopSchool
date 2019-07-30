@@ -37,7 +37,7 @@ class MyScoreActivity:BaseActivity(),View.OnClickListener{
 
         }
     }
-
+    var year = 0
     lateinit var customDatePicker:CustomDatePicker
     private var chooseTime: String=""
     lateinit var paperAdapter:PaperAdapter
@@ -49,6 +49,7 @@ class MyScoreActivity:BaseActivity(),View.OnClickListener{
     }
 
     override fun initView() {
+
         toolbar.title = ""
         setSupportActionBar(toolbar)
         val actionBar = supportActionBar
@@ -74,19 +75,27 @@ class MyScoreActivity:BaseActivity(),View.OnClickListener{
         return super.onOptionsItemSelected(item)
     }
     override fun initData() {
+        year=DateUtil.getYearInt(System.currentTimeMillis())
+        var years:MutableList<String> = ArrayList()
+        years.add(year.toString())
+        for (i in 0 until 4) {
+            years.add((year-1).toString())
+            year=year-1
+        }
+        time_spinner2.attachDataSource(years)
         getPaperTypeList()
-        initDatePicker()
+//        initDatePicker()
         paperTotals=ArrayList()
         paperAdapter=PaperAdapter(this@MyScoreActivity,paperTotals)
         var layoutManager: RecyclerView.LayoutManager  = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter=paperAdapter
-        pm_spinner.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
+        time_spinner2.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-                if (time_spinner.text.toString().trim().isNotEmpty()&&pm_spinner.text.toString().trim().isNotEmpty()){
+                if (pm_spinner.text.toString().trim().isNotEmpty()){
                     for (bean in paperTypes){
                         if (pm_spinner.text.equals(bean.ptName)){
-                            getPaperTotalList(time_spinner.text.toString().trim(),bean.ptId)
+                            getPaperTotalList(years[position],bean.ptId)
                         }
                     }
 
@@ -96,6 +105,29 @@ class MyScoreActivity:BaseActivity(),View.OnClickListener{
             override fun onNothingSelected(parent: AdapterView<*>) {
             }
         })
+        pm_spinner .setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+                if (time_spinner2.text.toString().trim().isNotEmpty()&&pm_spinner.text.toString().trim().isNotEmpty()){
+                    for (bean in paperTypes){
+                        if (types[position].equals(bean.ptName)){
+                            getPaperTotalList(time_spinner2.text.toString().trim(),bean.ptId)
+                        }
+                    }
+
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+            }
+        })
+        if (time_spinner2.text.toString().trim().isNotEmpty()&&pm_spinner.text.toString().trim().isNotEmpty()){
+            for (bean in paperTypes){
+                if (pm_spinner.text.equals(bean.ptName)){
+                    getPaperTotalList(time_spinner2.text.toString().trim(),bean.ptId)
+                }
+            }
+
+        }
     }
 
     private fun initDatePicker() {
@@ -128,12 +160,12 @@ class MyScoreActivity:BaseActivity(),View.OnClickListener{
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableObserver<Response<PaperTypeEntity>>() {
                 override fun onNext(response: Response<PaperTypeEntity>) {
-                    if (response.code()==302){
-                        var intent = Intent(this@MyScoreActivity,LoginActivity::class.java)
+                    var entity = response.body()
+                    if (entity==null){
+                        var intent =Intent(this@MyScoreActivity,LoginActivity::class.java)
                         startActivity(intent)
                         return
                     }
-                    var entity = response.body()
                     if (entity!=null&&entity.data.size>0) {
                         paperTypes=entity.data
                         for (bean in entity.data){
@@ -165,12 +197,12 @@ class MyScoreActivity:BaseActivity(),View.OnClickListener{
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableObserver<Response<PaperTotalEntity>>() {
                 override fun onNext(response: Response<PaperTotalEntity>) {
-                    if (response.code()==302){
+                    var entity = response.body()
+                    if (entity==null){
                         var intent =Intent(this@MyScoreActivity,LoginActivity::class.java)
                         startActivity(intent)
                         return
                     }
-                    var entity = response.body()
                     if (entity!=null) {
                         paperTotals=entity.resultList
                         paperAdapter.setNewData(paperTotals)

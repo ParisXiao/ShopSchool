@@ -37,5 +37,11 @@ class UrlConstans{
         val LessonCollect= "$BaseUrl/center/lessonCollect"
         val GetForum= "$BaseUrl/front/idGetForum"
         val UserPost= "$BaseUrl/center/userpost"
+        val IndexSearch= "$BaseUrl/front/getIndexSearch"
+        val LessonSearch= "$BaseUrl/front/getLessonSearch"
+        val ProjectSearch= "$BaseUrl/front/getProjectSearch"
+        val FileUpload= "$BaseUrl/file/uploadAvatar"
+        val UPDATA= "$BaseUrl/front/getLastAppInfo"
+        val SectionLog= "$BaseUrl/front/getSectionList"
     }
 }

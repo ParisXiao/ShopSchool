@@ -14,6 +14,7 @@ import com.liuzhi.eschool.entity.AllProjectEntity
 import com.liuzhi.eschool.entity.ProjectColumEntity
 import com.liuzhi.eschool.entity.convert.AllProjectConvert
 import com.liuzhi.eschool.entity.convert.ProjectColumConvert
+import com.liuzhi.eschool.utils.common.DateUtil
 import com.lzy.okgo.OkGo
 import com.lzy.okgo.model.Response
 import com.lzy.okrx2.adapter.ObservableResponse
@@ -33,6 +34,7 @@ class ProjectListActivity : BaseActivity() {
     private lateinit var projectListAdapter: ProjectListAdapter
     private var projectClId=""
     var projectName: String = ""
+
     override fun getLayoutId(): Int {
         return R.layout.activity_train_template
     }
@@ -44,7 +46,9 @@ class ProjectListActivity : BaseActivity() {
             "XQHZ" -> title_name.text = "校企合作"
             "XKJS" -> title_name.text = "学科竞赛"
             "FZSX" -> title_name.text = "仿真实训"
-            "XNFZ" -> title_name.text = "虚拟仿真示范项目"
+            "XNFZSFXM" -> title_name.text = "虚拟仿真示范项目"
+            "XWZX" -> title_name.text = "新闻资讯"
+            "XXSYS" -> title_name.text = "线下实验室"
         }
 
         toolbar.title = ""
@@ -64,9 +68,16 @@ class ProjectListActivity : BaseActivity() {
         train_recycler.layoutManager = layoutManager
         train_recycler.adapter=projectListAdapter
         projectListAdapter.setOnItemClickListener { adapter, view, position ->
-            var intent=Intent(this@ProjectListActivity,ProjectDetailActivity::class.java)
-            intent.putExtra("ProjectBean",allProjectLists[position])
-            startActivity(intent)
+            if (projectName == "XWZX") {
+                var intentWeb=Intent(this@ProjectListActivity,WebActivity::class.java)
+                intentWeb.putExtra("WebTitle", "新闻详情")
+                intentWeb.putExtra("WebHtml", UrlConstans.BaseUrl+"/html/text/"+allProjectLists[position].colId+".html")
+                startActivity(intentWeb)
+            }else {
+                var intent = Intent(this@ProjectListActivity, ProjectDetailActivity::class.java)
+                intent.putExtra("ProjectBean", allProjectLists[position])
+                startActivity(intent)
+            }
         }
     }
 
@@ -81,6 +92,7 @@ class ProjectListActivity : BaseActivity() {
     }
 
     override fun initData() {
+
        if (!project_refresh.isRefreshing) {
            project_refresh.isRefreshing=true
        }
@@ -101,6 +113,13 @@ class ProjectListActivity : BaseActivity() {
         project_refresh.setOnRefreshListener {
             getProjectColumn(projectName)
         }
+        train_search.setOnClickListener {
+            var intent=Intent(this,SearchActivity::class.java)
+            intent.putExtra("SearchType",2)
+            intent.putExtra("colId",projectClId)
+            startActivity(intent)
+        }
+
     }
 
     fun getAllProject(projectClId: String) {
@@ -115,12 +134,12 @@ class ProjectListActivity : BaseActivity() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableObserver<Response<AllProjectEntity>>() {
                 override fun onNext(response: Response<AllProjectEntity>) {
-                    if (response.code()==302){
+                    var entity = response.body()
+                    if (entity==null){
                         var intent =Intent(this@ProjectListActivity,LoginActivity::class.java)
                         startActivity(intent)
                         return
                     }
-                    var entity = response.body()
                     if (entity.code == 0) {
                         allProjectLists=entity.data
                         projectListAdapter.setNewData(allProjectLists)
@@ -151,23 +170,25 @@ class ProjectListActivity : BaseActivity() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableObserver<Response<ProjectColumEntity>>() {
                 override fun onNext(response: Response<ProjectColumEntity>) {
-                    if (response.code()==302){
+                    var entity = response.body()
+                    if (entity==null){
                         var intent =Intent(this@ProjectListActivity,LoginActivity::class.java)
                         startActivity(intent)
                         return
                     }
-                    var entity = response.body()
-                    if (entity.code == 0) {
+
+                    if (entity.code == 0&&entity.data.size>0) {
                         projectColumLists=entity.data
                         if (entity.data.size>1) {
                             train_tab.visibility= View.VISIBLE
                             for (item in entity.data) {
                                 train_tab.addTab(TabLayout(this@ProjectListActivity).newTab().setText(item.colName))
                             }
+
                         }else{
                             train_tab.visibility= View.GONE
                         }
-                        getAllProject(projectColumLists[0].colId)
+                          getAllProject(projectColumLists[0].colId)
                     }else{
                         if (project_refresh.isRefreshing) {
                             project_refresh.isRefreshing=false

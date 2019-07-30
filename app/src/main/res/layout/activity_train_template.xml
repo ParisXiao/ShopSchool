@@ -54,7 +54,7 @@
                         android:id="@+id/train_search_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="搜索实训"
+                        android:text="搜索"
                         android:textColor="#ff787878"
                         android:textSize="12sp"
                         android:layout_marginLeft="5dp"

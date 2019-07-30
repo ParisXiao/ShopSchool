@@ -39,7 +39,7 @@
                     android:drawablePadding="15dp"
                     android:textSize="18sp"
                     android:hint="请输入用户名"
-                    android:maxLength="8"
+                    android:maxLength="10"
                     android:singleLine="true"
                     />
         </android.support.design.widget.TextInputLayout>
@@ -61,7 +61,6 @@
                     android:drawablePadding="15dp"
                     android:textSize="18sp"
                     android:hint="请输入学籍号"
-                    android:maxLength="8"
                     android:singleLine="true"
                     android:inputType="number"
                     />
@@ -110,7 +109,6 @@
                     android:inputType="number"
                     android:hint="请输入身份证号"
                     android:singleLine="true"
-                    android:maxLength="20"
                     />
         </android.support.design.widget.TextInputLayout>
 
@@ -130,9 +128,8 @@
                     android:drawableStart="@drawable/icon_mail"
                     android:drawablePadding="15dp"
                     android:textSize="18sp"
-                    android:inputType="phone"
+                    android:inputType="textEmailAddress"
                     android:singleLine="true"
-                    android:maxLength="11"
                     android:hint="请输入邮箱地址，用于找回密码"
                     />
         </android.support.design.widget.TextInputLayout>

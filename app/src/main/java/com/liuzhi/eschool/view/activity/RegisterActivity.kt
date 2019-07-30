@@ -52,11 +52,11 @@ class RegisterActivity:BaseActivity(),View.OnClickListener{
                     return
                 }
                 if (input_edit_reg_phone.text.toString().trim().isNullOrEmpty()) {
-                    DialogUtils.getInstance(this@RegisterActivity).shortToast("请输入手机号")
+                    DialogUtils.getInstance(this@RegisterActivity).shortToast("请输入邮箱地址")
                     return
                 }
-                if(PhoneUtils.isEmail(input_edit_reg_phone.text.toString().trim())){
-                    DialogUtils.getInstance(this@RegisterActivity). shortToast("请输入正确的手机号")
+                if(!PhoneUtils.isEmail(input_edit_reg_phone.text.toString().trim())){
+                    DialogUtils.getInstance(this@RegisterActivity). shortToast("请输入正确的邮箱地址")
                     return
                 }
                 if (!check_agreement.isChecked) {
@@ -113,19 +113,19 @@ class RegisterActivity:BaseActivity(),View.OnClickListener{
         OkGo.post<String>(UrlConstans.Register)
             .headers("Content-Type", "application/json;charset=UTF-8")
             .params("aName",userName)
-            .params("aUserName",userName)
             .params("stuNumber",userId)
             .params("aPassword",password)
             .params("aIdCode",usrNum)
-            .params("aMobilePhone",phoneNum)
+            .params("aEmail",phoneNum)
             .converter(StringConvert())
             .adapt(ObservableResponse<String>())
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableObserver<Response<String>>() {
                 override fun onNext(response: Response<String>) {
+                    Log.e("OKGO",response.body().toString())
                     var jsonObject :JSONObject= JSONObject(response.body())
-                    if (jsonObject.optInt("code") == 0) {
+                    if (jsonObject.getInt("code") == 0) {
                         DialogUtils.getInstance(this@RegisterActivity).shortToast("注册成功")
                         finish()
                     }else{

@@ -83,12 +83,12 @@ class ProjectDetailActivity : BaseActivity() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableObserver<Response<ProjectInfoColEntity>>() {
                 override fun onNext(response: Response<ProjectInfoColEntity>) {
-                    if (response.code()==302){
-                        var intent = Intent(this@ProjectDetailActivity,LoginActivity::class.java)
+                    var entity = response.body()
+                    if (entity==null){
+                        var intent =Intent(this@ProjectDetailActivity,LoginActivity::class.java)
                         startActivity(intent)
                         return
                     }
-                    var entity = response.body()
 
                     if (entity.code == 0) {
                         projectInfoCOlBeans = entity.data

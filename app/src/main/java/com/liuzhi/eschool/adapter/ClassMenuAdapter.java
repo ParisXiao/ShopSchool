@@ -27,7 +27,7 @@ public class ClassMenuAdapter extends BaseMultiItemQuickAdapter<MultiItemEntity,
         addItemType(TYPE_LEVEL_1, R.layout.item_class_section);
     }
     public interface ItemOnclickInter{
-        void itemOnclick(String scId);
+        void itemOnclick(String id,String className,String classUrl);
     }
     public void setItemOnclickInter(ItemOnclickInter itemOnclickInter){
         this.itemOnclickInter=itemOnclickInter;
@@ -66,7 +66,7 @@ public class ClassMenuAdapter extends BaseMultiItemQuickAdapter<MultiItemEntity,
 
                     public void onClick(View v) {
                         Log.e("section",sectionEntity.getSectionName());
-                        itemOnclickInter.itemOnclick(sectionEntity.getSectionId());
+                        itemOnclickInter.itemOnclick(sectionEntity.getSectionId(),sectionEntity.getSectionName(),sectionEntity.getClassUrl());
                     }
                 });
                 break;

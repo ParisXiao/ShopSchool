@@ -4,10 +4,11 @@ import java.util.List;
 
 public class ClassMenuEntity {
 
+
     /**
      * code : 0
      * msg : 操作成功
-     * data : {"flag":true,"lesson":[{"chapter":{"cpId":"601228071437078528","lsName":"aaa","lsId":"601141517284806656","cpName":"aaa第一章","cpDscb":"aa","cpCreateUId":"20181248699","cpCreateUName":"admin","cpCreateTime":"2019-01-11 17:20:37.0","cpEditTime":"2019-01-14 13:03:21.0","cpEditUId":"20181248699","cpEditUName":"admin"},"sections":[{"scId":"601534271298998272","cpId":"601228071437078528","cpName":"范德萨发","lsName":"","scName":"请问请问","scAttachedType":null,"scContent":"","scIsAttached":false,"scAttachPath":"","scCreateTime":"2019-01-12 13:37:21.0","scCreateUId":"20181248699","scCreateUName":"admin","scEditTime":null,"scEditUId":null,"scEditUName":null},{"scId":"602224610930331648","cpId":"601228071437078528","cpName":"范德萨发","lsName":"","scName":"发发发","scAttachedType":null,"scContent":"","scIsAttached":true,"scAttachPath":"/static/upload/lesson/attached/1547436030710.jpg /static/upload/lesson/attached/1547436030711.jpg /static/upload/lesson/attached/1547436030712.png ","scCreateTime":"2019-01-14 11:20:30.0","scCreateUId":"20181248699","scCreateUName":"admin","scEditTime":null,"scEditUId":null,"scEditUName":null},{"scId":"602261727903485952","cpId":"601228071437078528","cpName":"aaa第一章","lsName":"","scName":"小节1","scAttachedType":null,"scContent":"PDF测试","scIsAttached":true,"scAttachPath":"/static/upload/lesson/attached/1554357962814.pdf ","scCreateTime":"2019-01-14 13:48:00.0","scCreateUId":"20181248699","scCreateUName":"admin","scEditTime":"2019-04-04 14:06:02.0","scEditUId":"20181342745","scEditUName":"杜康"},{"scId":"602261803929440256","cpId":"601228071437078528","cpName":"aaa第一章","lsName":"","scName":"小节2","scAttachedType":null,"scContent":"视频测试","scIsAttached":true,"scAttachPath":"/static/upload/lesson/attached/1554357799826.mp4 ","scCreateTime":"2019-01-14 13:48:18.0","scCreateUId":"20181248699","scCreateUName":"admin","scEditTime":"2019-04-04 14:03:19.0","scEditUId":"20181342745","scEditUName":"杜康"},{"scId":"602261856089804800","cpId":"601228071437078528","cpName":"aaa第一章","lsName":"","scName":"小节三","scAttachedType":null,"scContent":"","scIsAttached":false,"scAttachPath":"","scCreateTime":"2019-01-14 13:48:30.0","scCreateUId":"20181248699","scCreateUName":"admin","scEditTime":"2019-01-14 16:58:27.0","scEditUId":"20181248699","scEditUName":"admin"},{"scId":"602309956791701504","cpId":"601228071437078528","cpName":"aaa第一章","lsName":"","scName":"发大水发","scAttachedType":null,"scContent":"","scIsAttached":false,"scAttachPath":"","scCreateTime":"2019-01-14 16:59:38.0","scCreateUId":"20181248699","scCreateUName":"admin","scEditTime":null,"scEditUId":null,"scEditUName":null},{"scId":"603385822347005952","cpId":"601228071437078528","cpName":"aaa第一章","lsName":"","scName":"AAA","scAttachedType":null,"scContent":"FFF","scIsAttached":false,"scAttachPath":"","scCreateTime":"2019-01-17 16:14:45.0","scCreateUId":"20181248699","scCreateUName":"admin","scEditTime":"2019-01-17 17:20:41.0","scEditUId":"20181248699","scEditUName":"admin"}]}]}
+     * data : {"flag":true,"lesson":[{"chapter":{"cpId":"601228071437078528","lsName":"aaa","lsId":"601141517284806656","cpName":"第1章 极限与连续(1)","cpDscb":"aa","cpCreateUId":"20181248699","cpCreateUName":"admin","cpCreateTime":"2019-01-11 17:20:37.0","cpEditTime":"2019-04-22 14:00:41.0","cpEditUId":"20181342745","cpEditUName":"guanli"},"sections":[{"scId":"601534271298998272","cpId":"601228071437078528","cpName":"范德萨发","lsName":"","scName":"第一讲  数列极限的概念","scAttachedType":1,"scContent":"","scIsAttached":true,"scAttachPath":"/static/upload/lesson/attached/1557050936954.pdf","scCreateTime":"2019-01-12 13:37:21.0","scCreateUId":"20181248699","scCreateUName":"admin","scEditTime":"2019-05-05 18:08:57.0","scEditUId":"20181342745","scEditUName":""},{"scId":"602224610930331648","cpId":"601228071437078528","cpName":"范德萨发","lsName":"","scName":"第二讲 函数的极限","scAttachedType":1,"scContent":"","scIsAttached":true,"scAttachPath":"/static/upload/lesson/attached/1547436030710.jpg /static/upload/lesson/attached/1547436030711.jpg /static/upload/lesson/attached/1547436030712.png  ","scCreateTime":"2019-01-14 11:20:30.0","scCreateUId":"20181248699","scCreateUName":"admin","scEditTime":"2019-04-22 14:01:02.0","scEditUId":"20181342745","scEditUName":""},{"scId":"602261727903485952","cpId":"601228071437078528","cpName":"aaa第一章","lsName":"","scName":"第三讲 极限的性质","scAttachedType":0,"scContent":"PDF测试","scIsAttached":true,"scAttachPath":"/static/upload/lesson/attached/1554357962814.pdf  ","scCreateTime":"2019-01-14 13:48:00.0","scCreateUId":"20181248699","scCreateUName":"admin","scEditTime":"2019-04-22 14:01:10.0","scEditUId":"20181342745","scEditUName":"杜康"},{"scId":"602261803929440256","cpId":"601228071437078528","cpName":"aaa第一章","lsName":"","scName":"第四讲 无穷小与无穷大及极限的运算法则","scAttachedType":0,"scContent":"视频测试","scIsAttached":true,"scAttachPath":"/static/upload/lesson/attached/1554357799826.mp4  ","scCreateTime":"2019-01-14 13:48:18.0","scCreateUId":"20181248699","scCreateUName":"admin","scEditTime":"2019-04-22 14:01:18.0","scEditUId":"20181342745","scEditUName":"杜康"},{"scId":"602261856089804800","cpId":"601228071437078528","cpName":"aaa第一章","lsName":"","scName":"第五讲 夹逼准则及重要极限Ⅰ","scAttachedType":0,"scContent":"","scIsAttached":true,"scAttachPath":"/static/upload//lesson/attached/1557213884759.pdf","scCreateTime":"2019-01-14 13:48:30.0","scCreateUId":"20181248699","scCreateUName":"admin","scEditTime":"2019-05-07 15:24:44.0","scEditUId":"20181342745","scEditUName":"admin"},{"scId":"602309956791701504","cpId":"601228071437078528","cpName":"aaa第一章","lsName":"","scName":"第六讲 单调有界准则及重要极限Ⅱ","scAttachedType":0,"scContent":"","scIsAttached":true,"scAttachPath":"/static/upload/lesson/attached/1557111172540.pdf","scCreateTime":"2019-01-14 16:59:38.0","scCreateUId":"20181248699","scCreateUName":"admin","scEditTime":"2019-05-06 10:52:57.0","scEditUId":"20181342745","scEditUName":""},{"scId":"603385822347005952","cpId":"601228071437078528","cpName":"aaa第一章","lsName":"","scName":"第七讲  无穷小的比较","scAttachedType":1,"scContent":"FFF","scIsAttached":true,"scAttachPath":"/static/upload//lesson/attached/1558778834603.pdf","scCreateTime":"2019-01-17 16:14:45.0","scCreateUId":"20181248699","scCreateUName":"admin","scEditTime":"2019-05-25 18:07:14.0","scEditUId":"20181342745","scEditUName":"admin"},{"scId":"638542391732604928","cpId":"601228071437078528","cpName":"第1章 极限与连续(1)","lsName":"","scName":"第八讲 测试内容的测试","scAttachedType":0,"scContent":"","scIsAttached":false,"scAttachPath":" ","scCreateTime":"2019-04-24 16:34:24.0","scCreateUId":"20181342745","scCreateUName":"guanli","scEditTime":"2019-04-24 16:34:33.0","scEditUId":"20181342745","scEditUName":""}]}],"isCollect":true,"lessonInfo":{"lsId":"601141517284806656","lsName":"微积分","lsDscb":"微积分（Calculus）是高等数学中研究函数的微分(Differentiation)、积分(Integration)以及有关概念和应用的数学分支。它是数学的一个基础学科。内容主要包括极限、微分学、积分学及其应用。微分学包括求导数的运算，是一套关于变化率的理论。它使得函数、速度、加速度和曲线的斜率等均可用一套通用的符号进行讨论。积分学，包括求积分的运算，为定义和计算面积、体积等提供一套通用的方法","lsFirstType":"1","lsFirstTypeName":"数学","lsSecType":"2","lsSecTypeName":"微积分","lsUsuType":"601127142067015680","lsUsuTypeName":"基础","lsCreateTime":"2019-01-11 11:36:41.0","lsCreateUId":"20181248699","lsCreateUName":"admin","lsEditTime":"2019-04-22 14:06:23.0","lsEditUId":"20181342745","lsEditUName":"guanli","lsImg":"/static/upload//lesson/img/1555913183928.jpg","lsIsFirstTppe":true,"lsIsLink":false,"lsLink":"","lsIsHot":true,"lsClickCount":39}}
      */
 
     private int code;
@@ -41,10 +42,14 @@ public class ClassMenuEntity {
     public static class DataBean {
         /**
          * flag : true
-         * lesson : [{"chapter":{"cpId":"601228071437078528","lsName":"aaa","lsId":"601141517284806656","cpName":"aaa第一章","cpDscb":"aa","cpCreateUId":"20181248699","cpCreateUName":"admin","cpCreateTime":"2019-01-11 17:20:37.0","cpEditTime":"2019-01-14 13:03:21.0","cpEditUId":"20181248699","cpEditUName":"admin"},"sections":[{"scId":"601534271298998272","cpId":"601228071437078528","cpName":"范德萨发","lsName":"","scName":"请问请问","scAttachedType":null,"scContent":"","scIsAttached":false,"scAttachPath":"","scCreateTime":"2019-01-12 13:37:21.0","scCreateUId":"20181248699","scCreateUName":"admin","scEditTime":null,"scEditUId":null,"scEditUName":null},{"scId":"602224610930331648","cpId":"601228071437078528","cpName":"范德萨发","lsName":"","scName":"发发发","scAttachedType":null,"scContent":"","scIsAttached":true,"scAttachPath":"/static/upload/lesson/attached/1547436030710.jpg /static/upload/lesson/attached/1547436030711.jpg /static/upload/lesson/attached/1547436030712.png ","scCreateTime":"2019-01-14 11:20:30.0","scCreateUId":"20181248699","scCreateUName":"admin","scEditTime":null,"scEditUId":null,"scEditUName":null},{"scId":"602261727903485952","cpId":"601228071437078528","cpName":"aaa第一章","lsName":"","scName":"小节1","scAttachedType":null,"scContent":"PDF测试","scIsAttached":true,"scAttachPath":"/static/upload/lesson/attached/1554357962814.pdf ","scCreateTime":"2019-01-14 13:48:00.0","scCreateUId":"20181248699","scCreateUName":"admin","scEditTime":"2019-04-04 14:06:02.0","scEditUId":"20181342745","scEditUName":"杜康"},{"scId":"602261803929440256","cpId":"601228071437078528","cpName":"aaa第一章","lsName":"","scName":"小节2","scAttachedType":null,"scContent":"视频测试","scIsAttached":true,"scAttachPath":"/static/upload/lesson/attached/1554357799826.mp4 ","scCreateTime":"2019-01-14 13:48:18.0","scCreateUId":"20181248699","scCreateUName":"admin","scEditTime":"2019-04-04 14:03:19.0","scEditUId":"20181342745","scEditUName":"杜康"},{"scId":"602261856089804800","cpId":"601228071437078528","cpName":"aaa第一章","lsName":"","scName":"小节三","scAttachedType":null,"scContent":"","scIsAttached":false,"scAttachPath":"","scCreateTime":"2019-01-14 13:48:30.0","scCreateUId":"20181248699","scCreateUName":"admin","scEditTime":"2019-01-14 16:58:27.0","scEditUId":"20181248699","scEditUName":"admin"},{"scId":"602309956791701504","cpId":"601228071437078528","cpName":"aaa第一章","lsName":"","scName":"发大水发","scAttachedType":null,"scContent":"","scIsAttached":false,"scAttachPath":"","scCreateTime":"2019-01-14 16:59:38.0","scCreateUId":"20181248699","scCreateUName":"admin","scEditTime":null,"scEditUId":null,"scEditUName":null},{"scId":"603385822347005952","cpId":"601228071437078528","cpName":"aaa第一章","lsName":"","scName":"AAA","scAttachedType":null,"scContent":"FFF","scIsAttached":false,"scAttachPath":"","scCreateTime":"2019-01-17 16:14:45.0","scCreateUId":"20181248699","scCreateUName":"admin","scEditTime":"2019-01-17 17:20:41.0","scEditUId":"20181248699","scEditUName":"admin"}]}]
+         * lesson : [{"chapter":{"cpId":"601228071437078528","lsName":"aaa","lsId":"601141517284806656","cpName":"第1章 极限与连续(1)","cpDscb":"aa","cpCreateUId":"20181248699","cpCreateUName":"admin","cpCreateTime":"2019-01-11 17:20:37.0","cpEditTime":"2019-04-22 14:00:41.0","cpEditUId":"20181342745","cpEditUName":"guanli"},"sections":[{"scId":"601534271298998272","cpId":"601228071437078528","cpName":"范德萨发","lsName":"","scName":"第一讲  数列极限的概念","scAttachedType":1,"scContent":"","scIsAttached":true,"scAttachPath":"/static/upload/lesson/attached/1557050936954.pdf","scCreateTime":"2019-01-12 13:37:21.0","scCreateUId":"20181248699","scCreateUName":"admin","scEditTime":"2019-05-05 18:08:57.0","scEditUId":"20181342745","scEditUName":""},{"scId":"602224610930331648","cpId":"601228071437078528","cpName":"范德萨发","lsName":"","scName":"第二讲 函数的极限","scAttachedType":1,"scContent":"","scIsAttached":true,"scAttachPath":"/static/upload/lesson/attached/1547436030710.jpg /static/upload/lesson/attached/1547436030711.jpg /static/upload/lesson/attached/1547436030712.png  ","scCreateTime":"2019-01-14 11:20:30.0","scCreateUId":"20181248699","scCreateUName":"admin","scEditTime":"2019-04-22 14:01:02.0","scEditUId":"20181342745","scEditUName":""},{"scId":"602261727903485952","cpId":"601228071437078528","cpName":"aaa第一章","lsName":"","scName":"第三讲 极限的性质","scAttachedType":0,"scContent":"PDF测试","scIsAttached":true,"scAttachPath":"/static/upload/lesson/attached/1554357962814.pdf  ","scCreateTime":"2019-01-14 13:48:00.0","scCreateUId":"20181248699","scCreateUName":"admin","scEditTime":"2019-04-22 14:01:10.0","scEditUId":"20181342745","scEditUName":"杜康"},{"scId":"602261803929440256","cpId":"601228071437078528","cpName":"aaa第一章","lsName":"","scName":"第四讲 无穷小与无穷大及极限的运算法则","scAttachedType":0,"scContent":"视频测试","scIsAttached":true,"scAttachPath":"/static/upload/lesson/attached/1554357799826.mp4  ","scCreateTime":"2019-01-14 13:48:18.0","scCreateUId":"20181248699","scCreateUName":"admin","scEditTime":"2019-04-22 14:01:18.0","scEditUId":"20181342745","scEditUName":"杜康"},{"scId":"602261856089804800","cpId":"601228071437078528","cpName":"aaa第一章","lsName":"","scName":"第五讲 夹逼准则及重要极限Ⅰ","scAttachedType":0,"scContent":"","scIsAttached":true,"scAttachPath":"/static/upload//lesson/attached/1557213884759.pdf","scCreateTime":"2019-01-14 13:48:30.0","scCreateUId":"20181248699","scCreateUName":"admin","scEditTime":"2019-05-07 15:24:44.0","scEditUId":"20181342745","scEditUName":"admin"},{"scId":"602309956791701504","cpId":"601228071437078528","cpName":"aaa第一章","lsName":"","scName":"第六讲 单调有界准则及重要极限Ⅱ","scAttachedType":0,"scContent":"","scIsAttached":true,"scAttachPath":"/static/upload/lesson/attached/1557111172540.pdf","scCreateTime":"2019-01-14 16:59:38.0","scCreateUId":"20181248699","scCreateUName":"admin","scEditTime":"2019-05-06 10:52:57.0","scEditUId":"20181342745","scEditUName":""},{"scId":"603385822347005952","cpId":"601228071437078528","cpName":"aaa第一章","lsName":"","scName":"第七讲  无穷小的比较","scAttachedType":1,"scContent":"FFF","scIsAttached":true,"scAttachPath":"/static/upload//lesson/attached/1558778834603.pdf","scCreateTime":"2019-01-17 16:14:45.0","scCreateUId":"20181248699","scCreateUName":"admin","scEditTime":"2019-05-25 18:07:14.0","scEditUId":"20181342745","scEditUName":"admin"},{"scId":"638542391732604928","cpId":"601228071437078528","cpName":"第1章 极限与连续(1)","lsName":"","scName":"第八讲 测试内容的测试","scAttachedType":0,"scContent":"","scIsAttached":false,"scAttachPath":" ","scCreateTime":"2019-04-24 16:34:24.0","scCreateUId":"20181342745","scCreateUName":"guanli","scEditTime":"2019-04-24 16:34:33.0","scEditUId":"20181342745","scEditUName":""}]}]
+         * isCollect : true
+         * lessonInfo : {"lsId":"601141517284806656","lsName":"微积分","lsDscb":"微积分（Calculus）是高等数学中研究函数的微分(Differentiation)、积分(Integration)以及有关概念和应用的数学分支。它是数学的一个基础学科。内容主要包括极限、微分学、积分学及其应用。微分学包括求导数的运算，是一套关于变化率的理论。它使得函数、速度、加速度和曲线的斜率等均可用一套通用的符号进行讨论。积分学，包括求积分的运算，为定义和计算面积、体积等提供一套通用的方法","lsFirstType":"1","lsFirstTypeName":"数学","lsSecType":"2","lsSecTypeName":"微积分","lsUsuType":"601127142067015680","lsUsuTypeName":"基础","lsCreateTime":"2019-01-11 11:36:41.0","lsCreateUId":"20181248699","lsCreateUName":"admin","lsEditTime":"2019-04-22 14:06:23.0","lsEditUId":"20181342745","lsEditUName":"guanli","lsImg":"/static/upload//lesson/img/1555913183928.jpg","lsIsFirstTppe":true,"lsIsLink":false,"lsLink":"","lsIsHot":true,"lsClickCount":39}
          */
 
         private boolean flag;
+        private boolean isCollect;
+        private LessonInfoBean lessonInfo;
         private List<LessonBean> lesson;
 
         public boolean isFlag() {
@@ -55,6 +60,22 @@ public class ClassMenuEntity {
             this.flag = flag;
         }
 
+        public boolean isIsCollect() {
+            return isCollect;
+        }
+
+        public void setIsCollect(boolean isCollect) {
+            this.isCollect = isCollect;
+        }
+
+        public LessonInfoBean getLessonInfo() {
+            return lessonInfo;
+        }
+
+        public void setLessonInfo(LessonInfoBean lessonInfo) {
+            this.lessonInfo = lessonInfo;
+        }
+
         public List<LessonBean> getLesson() {
             return lesson;
         }
@@ -63,10 +84,226 @@ public class ClassMenuEntity {
             this.lesson = lesson;
         }
 
+        public static class LessonInfoBean {
+            /**
+             * lsId : 601141517284806656
+             * lsName : 微积分
+             * lsDscb : 微积分（Calculus）是高等数学中研究函数的微分(Differentiation)、积分(Integration)以及有关概念和应用的数学分支。它是数学的一个基础学科。内容主要包括极限、微分学、积分学及其应用。微分学包括求导数的运算，是一套关于变化率的理论。它使得函数、速度、加速度和曲线的斜率等均可用一套通用的符号进行讨论。积分学，包括求积分的运算，为定义和计算面积、体积等提供一套通用的方法
+             * lsFirstType : 1
+             * lsFirstTypeName : 数学
+             * lsSecType : 2
+             * lsSecTypeName : 微积分
+             * lsUsuType : 601127142067015680
+             * lsUsuTypeName : 基础
+             * lsCreateTime : 2019-01-11 11:36:41.0
+             * lsCreateUId : 20181248699
+             * lsCreateUName : admin
+             * lsEditTime : 2019-04-22 14:06:23.0
+             * lsEditUId : 20181342745
+             * lsEditUName : guanli
+             * lsImg : /static/upload//lesson/img/1555913183928.jpg
+             * lsIsFirstTppe : true
+             * lsIsLink : false
+             * lsLink :
+             * lsIsHot : true
+             * lsClickCount : 39
+             */
+
+            private String lsId;
+            private String lsName;
+            private String lsDscb;
+            private String lsFirstType;
+            private String lsFirstTypeName;
+            private String lsSecType;
+            private String lsSecTypeName;
+            private String lsUsuType;
+            private String lsUsuTypeName;
+            private String lsCreateTime;
+            private String lsCreateUId;
+            private String lsCreateUName;
+            private String lsEditTime;
+            private String lsEditUId;
+            private String lsEditUName;
+            private String lsImg;
+            private boolean lsIsFirstTppe;
+            private boolean lsIsLink;
+            private String lsLink;
+            private boolean lsIsHot;
+            private int lsClickCount;
+
+            public String getLsId() {
+                return lsId;
+            }
+
+            public void setLsId(String lsId) {
+                this.lsId = lsId;
+            }
+
+            public String getLsName() {
+                return lsName;
+            }
+
+            public void setLsName(String lsName) {
+                this.lsName = lsName;
+            }
+
+            public String getLsDscb() {
+                return lsDscb;
+            }
+
+            public void setLsDscb(String lsDscb) {
+                this.lsDscb = lsDscb;
+            }
+
+            public String getLsFirstType() {
+                return lsFirstType;
+            }
+
+            public void setLsFirstType(String lsFirstType) {
+                this.lsFirstType = lsFirstType;
+            }
+
+            public String getLsFirstTypeName() {
+                return lsFirstTypeName;
+            }
+
+            public void setLsFirstTypeName(String lsFirstTypeName) {
+                this.lsFirstTypeName = lsFirstTypeName;
+            }
+
+            public String getLsSecType() {
+                return lsSecType;
+            }
+
+            public void setLsSecType(String lsSecType) {
+                this.lsSecType = lsSecType;
+            }
+
+            public String getLsSecTypeName() {
+                return lsSecTypeName;
+            }
+
+            public void setLsSecTypeName(String lsSecTypeName) {
+                this.lsSecTypeName = lsSecTypeName;
+            }
+
+            public String getLsUsuType() {
+                return lsUsuType;
+            }
+
+            public void setLsUsuType(String lsUsuType) {
+                this.lsUsuType = lsUsuType;
+            }
+
+            public String getLsUsuTypeName() {
+                return lsUsuTypeName;
+            }
+
+            public void setLsUsuTypeName(String lsUsuTypeName) {
+                this.lsUsuTypeName = lsUsuTypeName;
+            }
+
+            public String getLsCreateTime() {
+                return lsCreateTime;
+            }
+
+            public void setLsCreateTime(String lsCreateTime) {
+                this.lsCreateTime = lsCreateTime;
+            }
+
+            public String getLsCreateUId() {
+                return lsCreateUId;
+            }
+
+            public void setLsCreateUId(String lsCreateUId) {
+                this.lsCreateUId = lsCreateUId;
+            }
+
+            public String getLsCreateUName() {
+                return lsCreateUName;
+            }
+
+            public void setLsCreateUName(String lsCreateUName) {
+                this.lsCreateUName = lsCreateUName;
+            }
+
+            public String getLsEditTime() {
+                return lsEditTime;
+            }
+
+            public void setLsEditTime(String lsEditTime) {
+                this.lsEditTime = lsEditTime;
+            }
+
+            public String getLsEditUId() {
+                return lsEditUId;
+            }
+
+            public void setLsEditUId(String lsEditUId) {
+                this.lsEditUId = lsEditUId;
+            }
+
+            public String getLsEditUName() {
+                return lsEditUName;
+            }
+
+            public void setLsEditUName(String lsEditUName) {
+                this.lsEditUName = lsEditUName;
+            }
+
+            public String getLsImg() {
+                return lsImg;
+            }
+
+            public void setLsImg(String lsImg) {
+                this.lsImg = lsImg;
+            }
+
+            public boolean isLsIsFirstTppe() {
+                return lsIsFirstTppe;
+            }
+
+            public void setLsIsFirstTppe(boolean lsIsFirstTppe) {
+                this.lsIsFirstTppe = lsIsFirstTppe;
+            }
+
+            public boolean isLsIsLink() {
+                return lsIsLink;
+            }
+
+            public void setLsIsLink(boolean lsIsLink) {
+                this.lsIsLink = lsIsLink;
+            }
+
+            public String getLsLink() {
+                return lsLink;
+            }
+
+            public void setLsLink(String lsLink) {
+                this.lsLink = lsLink;
+            }
+
+            public boolean isLsIsHot() {
+                return lsIsHot;
+            }
+
+            public void setLsIsHot(boolean lsIsHot) {
+                this.lsIsHot = lsIsHot;
+            }
+
+            public int getLsClickCount() {
+                return lsClickCount;
+            }
+
+            public void setLsClickCount(int lsClickCount) {
+                this.lsClickCount = lsClickCount;
+            }
+        }
+
         public static class LessonBean {
             /**
-             * chapter : {"cpId":"601228071437078528","lsName":"aaa","lsId":"601141517284806656","cpName":"aaa第一章","cpDscb":"aa","cpCreateUId":"20181248699","cpCreateUName":"admin","cpCreateTime":"2019-01-11 17:20:37.0","cpEditTime":"2019-01-14 13:03:21.0","cpEditUId":"20181248699","cpEditUName":"admin"}
-             * sections : [{"scId":"601534271298998272","cpId":"601228071437078528","cpName":"范德萨发","lsName":"","scName":"请问请问","scAttachedType":null,"scContent":"","scIsAttached":false,"scAttachPath":"","scCreateTime":"2019-01-12 13:37:21.0","scCreateUId":"20181248699","scCreateUName":"admin","scEditTime":null,"scEditUId":null,"scEditUName":null},{"scId":"602224610930331648","cpId":"601228071437078528","cpName":"范德萨发","lsName":"","scName":"发发发","scAttachedType":null,"scContent":"","scIsAttached":true,"scAttachPath":"/static/upload/lesson/attached/1547436030710.jpg /static/upload/lesson/attached/1547436030711.jpg /static/upload/lesson/attached/1547436030712.png ","scCreateTime":"2019-01-14 11:20:30.0","scCreateUId":"20181248699","scCreateUName":"admin","scEditTime":null,"scEditUId":null,"scEditUName":null},{"scId":"602261727903485952","cpId":"601228071437078528","cpName":"aaa第一章","lsName":"","scName":"小节1","scAttachedType":null,"scContent":"PDF测试","scIsAttached":true,"scAttachPath":"/static/upload/lesson/attached/1554357962814.pdf ","scCreateTime":"2019-01-14 13:48:00.0","scCreateUId":"20181248699","scCreateUName":"admin","scEditTime":"2019-04-04 14:06:02.0","scEditUId":"20181342745","scEditUName":"杜康"},{"scId":"602261803929440256","cpId":"601228071437078528","cpName":"aaa第一章","lsName":"","scName":"小节2","scAttachedType":null,"scContent":"视频测试","scIsAttached":true,"scAttachPath":"/static/upload/lesson/attached/1554357799826.mp4 ","scCreateTime":"2019-01-14 13:48:18.0","scCreateUId":"20181248699","scCreateUName":"admin","scEditTime":"2019-04-04 14:03:19.0","scEditUId":"20181342745","scEditUName":"杜康"},{"scId":"602261856089804800","cpId":"601228071437078528","cpName":"aaa第一章","lsName":"","scName":"小节三","scAttachedType":null,"scContent":"","scIsAttached":false,"scAttachPath":"","scCreateTime":"2019-01-14 13:48:30.0","scCreateUId":"20181248699","scCreateUName":"admin","scEditTime":"2019-01-14 16:58:27.0","scEditUId":"20181248699","scEditUName":"admin"},{"scId":"602309956791701504","cpId":"601228071437078528","cpName":"aaa第一章","lsName":"","scName":"发大水发","scAttachedType":null,"scContent":"","scIsAttached":false,"scAttachPath":"","scCreateTime":"2019-01-14 16:59:38.0","scCreateUId":"20181248699","scCreateUName":"admin","scEditTime":null,"scEditUId":null,"scEditUName":null},{"scId":"603385822347005952","cpId":"601228071437078528","cpName":"aaa第一章","lsName":"","scName":"AAA","scAttachedType":null,"scContent":"FFF","scIsAttached":false,"scAttachPath":"","scCreateTime":"2019-01-17 16:14:45.0","scCreateUId":"20181248699","scCreateUName":"admin","scEditTime":"2019-01-17 17:20:41.0","scEditUId":"20181248699","scEditUName":"admin"}]
+             * chapter : {"cpId":"601228071437078528","lsName":"aaa","lsId":"601141517284806656","cpName":"第1章 极限与连续(1)","cpDscb":"aa","cpCreateUId":"20181248699","cpCreateUName":"admin","cpCreateTime":"2019-01-11 17:20:37.0","cpEditTime":"2019-04-22 14:00:41.0","cpEditUId":"20181342745","cpEditUName":"guanli"}
+             * sections : [{"scId":"601534271298998272","cpId":"601228071437078528","cpName":"范德萨发","lsName":"","scName":"第一讲  数列极限的概念","scAttachedType":1,"scContent":"","scIsAttached":true,"scAttachPath":"/static/upload/lesson/attached/1557050936954.pdf","scCreateTime":"2019-01-12 13:37:21.0","scCreateUId":"20181248699","scCreateUName":"admin","scEditTime":"2019-05-05 18:08:57.0","scEditUId":"20181342745","scEditUName":""},{"scId":"602224610930331648","cpId":"601228071437078528","cpName":"范德萨发","lsName":"","scName":"第二讲 函数的极限","scAttachedType":1,"scContent":"","scIsAttached":true,"scAttachPath":"/static/upload/lesson/attached/1547436030710.jpg /static/upload/lesson/attached/1547436030711.jpg /static/upload/lesson/attached/1547436030712.png  ","scCreateTime":"2019-01-14 11:20:30.0","scCreateUId":"20181248699","scCreateUName":"admin","scEditTime":"2019-04-22 14:01:02.0","scEditUId":"20181342745","scEditUName":""},{"scId":"602261727903485952","cpId":"601228071437078528","cpName":"aaa第一章","lsName":"","scName":"第三讲 极限的性质","scAttachedType":0,"scContent":"PDF测试","scIsAttached":true,"scAttachPath":"/static/upload/lesson/attached/1554357962814.pdf  ","scCreateTime":"2019-01-14 13:48:00.0","scCreateUId":"20181248699","scCreateUName":"admin","scEditTime":"2019-04-22 14:01:10.0","scEditUId":"20181342745","scEditUName":"杜康"},{"scId":"602261803929440256","cpId":"601228071437078528","cpName":"aaa第一章","lsName":"","scName":"第四讲 无穷小与无穷大及极限的运算法则","scAttachedType":0,"scContent":"视频测试","scIsAttached":true,"scAttachPath":"/static/upload/lesson/attached/1554357799826.mp4  ","scCreateTime":"2019-01-14 13:48:18.0","scCreateUId":"20181248699","scCreateUName":"admin","scEditTime":"2019-04-22 14:01:18.0","scEditUId":"20181342745","scEditUName":"杜康"},{"scId":"602261856089804800","cpId":"601228071437078528","cpName":"aaa第一章","lsName":"","scName":"第五讲 夹逼准则及重要极限Ⅰ","scAttachedType":0,"scContent":"","scIsAttached":true,"scAttachPath":"/static/upload//lesson/attached/1557213884759.pdf","scCreateTime":"2019-01-14 13:48:30.0","scCreateUId":"20181248699","scCreateUName":"admin","scEditTime":"2019-05-07 15:24:44.0","scEditUId":"20181342745","scEditUName":"admin"},{"scId":"602309956791701504","cpId":"601228071437078528","cpName":"aaa第一章","lsName":"","scName":"第六讲 单调有界准则及重要极限Ⅱ","scAttachedType":0,"scContent":"","scIsAttached":true,"scAttachPath":"/static/upload/lesson/attached/1557111172540.pdf","scCreateTime":"2019-01-14 16:59:38.0","scCreateUId":"20181248699","scCreateUName":"admin","scEditTime":"2019-05-06 10:52:57.0","scEditUId":"20181342745","scEditUName":""},{"scId":"603385822347005952","cpId":"601228071437078528","cpName":"aaa第一章","lsName":"","scName":"第七讲  无穷小的比较","scAttachedType":1,"scContent":"FFF","scIsAttached":true,"scAttachPath":"/static/upload//lesson/attached/1558778834603.pdf","scCreateTime":"2019-01-17 16:14:45.0","scCreateUId":"20181248699","scCreateUName":"admin","scEditTime":"2019-05-25 18:07:14.0","scEditUId":"20181342745","scEditUName":"admin"},{"scId":"638542391732604928","cpId":"601228071437078528","cpName":"第1章 极限与连续(1)","lsName":"","scName":"第八讲 测试内容的测试","scAttachedType":0,"scContent":"","scIsAttached":false,"scAttachPath":" ","scCreateTime":"2019-04-24 16:34:24.0","scCreateUId":"20181342745","scCreateUName":"guanli","scEditTime":"2019-04-24 16:34:33.0","scEditUId":"20181342745","scEditUName":""}]
              */
 
             private ChapterBean chapter;
@@ -93,14 +330,14 @@ public class ClassMenuEntity {
                  * cpId : 601228071437078528
                  * lsName : aaa
                  * lsId : 601141517284806656
-                 * cpName : aaa第一章
+                 * cpName : 第1章 极限与连续(1)
                  * cpDscb : aa
                  * cpCreateUId : 20181248699
                  * cpCreateUName : admin
                  * cpCreateTime : 2019-01-11 17:20:37.0
-                 * cpEditTime : 2019-01-14 13:03:21.0
-                 * cpEditUId : 20181248699
-                 * cpEditUName : admin
+                 * cpEditTime : 2019-04-22 14:00:41.0
+                 * cpEditUId : 20181342745
+                 * cpEditUName : guanli
                  */
 
                 private String cpId;
@@ -210,17 +447,17 @@ public class ClassMenuEntity {
                  * cpId : 601228071437078528
                  * cpName : 范德萨发
                  * lsName :
-                 * scName : 请问请问
-                 * scAttachedType : null
+                 * scName : 第一讲  数列极限的概念
+                 * scAttachedType : 1
                  * scContent :
-                 * scIsAttached : false
-                 * scAttachPath :
+                 * scIsAttached : true
+                 * scAttachPath : /static/upload/lesson/attached/1557050936954.pdf
                  * scCreateTime : 2019-01-12 13:37:21.0
                  * scCreateUId : 20181248699
                  * scCreateUName : admin
-                 * scEditTime : null
-                 * scEditUId : null
-                 * scEditUName : null
+                 * scEditTime : 2019-05-05 18:08:57.0
+                 * scEditUId : 20181342745
+                 * scEditUName :
                  */
 
                 private String scId;
@@ -228,16 +465,16 @@ public class ClassMenuEntity {
                 private String cpName;
                 private String lsName;
                 private String scName;
-                private Object scAttachedType;
+                private int scAttachedType;
                 private String scContent;
                 private boolean scIsAttached;
                 private String scAttachPath;
                 private String scCreateTime;
                 private String scCreateUId;
                 private String scCreateUName;
-                private Object scEditTime;
-                private Object scEditUId;
-                private Object scEditUName;
+                private String scEditTime;
+                private String scEditUId;
+                private String scEditUName;
 
                 public String getScId() {
                     return scId;
@@ -279,11 +516,11 @@ public class ClassMenuEntity {
                     this.scName = scName;
                 }
 
-                public Object getScAttachedType() {
+                public int getScAttachedType() {
                     return scAttachedType;
                 }
 
-                public void setScAttachedType(Object scAttachedType) {
+                public void setScAttachedType(int scAttachedType) {
                     this.scAttachedType = scAttachedType;
                 }
 
@@ -335,27 +572,27 @@ public class ClassMenuEntity {
                     this.scCreateUName = scCreateUName;
                 }
 
-                public Object getScEditTime() {
+                public String getScEditTime() {
                     return scEditTime;
                 }
 
-                public void setScEditTime(Object scEditTime) {
+                public void setScEditTime(String scEditTime) {
                     this.scEditTime = scEditTime;
                 }
 
-                public Object getScEditUId() {
+                public String getScEditUId() {
                     return scEditUId;
                 }
 
-                public void setScEditUId(Object scEditUId) {
+                public void setScEditUId(String scEditUId) {
                     this.scEditUId = scEditUId;
                 }
 
-                public Object getScEditUName() {
+                public String getScEditUName() {
                     return scEditUName;
                 }
 
-                public void setScEditUName(Object scEditUName) {
+                public void setScEditUName(String scEditUName) {
                     this.scEditUName = scEditUName;
                 }
             }

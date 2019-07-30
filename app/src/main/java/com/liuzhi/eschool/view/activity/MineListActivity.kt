@@ -186,12 +186,12 @@ class MineListActivity : BaseActivity() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableObserver<Response<QuestionEntity>>() {
                 override fun onNext(response: Response<QuestionEntity>) {
-                    if (response.code()==302){
-                        var intent = Intent(this@MineListActivity,LoginActivity::class.java)
+                    var entity = response.body()
+                    if (entity==null){
+                        var intent =Intent(this@MineListActivity,LoginActivity::class.java)
                         startActivity(intent)
                         return
                     }
-                    var entity = response.body()
 
                     if (entity != null) {
                         questionEntitys.clear()
@@ -245,12 +245,12 @@ class MineListActivity : BaseActivity() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableObserver<Response<DisGroupEntity>>() {
                 override fun onNext(response: Response<DisGroupEntity>) {
-                    if (response.code()==302){
+                    var entity = response.body()
+                    if (entity==null){
                         var intent =Intent(this@MineListActivity,LoginActivity::class.java)
                         startActivity(intent)
                         return
                     }
-                    var entity = response.body()
 
                     if (entity != null) {
                         for (bean in entity.resultList) {
@@ -299,12 +299,12 @@ class MineListActivity : BaseActivity() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableObserver<Response<MyCourseEntity>>() {
                 override fun onNext(response: Response<MyCourseEntity>) {
-                    if (response.code()==302){
+                    var entity = response.body()
+                    if (entity==null){
                         var intent =Intent(this@MineListActivity,LoginActivity::class.java)
                         startActivity(intent)
                         return
                     }
-                    var entity = response.body()
 
                     if (entity != null) {
                         for (bean in entity.resultList) {
@@ -353,12 +353,12 @@ class MineListActivity : BaseActivity() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableObserver<Response<WorkingEntity>>() {
                 override fun onNext(response: Response<WorkingEntity>) {
-                    if (response.code()==302){
+                    var entity = response.body()
+                    if (entity==null){
                         var intent =Intent(this@MineListActivity,LoginActivity::class.java)
                         startActivity(intent)
                         return
                     }
-                    var entity = response.body()
 
                     if (entity != null) {
                         working=entity.resultList.size
@@ -388,12 +388,12 @@ class MineListActivity : BaseActivity() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableObserver<Response<MyCourseEntity>>() {
                 override fun onNext(response: Response<MyCourseEntity>) {
-                    if (response.code()==302){
+                    var entity = response.body()
+                    if (entity==null){
                         var intent =Intent(this@MineListActivity,LoginActivity::class.java)
                         startActivity(intent)
                         return
                     }
-                    var entity = response.body()
 
                     if (entity != null) {
                        finishWork=entity.resultList.size

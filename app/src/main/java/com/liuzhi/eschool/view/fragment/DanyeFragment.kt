@@ -1,9 +1,13 @@
 package com.liuzhi.eschool.view.fragment
 
 import android.content.Intent
+import android.graphics.drawable.Drawable
+import android.os.Build
 import android.os.Bundle
+import android.support.annotation.RequiresApi
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.text.Html
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
@@ -24,6 +28,7 @@ import io.reactivex.observers.DisposableObserver
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_project_danye.view.*
 import kotlinx.android.synthetic.main.layout_project_head.*
+import java.net.URL
 import java.util.concurrent.TimeUnit
 
 
@@ -35,6 +40,8 @@ class DanyeFragment : BaseFragment() {
     var pageNo = 1
     var colId = ""
     var danyeText: TextView? = null
+    var htmlText=""
+    lateinit var imgGetter:Html.ImageGetter
     override fun getLayoutId(): Int {
         return R.layout.fragment_project_danye
     }
@@ -46,6 +53,27 @@ class DanyeFragment : BaseFragment() {
         view.danye_recycle.adapter = danyeAdapter
         val headerView = activity.getLayoutInflater().inflate(R.layout.layout_project_head, null)
         danyeText= headerView.findViewById(R.id.danye_text) as TextView
+        imgGetter  = Html.ImageGetter { source ->
+            Log.i("RG", "source---?>>>$source")
+            var drawable: Drawable? = null
+            val url: URL
+            try {
+                url = URL(source)
+                Log.i("RG", "url---?>>>$url")
+                drawable = Drawable.createFromStream(url.openStream(), "") // 获取网路图片
+            } catch (e: Exception) {
+                e.printStackTrace()
+                return@ImageGetter null
+            }
+
+            drawable!!.setBounds(
+                0, 0, drawable.intrinsicWidth,
+                drawable.intrinsicHeight
+            )
+            Log.i("RG", "url---?>>>$url")
+            drawable
+        }
+
         headerView.layoutParams = ViewGroup.LayoutParams(
             ViewGroup.LayoutParams.MATCH_PARENT,
             ViewGroup.LayoutParams.WRAP_CONTENT
@@ -67,7 +95,9 @@ class DanyeFragment : BaseFragment() {
         var bundle: Bundle = arguments
         colId = bundle.getString("ProjectInfoById")
         getProjectInfoById(colId)
-    }
+
+
+        }
 
     fun getProjectInfoById(colId: String) {
         projectInfoByConvert = ProjectInfoByConvert()
@@ -82,18 +112,19 @@ class DanyeFragment : BaseFragment() {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableObserver<Response<ProjectInfoByEntity>>() {
+                @RequiresApi(Build.VERSION_CODES.N)
                 override fun onNext(response: Response<ProjectInfoByEntity>) {
-                    if (response.code()==302){
-                        var intent = Intent(activity, LoginActivity::class.java)
+                    var entity = response.body()
+                    if (entity==null){
+                        var intent =Intent(activity,LoginActivity::class.java)
                         startActivity(intent)
                         return
                     }
-                    var entity = response.body()
+
                     if (1 == pageNo) {
                         projectInfoByList.clear()
                         projectInfoByList = entity.resultList
                         danyeAdapter.setNewData(projectInfoByList)
-                        danye_text.text = "      " + projectInfoByList[0].ifCreateName
                     } else {
                         if (entity.resultList.size > 0) {
                             for (listBean in entity.resultList) {
@@ -108,6 +139,10 @@ class DanyeFragment : BaseFragment() {
                             danyeAdapter.loadMoreComplete()
                         }
                     }
+                    if (projectInfoByList.size > 0) {
+                        htmlText=projectInfoByList[0].ifContent
+                        danyeText!!.setText(Html.fromHtml(htmlText,imgGetter,null))
+                    }
                 }
 
                 override fun onError(e: Throwable) {
@@ -118,4 +153,6 @@ class DanyeFragment : BaseFragment() {
                 }
             })
     }
+
+
 }

@@ -78,6 +78,7 @@
                 android:layout_alignLeft="@+id/class_detail_teach_time"
                 android:orientation="horizontal"
                 android:gravity="center"
+                android:visibility="gone"
                 >
 
             <ImageView

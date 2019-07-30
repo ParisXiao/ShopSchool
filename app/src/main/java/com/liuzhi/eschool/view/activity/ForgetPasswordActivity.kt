@@ -41,8 +41,9 @@ class ForgetPasswordActivity : BaseActivity(), View.OnClickListener {
                     DialogUtils.getInstance(this@ForgetPasswordActivity).shortToast("请输入邮箱地址")
                     return
                 }
-                if (PhoneUtils.isEmail(input_edit_forget_phone.text.toString().trim())) {
+                if (!PhoneUtils.isEmail(input_edit_forget_phone.text.toString().trim())) {
                     DialogUtils.getInstance(this@ForgetPasswordActivity).shortToast("请输入正确的邮箱地址")
+                    return
                 }
                 //获取验证码接口
                 time?.start()
@@ -53,7 +54,7 @@ class ForgetPasswordActivity : BaseActivity(), View.OnClickListener {
                     return
                 }
                 if (input_edit_forget_phone.text.toString().trim().isNullOrEmpty()) {
-                    DialogUtils.getInstance(this@ForgetPasswordActivity).shortToast("请输入手机号")
+                    DialogUtils.getInstance(this@ForgetPasswordActivity).shortToast("请输入邮箱地址")
                     return
                 }
                 if (input_edit_forget_safecode.text.toString().trim().isNullOrEmpty()) {
@@ -137,7 +138,7 @@ class ForgetPasswordActivity : BaseActivity(), View.OnClickListener {
     }
 
     fun getMailCode(aUserName: String, aEmail: String) {
-        OkGo.get<String>(UrlConstans.ForgotMail)
+        OkGo.post<String>(UrlConstans.ForgotMail)
             .headers("Content-Type", "application/json;charset=UTF-8")
             .params("aUserName", aUserName)
             .params("aEmail", aEmail)
@@ -147,13 +148,8 @@ class ForgetPasswordActivity : BaseActivity(), View.OnClickListener {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableObserver<Response<String>>() {
                 override fun onNext(response: Response<String>) {
-                    if (response.code() == 302) {
-                        var intent = Intent(this@ForgetPasswordActivity, LoginActivity::class.java)
-                        startActivity(intent)
-                        return
-                    }
+                    Log.e("OKGO", response.body().toString())
                     var entity: JSONObject = JSONObject(response.body())
-
                     if (entity.optInt("code") == 0) {
                         var jsonObject: JSONObject = JSONObject(entity.optString("data"))
                         aId = jsonObject.optString("aId")
@@ -172,7 +168,7 @@ class ForgetPasswordActivity : BaseActivity(), View.OnClickListener {
     }
 
     fun setForget(aPassword: String) {
-        OkGo.get<String>(UrlConstans.ForgotMail)
+        OkGo.post<String>(UrlConstans.ForgotPassword)
             .headers("Content-Type", "application/json;charset=UTF-8")
             .params("aId", aId)
             .params("aAddress", aAddress)
@@ -183,11 +179,7 @@ class ForgetPasswordActivity : BaseActivity(), View.OnClickListener {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableObserver<Response<String>>() {
                 override fun onNext(response: Response<String>) {
-                    if (response.code() == 302) {
-                        var intent = Intent(this@ForgetPasswordActivity, LoginActivity::class.java)
-                        startActivity(intent)
-                        return
-                    }
+                    Log.e("OKGO",response.body().toString())
                     var entity: JSONObject = JSONObject(response.body())
 
                     if (entity.optInt("code") == 0) {

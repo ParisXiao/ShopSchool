@@ -91,13 +91,13 @@ class ClassListFragment : BaseFragment() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableObserver<Response<ClassDetailEntity>>() {
                 override fun onNext(response: Response<ClassDetailEntity>) {
-                    if (response.code()==302){
-                        var intent =Intent(activity, LoginActivity::class.java)
+                    var listEntity = response.body()
+                    if (listEntity==null){
+                        var intent =Intent(activity,LoginActivity::class.java)
                         startActivity(intent)
                         return
                     }
                     Log.e("result", "response ==> " + response.body().toString())
-                    var listEntity = response.body()
                     if (listEntity.resultList==null) {
                         return
                     }

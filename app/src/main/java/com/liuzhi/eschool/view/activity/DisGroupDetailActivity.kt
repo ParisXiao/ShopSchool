@@ -76,9 +76,8 @@ class DisGroupDetailActivity:BaseActivity(){
         }
         group_commit.setOnClickListener {
             if (group_edit.text.toString().trim().isEmpty()){
-                DialogUtils.getInstance(this).showLoadDialog("请输入内容")
+                DialogUtils.getInstance(this).shortToast("请输入内容")
             }else{
-                DialogUtils.getInstance(this).showLoadDialog("正在发表...")
                 sendMyDis(disGroupEntity.psId,group_edit.text.toString().trim())
             }
         }
@@ -97,12 +96,12 @@ class DisGroupDetailActivity:BaseActivity(){
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableObserver<Response<DisGroupDetailEntity>>() {
                 override fun onNext(response: Response<DisGroupDetailEntity>) {
-                    if (response.code()==302){
-                        var intent = Intent(this@DisGroupDetailActivity,LoginActivity::class.java)
+                    var entity = response.body()
+                    if (entity==null){
+                        var intent =Intent(this@DisGroupDetailActivity,LoginActivity::class.java)
                         startActivity(intent)
                         return
                     }
-                    var entity = response.body()
                     if (entity != null&&entity.code==0) {
                         if (1 == pageNo) {
                             disGroupDetailEntitys.clear()
@@ -144,12 +143,13 @@ class DisGroupDetailActivity:BaseActivity(){
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableObserver<Response<String>>() {
                 override fun onNext(response: Response<String>) {
-                    if (response.code()==302){
+                    var entity:JSONObject =JSONObject( response.body())
+                    if (entity==null){
                         var intent =Intent(this@DisGroupDetailActivity,LoginActivity::class.java)
                         startActivity(intent)
                         return
                     }
-                    var entity:JSONObject =JSONObject( response.body())
+
                     if (entity .optInt("code")==0) {
                         var bean=DisGroupDetailEntity.DataBean.ResultListBean()
                         bean.uName=UserInfoConstans.USERNAME

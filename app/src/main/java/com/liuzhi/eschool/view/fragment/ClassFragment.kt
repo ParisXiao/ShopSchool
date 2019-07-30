@@ -13,6 +13,7 @@ import com.liuzhi.eschool.entity.ClassEntity
 import com.liuzhi.eschool.entity.convert.ClassConvert
 import com.liuzhi.eschool.utils.common.DialogUtils
 import com.liuzhi.eschool.view.activity.LoginActivity
+import com.liuzhi.eschool.view.activity.SearchActivity
 import com.liuzhi.eschool.view.widget.VpSwipeRefreshLayout
 import com.lzy.okgo.OkGo
 import com.lzy.okgo.model.Response
@@ -20,6 +21,7 @@ import com.lzy.okrx2.adapter.ObservableResponse
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DisposableObserver
 import io.reactivex.schedulers.Schedulers
+import kotlinx.android.synthetic.main.fragment_class.*
 import kotlinx.android.synthetic.main.fragment_class.view.*
 
 
@@ -49,6 +51,11 @@ class ClassFragment : BaseFragment() {
             adapter.setNewData(classLists)
             goSecondClass(classLists[position].tpId)
         }
+        view.edit_class_search.setOnClickListener {
+            var intent=Intent(activity, SearchActivity::class.java)
+            intent.putExtra("SearchType",1)
+            startActivity(intent)
+        }
     }
 
     override fun initData() {
@@ -73,12 +80,12 @@ class ClassFragment : BaseFragment() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableObserver<Response<ClassEntity>>() {
                 override fun onNext(response: Response<ClassEntity>) {
-                    if (response.code()==302){
+                    var entity = response.body()
+                    if (entity==null){
                         var intent =Intent(activity,LoginActivity::class.java)
                         startActivity(intent)
                         return
                     }
-                    var entity = response.body()
                     if (entity.code == 0) {
                         classLists.clear()
                         classLists=entity.data

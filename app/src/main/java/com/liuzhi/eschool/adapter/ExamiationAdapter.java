@@ -19,7 +19,7 @@ public class ExamiationAdapter extends BaseQuickAdapter<ExamiationEntity.ResultL
     protected void convert(BaseViewHolder helper, ExamiationEntity.ResultListBean item) {
         if (null == item) return;
 //        ImageUtils.setImageBitmapUrl(context,helper.getView(R.id.item_question_icon),item.g);
-        helper.setText(R.id.item_question_name,item.getMebname());
+        helper.setText(R.id.item_question_name,item.getPmName());
         helper.setText(R.id.item_question_release_time,"开始时间："+item.getPmCreateTime());
         helper.setText(R.id.item_question_end_time,"结束时间："+item.getPmCreateTime());
     }

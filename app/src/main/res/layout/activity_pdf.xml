@@ -1,18 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical"
-              android:fitsSystemWindows="true"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true"
+                android:background="@color/main_blue_color"
         >
 
-    <include layout="@layout/layout_title"/>
+    <include
+            layout="@layout/layout_title"
+            android:id="@+id/tool"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
 
-
-        <com.github.barteksc.pdfviewer.PDFView
-                android:id="@+id/pdfView"
+    <RelativeLayout
+            android:id="@+id/remote_pdf_root"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:layout_below="@id/tool">
+        <es.voghdev.pdfviewpager.library.PDFViewPager
+                android:id="@+id/pdfViewPager"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
-
-
-</LinearLayout>
+                android:layout_height="match_parent" />
+    </RelativeLayout>
+    <ProgressBar
+            android:id="@+id/pb_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center" />
+    <TextView
+            android:id="@+id/pdf_page"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:textColor="#000"
+            />
+</RelativeLayout>

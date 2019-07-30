@@ -5,5 +5,6 @@ public class UserInfoConstans {
     public static  String USERNAME="USERName";
     public static  String USERPASSWORD="USERPASSWORD";
     public static  String CookieId="CookieId";
+    public static  String cookiedomain="cookiedomain";
 
 }

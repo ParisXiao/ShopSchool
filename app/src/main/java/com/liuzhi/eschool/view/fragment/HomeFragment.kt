@@ -1,6 +1,8 @@
 package com.liuzhi.eschool.view.fragment
 
+import android.accounts.AccountManager
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.http.SslError
@@ -20,6 +22,7 @@ import com.liuzhi.eschool.entity.convert.AllProjectConvert
 import com.liuzhi.eschool.entity.convert.ClassDetailByIdConvert
 import com.liuzhi.eschool.entity.convert.ProjectColumConvert
 import com.liuzhi.eschool.entity.convert.ProjectDetailByIdConvert
+import com.liuzhi.eschool.utils.common.NetWorkUtil
 import com.liuzhi.eschool.utils.common.SPUtils
 import com.liuzhi.eschool.view.activity.*
 import com.lzy.okgo.OkGo
@@ -29,6 +32,10 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DisposableObserver
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_train_template.*
+import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_home.view.*
+import okhttp3.Cookie
+import okhttp3.HttpUrl
 
 
 class HomeFragment : BaseFragment() {
@@ -41,9 +48,15 @@ class HomeFragment : BaseFragment() {
 
     override fun initView(view: View) {
         home_web = view.findViewById(R.id.home_web) as WebView?
+        view.edit_home_search.setOnClickListener {
+            var intent = Intent(activity, SearchActivity::class.java)
+            intent.putExtra("SearchType", 0)
+            startActivity(intent)
+        }
     }
 
     override fun initData() {
+
         initWeb()
     }
 
@@ -69,12 +82,18 @@ class HomeFragment : BaseFragment() {
         webSettings.displayZoomControls = false //隐藏原生的缩放控件
 
         //其他细节操作
-        webSettings.cacheMode = WebSettings.LOAD_CACHE_ELSE_NETWORK //关闭webView中缓存
         webSettings.allowFileAccess = true //设置可以访问文件
         webSettings.javaScriptCanOpenWindowsAutomatically = true //支持通过JS打开新窗口
         webSettings.loadsImagesAutomatically = true //支持自动加载图片
         webSettings.defaultTextEncodingName = "utf-8"//设置编码格式
-
+        //缓存相关
+        if (NetWorkUtil.isNetworkAvailable(context)) {
+            //有网络，则加载网络地址
+            webSettings.setCacheMode(WebSettings.LOAD_DEFAULT)//设置缓存模式LOAD_CACHE_ELSE_NETWORK
+        } else {
+            //无网络，则加载缓存路径
+            webSettings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK)
+        }
         // 特别注意：5.1以上默认禁止了https和http混用，以下方式是开启
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             webSettings.mixedContentMode = WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
@@ -125,7 +144,7 @@ class HomeFragment : BaseFragment() {
             override fun onJsAlert(view: WebView?, url: String?, message: String?, result: JsResult?): Boolean {
                 //警告框
                 AlertDialog.Builder(activity)
-                    .setTitle("JsAlert")
+                    .setTitle("提醒")
                     .setMessage(message)
                     .setPositiveButton("OK") { _, _ -> result?.confirm() }
                     .setCancelable(false)
@@ -136,7 +155,7 @@ class HomeFragment : BaseFragment() {
             override fun onJsConfirm(view: WebView?, url: String?, message: String?, result: JsResult?): Boolean {
                 //确认框
                 AlertDialog.Builder(activity)
-                    .setTitle("JsConfirm")
+                    .setTitle("注意")
                     .setMessage(message)
                     .setPositiveButton("OK") { _, _ -> result?.confirm() }
                     .setNegativeButton("Cancel") { _, _ -> result?.cancel() }
@@ -165,6 +184,7 @@ class HomeFragment : BaseFragment() {
 
     }
 
+
     override fun onDestroy() {
         if (home_web != null) {
             // 如果先调用destroy()方法，则会命中if (isDestroyed()) return;这一行代码，
@@ -185,15 +205,15 @@ class HomeFragment : BaseFragment() {
     }
 
     inner class JsInteration {
-         var intent: Intent=Intent(activity, ProjectListActivity::class.java)
+        var intent: Intent = Intent(activity, ProjectListActivity::class.java)
         @JavascriptInterface
         fun divReturn(divId: Int) {
             Log.e(TAG, "divId$divId")
             when (divId) {
-                0->{
+                0 -> {
                     getProjectColumn("PTGK")
                 }
-                1->{
+                1 -> {
                     var intent = Intent(activity, MineListActivity::class.java)
                     intent.putExtra("MineListType", 1)
                     activity.startActivity(intent)
@@ -203,7 +223,7 @@ class HomeFragment : BaseFragment() {
                     activity.startActivity(intent)
                 }
                 3 -> {
-                    intent.putExtra("ProjectName", "XNFZ")
+                    intent.putExtra("ProjectName", "XNFZSFXM")
                     activity.startActivity(intent)
                 }
                 4 -> {
@@ -218,7 +238,7 @@ class HomeFragment : BaseFragment() {
                     intent.putExtra("ProjectName", "XQHZ")
                     activity.startActivity(intent)
                 }
-                7->{
+                7 -> {
                     var intent = Intent(activity, MineListActivity::class.java)
                     intent.putExtra("MineListType", 5)
                     activity.startActivity(intent)
@@ -229,14 +249,15 @@ class HomeFragment : BaseFragment() {
         @JavascriptInterface
         fun netsReturn(netId: Int) {
             Log.e(TAG, "netId$netId")
+
         }
 
         @JavascriptInterface
         fun newsReturn(newsId: String, newLink: String) {
             Log.e(TAG, "newsId$newsId  newLink$newLink")
-            var intentWeb=Intent(activity,WebActivity::class.java)
+            var intentWeb = Intent(activity, WebActivity::class.java)
             intentWeb.putExtra("WebTitle", "新闻详情")
-            intentWeb.putExtra("WebHtml", UrlConstans.BaseUrl+"/html/text/"+newsId+".html")
+            intentWeb.putExtra("WebHtml", UrlConstans.BaseUrl + "/html/text/" + newsId + ".html")
             startActivity(intentWeb)
         }
 
@@ -248,12 +269,12 @@ class HomeFragment : BaseFragment() {
         }
 
         @JavascriptInterface
-        fun XKJSMore(code:Int) {
+        fun XKJSMore(code: Int) {
             Log.e(TAG, "XKJSMore")
-            if (code==0){
+            if (code == 0) {
                 intent.putExtra("ProjectName", "XKJS")
                 activity.startActivity(intent)
-            }else{
+            } else {
                 intent.putExtra("ProjectName", "CYFH")
                 activity.startActivity(intent)
             }
@@ -267,6 +288,7 @@ class HomeFragment : BaseFragment() {
             Log.e(TAG, "XKJSMore")
             getProjectById(id)
         }
+
         @JavascriptInterface
         fun CYFHReturn(id: String) {
 //            630598952319717376
@@ -291,7 +313,7 @@ class HomeFragment : BaseFragment() {
         @JavascriptInterface
         fun XNFZMore() {
             Log.e(TAG, "XNFZMore")
-            intent.putExtra("ProjectName", "XNFZ")
+            intent.putExtra("ProjectName", "XNFZSFXM")
             activity.startActivity(intent)
         }
 
@@ -313,7 +335,7 @@ class HomeFragment : BaseFragment() {
         }
     }
 
-    fun getClassDetailById(id:Long) {
+    fun getClassDetailById(id: Long) {
         var classDetailByIdConvert = ClassDetailByIdConvert()
         var detailByIdObservableResponse = ObservableResponse<ClassDetailByIdEntity>()
         OkGo.get<ClassDetailByIdEntity>(UrlConstans.LessonDetailById)
@@ -325,24 +347,23 @@ class HomeFragment : BaseFragment() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableObserver<Response<ClassDetailByIdEntity>>() {
                 override fun onNext(response: Response<ClassDetailByIdEntity>) {
-                    if (response.code()==302){
+                    var entity = response.body()
+                    if (entity==null){
                         var intent =Intent(activity,LoginActivity::class.java)
                         startActivity(intent)
                         return
                     }
-                    var entity = response.body()
-
                     if (entity != null) {
                         if (entity.code == 0) {
-                            var classDetail= ClassDetailEntity.ResultListBean()
-                            classDetail.lsName=entity.data.lessonInfo.lsName
-                            classDetail.lsCreateUName=entity.data.lessonInfo.lsCreateUName
-                            classDetail.lsCreateTime=entity.data.lessonInfo.lsCreateTime
-                            classDetail.lsDscb=entity.data.lessonInfo.lsDscb
-                            classDetail.lsImg=entity.data.lessonInfo.lsImg
-                            classDetail.lsId=entity.data.lessonInfo.lsId
-                            var intent=Intent(activity, ClassDetailActivity::class.java)
-                            intent.putExtra("LessonDetail",classDetail)
+                            var classDetail = ClassDetailEntity.ResultListBean()
+                            classDetail.lsName = entity.data.lessonInfo.lsName
+                            classDetail.lsCreateUName = entity.data.lessonInfo.lsCreateUName
+                            classDetail.lsCreateTime = entity.data.lessonInfo.lsCreateTime
+                            classDetail.lsDscb = entity.data.lessonInfo.lsDscb
+                            classDetail.lsImg = entity.data.lessonInfo.lsImg
+                            classDetail.lsId = entity.data.lessonInfo.lsId
+                            var intent = Intent(activity, ClassDetailActivity::class.java)
+                            intent.putExtra("LessonDetail", classDetail)
                             startActivity(intent)
                         }
                     }
@@ -357,9 +378,10 @@ class HomeFragment : BaseFragment() {
                 }
             })
     }
+
     fun getProjectById(id: String) {
-        var  projectDetailByIdConvert = ProjectDetailByIdConvert()
-        var  projectDetailByIdResponse = ObservableResponse<ProjectDetailByIdEntity>()
+        var projectDetailByIdConvert = ProjectDetailByIdConvert()
+        var projectDetailByIdResponse = ObservableResponse<ProjectDetailByIdEntity>()
         OkGo.get<ProjectDetailByIdEntity>(UrlConstans.ColInfo)
             .headers("Content-Type", "application/json;charset=UTF-8")
             .params("colId", id)
@@ -369,38 +391,39 @@ class HomeFragment : BaseFragment() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableObserver<Response<ProjectDetailByIdEntity>>() {
                 override fun onNext(response: Response<ProjectDetailByIdEntity>) {
-                    if (response.code()==302){
+                    var entity = response.body()
+                    if (entity==null){
                         var intent =Intent(activity,LoginActivity::class.java)
                         startActivity(intent)
                         return
                     }
-                    var entity = response.body()
                     if (entity.code == 0) {
-                        var bean=AllProjectEntity.DataBean()
-                        bean.colName=entity.data.leftMenu[0].colName
-                        bean.colReleaseTime=entity.data.leftMenu[0].colReleaseTime
-                        bean.colStopTime=entity.data.leftMenu[0].colStopTime
-                        bean.colImg=entity.data.leftMenu[0].colImg
-                        bean.colDesc=entity.data.leftMenu[0].colDesc
-                        bean.colId=entity.data.leftMenu[0].colId
-                        var intent =Intent(activity,ProjectDetailActivity::class.java)
-                        intent.putExtra("ProjectBean",bean)
+                        var bean = AllProjectEntity.DataBean()
+                        bean.colName = entity.data.leftMenu[0].colName
+                        bean.colReleaseTime = entity.data.leftMenu[0].colReleaseTime
+                        bean.colStopTime = entity.data.leftMenu[0].colStopTime
+                        bean.colImg = entity.data.leftMenu[0].colImg
+                        bean.colDesc = entity.data.leftMenu[0].colDesc
+                        bean.colId = entity.data.leftMenu[0].colId
+                        var intent = Intent(activity, ProjectDetailActivity::class.java)
+                        intent.putExtra("ProjectBean", bean)
                         startActivity(intent)
                         return
                     }
                 }
 
                 override fun onError(e: Throwable) {
-                    Log.e("OKGO",e.message)
+                    Log.e("OKGO", e.message)
                 }
 
                 override fun onComplete() {
                 }
             })
     }
+
     fun getProjectColumn(projectName: String) {
-    var    projectColumConvert = ProjectColumConvert()
-        var   projectColumResponse = ObservableResponse<ProjectColumEntity>()
+        var projectColumConvert = ProjectColumConvert()
+        var projectColumResponse = ObservableResponse<ProjectColumEntity>()
         OkGo.get<ProjectColumEntity>(UrlConstans.ProjectColumn)
             .headers("Content-Type", "application/json;charset=UTF-8")
             .params("colSign", projectName)
@@ -410,22 +433,25 @@ class HomeFragment : BaseFragment() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableObserver<Response<ProjectColumEntity>>() {
                 override fun onNext(response: Response<ProjectColumEntity>) {
-                    if (response.code()==302){
+                    var entity = response.body()
+                    if (entity==null){
                         var intent =Intent(activity,LoginActivity::class.java)
                         startActivity(intent)
                         return
                     }
-                    var entity = response.body()
                     if (entity.code == 0) {
-                        var intentWeb=Intent(activity,WebActivity::class.java)
+                        var intentWeb = Intent(activity, WebActivity::class.java)
                         intentWeb.putExtra("WebTitle", "平台概况")
-                        intentWeb.putExtra("WebHtml", UrlConstans.BaseUrl+"/html/column/"+entity.data[0].colId+".html")
+                        intentWeb.putExtra(
+                            "WebHtml",
+                            UrlConstans.BaseUrl + "/html/column/" + entity.data[0].colId + ".html"
+                        )
                         startActivity(intentWeb)
                     }
                 }
 
                 override fun onError(e: Throwable) {
-                    Log.e("OKGO",e.message)
+                    Log.e("OKGO", e.message)
 
                 }
 

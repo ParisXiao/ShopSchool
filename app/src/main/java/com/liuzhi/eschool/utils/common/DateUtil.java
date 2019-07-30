@@ -74,6 +74,12 @@ public class DateUtil {
         sf = new SimpleDateFormat("yyyy", Locale.getDefault());
         return sf.format(d);
     }
+    //获得年
+    public static int getYearInt(long time){
+        Date d = new Date(time);
+        sf = new SimpleDateFormat("yyyy", Locale.getDefault());
+        return Integer.valueOf(sf.format(d)) ;
+    }
     //获得月
     public static String getMouth(long time){
         Date d = new Date(time);
@@ -91,4 +97,6 @@ public class DateUtil {
         sf = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault());
         return sf.format(d);
     }
+
+
 }

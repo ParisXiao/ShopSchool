@@ -29,8 +29,8 @@ public class ProjectListAdapter extends BaseQuickAdapter<AllProjectEntity.DataBe
         TextView projectTime=helper.getView(R.id.item_project_time);
         TextView projectMsg=helper.getView(R.id.item_project_msg);
         projectName.setText(item.getColName());
-        projectXueke.setText("");
-        projectMsg.setText("");
+        projectXueke.setText("上传者："+item.getColUpdateName());
+        projectMsg.setText(item.getColDesc());
         projectTime.setText(DateUtil.getYM(item.getColCreateTime()));
         ImageUtils.setImageBitmapUrl(context,projectImg,UrlConstans.Companion.getBaseUrl()+item.getColImg());
     }

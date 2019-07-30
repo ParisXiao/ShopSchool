@@ -66,11 +66,6 @@ class ClassTypeFragment : BaseFragment() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableObserver<Response<ClassTypeEntity>>() {
                 override fun onNext(response: Response<ClassTypeEntity>) {
-                    if (response.code()==302){
-                        var intent = Intent(activity, LoginActivity::class.java)
-                        startActivity(intent)
-                        return
-                    }
                     var entity:ClassTypeEntity=response.body()
                     classTypes=entity.data
                     classTypeAdapter.setDataList(classTypes)

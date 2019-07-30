@@ -32,13 +32,26 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="2019-04-24"
+                android:visibility="gone"
                 android:textSize="22sp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="5dp"
                 >
 
         </TextView>
+        <org.angmarch.views.NiceSpinner
+                android:id="@+id/time_spinner2"
+                android:layout_marginTop="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_marginLeft="15dp"
+                android:layout_height="wrap_content"
+                android:spinnerMode="dropdown"
+                app:arrowTint="@color/black"
+                app:textTint="@color/black"
+                >
 
+        </org.angmarch.views.NiceSpinner>
         <org.angmarch.views.NiceSpinner
                 android:id="@+id/pm_spinner"
                 android:layout_marginTop="15dp"
