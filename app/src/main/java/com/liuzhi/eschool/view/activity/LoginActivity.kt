@@ -6,6 +6,7 @@ import android.text.Editable
 import android.text.InputType
 import android.text.TextUtils
 import android.text.TextWatcher
+import android.util.Base64
 import android.util.Log
 import android.view.View
 import android.webkit.CookieManager
@@ -56,7 +57,7 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
                 }
                 DialogUtils.getInstance(this@LoginActivity).showLoadDialog("正在验证登录信息...")
                 Observable.timer(1,TimeUnit.SECONDS).subscribe(Consumer {
-                    login(userId, password, imgCode)
+                    login(userId , password, imgCode)
                 })
 
             }
@@ -167,8 +168,8 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
     fun login(userId: String, password: String, imgCode: String) {
         OkGo.post<String>(UrlConstans.Login)
             .headers("Content-Type", "application/json;charset=UTF-8")
-            .params("userName", userId)
-            .params("userPass", password)
+            .params("userName", Base64.encodeToString(userId.toByteArray(),Base64.DEFAULT))
+            .params("userPass", Base64.encodeToString(password.toByteArray(),Base64.DEFAULT))
             .params("regCode", imgCode)
             .converter(StringConvert())
             .adapt(ObservableResponse<String>())
