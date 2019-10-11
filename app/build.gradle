@@ -57,7 +57,7 @@ dependencies {
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
     implementation 'io.reactivex.rxjava2:rxjava:latest.integration'
     implementation 'io.reactivex.rxjava2:rxandroid:latest.integration'
-    implementation 'com.google.code.gson:gson:latest.integration'
+    implementation 'com.google.code.gson:gson:2.8.0'
     implementation 'com.lzy.net:okgo:latest.integration'
     implementation 'com.lzy.net:okserver:latest.integration'
     implementation('com.lzy.net:okrx2:latest.integration') {
