@@ -7,6 +7,7 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.net.http.SslError
 import android.os.Build
+import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.support.v7.app.AlertDialog
 import android.util.Log
@@ -219,8 +220,9 @@ class HomeFragment : BaseFragment() {
                     activity.startActivity(intent)
                 }
                 2 -> {
-                    intent.putExtra("ProjectName", "FZSX")
-                    activity.startActivity(intent)
+                    var tt =Intent(activity,FZSXDetailActivity::class.java)
+                    activity.startActivity(tt)
+
                 }
                 3 -> {
                     intent.putExtra("ProjectName", "XNFZSFXM")
@@ -263,9 +265,8 @@ class HomeFragment : BaseFragment() {
 
         @JavascriptInterface
         fun newMore() {
-            Log.e(TAG, "newMore")
-            intent.putExtra("ProjectName", "XWZX")
-            activity.startActivity(intent)
+            var intentWeb = Intent(activity, NewsListActivity::class.java)
+            startActivity(intentWeb)
         }
 
         @JavascriptInterface

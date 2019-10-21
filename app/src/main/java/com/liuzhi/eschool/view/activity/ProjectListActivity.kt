@@ -8,12 +8,15 @@ import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import com.liuzhi.eschool.R
+import com.liuzhi.eschool.adapter.NewsListAdapter
 import com.liuzhi.eschool.adapter.ProjectListAdapter
 import com.liuzhi.eschool.constants.UrlConstans
 import com.liuzhi.eschool.entity.AllProjectEntity
 import com.liuzhi.eschool.entity.ProjectColumEntity
+import com.liuzhi.eschool.entity.ProjectDetailByIdEntity
 import com.liuzhi.eschool.entity.convert.AllProjectConvert
 import com.liuzhi.eschool.entity.convert.ProjectColumConvert
+import com.liuzhi.eschool.entity.convert.ProjectDetailByIdConvert
 import com.liuzhi.eschool.utils.common.DateUtil
 import com.lzy.okgo.OkGo
 import com.lzy.okgo.model.Response
@@ -31,7 +34,9 @@ class ProjectListActivity : BaseActivity() {
     private lateinit var allProjectResponse: ObservableResponse<AllProjectEntity>
     private lateinit var projectColumLists: MutableList<ProjectColumEntity.DataBean>
     private lateinit var allProjectLists: MutableList<AllProjectEntity.DataBean>
+    private lateinit var newsLists: MutableList<ProjectDetailByIdEntity.DataBean.InfoBeanX.InfoBean.ResultListBean>
     private lateinit var projectListAdapter: ProjectListAdapter
+    private lateinit var newsListAdapter: NewsListAdapter
     private var projectClId=""
     var projectName: String = ""
 
@@ -62,23 +67,31 @@ class ProjectListActivity : BaseActivity() {
         }
         project_refresh.setColorSchemeResources(android.R.color.holo_blue_light,
             android.R.color.holo_green_light, android.R.color.holo_orange_light)
-        allProjectLists=ArrayList()
-        projectListAdapter= ProjectListAdapter(this,allProjectLists)
-        var layoutManager: RecyclerView.LayoutManager  = LinearLayoutManager(this)
-        train_recycler.layoutManager = layoutManager
-        train_recycler.adapter=projectListAdapter
-        projectListAdapter.setOnItemClickListener { adapter, view, position ->
-            if (projectName == "XWZX") {
-                var intentWeb=Intent(this@ProjectListActivity,WebActivity::class.java)
-                intentWeb.putExtra("WebTitle", "新闻详情")
-                intentWeb.putExtra("WebHtml", UrlConstans.BaseUrl+"/html/text/"+allProjectLists[position].colId+".html")
-                startActivity(intentWeb)
-            }else {
-                var intent = Intent(this@ProjectListActivity, ProjectDetailActivity::class.java)
-                intent.putExtra("ProjectBean", allProjectLists[position])
-                startActivity(intent)
+        if (projectName=="XWZX"){
+            newsLists=ArrayList()
+            newsListAdapter= NewsListAdapter(this,newsLists)
+            var layoutManager: RecyclerView.LayoutManager  = LinearLayoutManager(this)
+            train_recycler.layoutManager = layoutManager
+            train_recycler.adapter=newsListAdapter
+            newsListAdapter.setOnItemClickListener { adapter, view, position ->
+//                var intent = Intent(this@ProjectListActivity, ProjectDetailActivity::class.java)
+//                intent.putExtra("ProjectBean", allProjectLists[position])
+//                startActivity(intent)
             }
         }
+        else{
+            allProjectLists=ArrayList()
+            projectListAdapter= ProjectListAdapter(this,allProjectLists)
+            var layoutManager: RecyclerView.LayoutManager  = LinearLayoutManager(this)
+            train_recycler.layoutManager = layoutManager
+            train_recycler.adapter=projectListAdapter
+            projectListAdapter.setOnItemClickListener { adapter, view, position ->
+                    var intent = Intent(this@ProjectListActivity, ProjectDetailActivity::class.java)
+                    intent.putExtra("ProjectBean", allProjectLists[position])
+                    startActivity(intent)
+            }
+        }
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -96,22 +109,30 @@ class ProjectListActivity : BaseActivity() {
        if (!project_refresh.isRefreshing) {
            project_refresh.isRefreshing=true
        }
+        if (projectName=="XWZX") {
 
-        getProjectColumn(projectName)
-        train_tab.setOnTabSelectedListener(object:TabLayout.OnTabSelectedListener{
-            override fun onTabReselected(tab: TabLayout.Tab?) {
-            }
-
-            override fun onTabUnselected(tab: TabLayout.Tab?) {
-            }
-
-            override fun onTabSelected(tab: TabLayout.Tab?) {
-                projectClId=projectColumLists[tab!!.position].colId
-                getAllProject(projectClId)
-            }
-        })
-        project_refresh.setOnRefreshListener {
+        }else {
             getProjectColumn(projectName)
+            train_tab.setOnTabSelectedListener(object:TabLayout.OnTabSelectedListener{
+                override fun onTabReselected(tab: TabLayout.Tab?) {
+                }
+
+                override fun onTabUnselected(tab: TabLayout.Tab?) {
+                }
+
+                override fun onTabSelected(tab: TabLayout.Tab?) {
+                        projectClId=projectColumLists[tab!!.position].colId
+                        getAllProject(projectClId)
+                }
+            })
+        }
+
+        project_refresh.setOnRefreshListener {
+            if (projectName=="XWZX") {
+
+            }else {
+                getProjectColumn(projectName)
+            }
         }
         train_search.setOnClickListener {
             var intent=Intent(this,SearchActivity::class.java)
@@ -207,5 +228,6 @@ class ProjectListActivity : BaseActivity() {
                 }
             })
     }
+
 }
 

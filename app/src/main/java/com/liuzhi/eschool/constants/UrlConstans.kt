@@ -2,7 +2,8 @@ package com.liuzhi.eschool.constants
 
 class UrlConstans{
     companion object {
-        val BaseUrl="http://47.98.126.71:8006"
+//        val BaseUrl="http://47.98.126.71:8006"
+        val BaseUrl="https://kjdszh.ctbu.edu.cn"
 
         val FirstType= "$BaseUrl/front/firstType"
         val SecondType= "$BaseUrl/front/lsTypeSecond"

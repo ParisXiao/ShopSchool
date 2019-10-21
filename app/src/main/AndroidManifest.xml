@@ -131,6 +131,11 @@
                 android:windowSoftInputMode="stateHidden|adjustPan"
                 android:screenOrientation="portrait"/>
         <activity android:name=".view.activity.SimplePlayer"/>
+        <activity android:name=".view.activity.FZSXDetailActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".view.activity.NewsListActivity" />
+        <activity android:name=".view.activity.NewsDetailActivity" />
     </application>
 
 </manifest>

@@ -1,6 +1,6 @@
-var apiUrl ='http://47.98.126.71:8006';
-var imgUrl = "http://47.98.126.71:8006";
-var wwwUrl = "http://47.98.126.71:8006";
+var apiUrl ='https://kjdszh.ctbu.edu.cn/';
+var imgUrl = "https://kjdszh.ctbu.edu.cn/";
+var wwwUrl = "https://kjdszh.ctbu.edu.cn/";
 var kj={
 	post: function (c) {
         var config = {

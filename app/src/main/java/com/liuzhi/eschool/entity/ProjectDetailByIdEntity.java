@@ -1,14 +1,9 @@
 package com.liuzhi.eschool.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class ProjectDetailByIdEntity {
-
-    /**
-     * code : 0
-     * msg : 操作成功
-     * data : {"news":[{"ifId":"633492542125510656","ifSubhead":"教学文件教学文件","ifName":"教学文件教学文件","ifRsce":"","colId":"630915844938928128","colAllId":"0","colName":"教学文件","ifCreateTime":"2019-04-10 18:08:06.0","ifStopTime":"2099-12-31 00:00:00.0","ifReleaseTime":"2019-04-10 18:08:06.0","ifCreateUId":"20181342745","ifCreateUName":"教学文件教学文件","ifEditTime":null,"ifEditUId":null,"ifEditUName":null,"ifNeedVerify":false,"ifImg":"","ifRecommend":null,"ifHeadline":null,"ifLinehead":null,"stoId":null,"stoName":null,"stoAllId":null,"ifCreateName":"guanli","ifLink":"","ifKeyword":"","ifDesc":null,"remark":null,"ifContent":null},{"ifId":"633492504762650624","ifSubhead":"教学文件","ifName":"教学文件","ifRsce":"","colId":"630915844938928128","colAllId":"0","colName":"教学文件","ifCreateTime":"2019-04-10 18:07:57.0","ifStopTime":"2099-12-31 00:00:00.0","ifReleaseTime":"2019-04-10 18:07:57.0","ifCreateUId":"20181342745","ifCreateUName":"教学文件","ifEditTime":null,"ifEditUId":null,"ifEditUName":null,"ifNeedVerify":false,"ifImg":"","ifRecommend":null,"ifHeadline":null,"ifLinehead":null,"stoId":null,"stoName":null,"stoAllId":null,"ifCreateName":"guanli","ifLink":"","ifKeyword":"","ifDesc":null,"remark":null,"ifContent":null},{"ifId":"631320540618952704","ifSubhead":"","ifName":"伊朗洪灾肆虐 已造成至少57人死亡478人受伤","ifRsce":"","colId":"631316391999311872","colAllId":"0","colName":"通知公告","ifCreateTime":"2019-04-04 18:17:21.0","ifStopTime":"2099-12-31 00:00:00.0","ifReleaseTime":"2019-04-04 18:17:26.0","ifCreateUId":"20181248699","ifCreateUName":"伊朗洪灾肆虐 已造成至少57人死亡478人受伤","ifEditTime":null,"ifEditUId":null,"ifEditUName":null,"ifNeedVerify":false,"ifImg":"","ifRecommend":null,"ifHeadline":null,"ifLinehead":null,"stoId":null,"stoName":null,"stoAllId":null,"ifCreateName":"admin","ifLink":"","ifKeyword":"","ifDesc":null,"remark":null,"ifContent":null},{"ifId":"631320398000033792","ifSubhead":"","ifName":"抽检6000篇论文","ifRsce":"","colId":"631316391999311872","colAllId":"0","colName":"通知公告","ifCreateTime":"2019-04-04 18:16:47.0","ifStopTime":"2099-12-31 00:00:00.0","ifReleaseTime":"2019-04-04 18:16:52.0","ifCreateUId":"20181248699","ifCreateUName":"抽检6000篇论文","ifEditTime":null,"ifEditUId":null,"ifEditUName":null,"ifNeedVerify":false,"ifImg":"","ifRecommend":null,"ifHeadline":null,"ifLinehead":null,"stoId":null,"stoName":null,"stoAllId":null,"ifCreateName":"admin","ifLink":"","ifKeyword":"","ifDesc":null,"remark":null,"ifContent":null},{"ifId":"631320342995931136","ifSubhead":"","ifName":"赵立新被点名批评","ifRsce":"","colId":"631316391999311872","colAllId":"0","colName":"通知公告","ifCreateTime":"2019-04-04 18:16:33.0","ifStopTime":"2099-12-31 00:00:00.0","ifReleaseTime":"2019-04-04 18:16:39.0","ifCreateUId":"20181248699","ifCreateUName":"赵立新被点名批评","ifEditTime":null,"ifEditUId":null,"ifEditUName":null,"ifNeedVerify":false,"ifImg":"","ifRecommend":null,"ifHeadline":null,"ifLinehead":null,"stoId":null,"stoName":null,"stoAllId":null,"ifCreateName":"admin","ifLink":"","ifKeyword":"","ifDesc":null,"remark":null,"ifContent":null},{"ifId":"631320278512701440","ifSubhead":"","ifName":"习近平这些话，致敬民族最闪亮的坐标","ifRsce":"","colId":"631316391999311872","colAllId":"0","colName":"通知公告","ifCreateTime":"2019-04-04 18:16:18.0","ifStopTime":"2099-12-31 00:00:00.0","ifReleaseTime":"2019-04-04 18:16:24.0","ifCreateUId":"20181248699","ifCreateUName":"习近平这些话，致敬民族最闪亮的坐标","ifEditTime":null,"ifEditUId":null,"ifEditUName":null,"ifNeedVerify":false,"ifImg":"","ifRecommend":null,"ifHeadline":null,"ifLinehead":null,"stoId":null,"stoName":null,"stoAllId":null,"ifCreateName":"admin","ifLink":"","ifKeyword":"","ifDesc":null,"remark":null,"ifContent":null},{"ifId":"631320204479041536","ifSubhead":"","ifName":"又一直销企业被投诉传销","ifRsce":"","colId":"631316391999311872","colAllId":"0","colName":"通知公告","ifCreateTime":"2019-04-04 18:16:00.0","ifStopTime":"2099-12-31 00:00:00.0","ifReleaseTime":"2019-04-04 18:16:06.0","ifCreateUId":"20181248699","ifCreateUName":"又一直销企业被投诉传销","ifEditTime":null,"ifEditUId":null,"ifEditUName":null,"ifNeedVerify":false,"ifImg":"","ifRecommend":null,"ifHeadline":null,"ifLinehead":null,"stoId":null,"stoName":null,"stoAllId":null,"ifCreateName":"admin","ifLink":"","ifKeyword":"","ifDesc":null,"remark":null,"ifContent":null}],"location":[{"colId":"630857371081510912","colName":"学科竞赛","colCreateTime":"2019-04-03 11:36:52.0","colEditTime":"2019-04-18 10:35:59.0","colUpdateId":"20181342745","colUpdateName":"guanli","colManageId":"","colCreateId":"20181342745","colCreateName":"根栏目","colManageName":"","colNode":"0","colType":2,"colSign":"XKJS","colIsNode":true,"colNav":true,"colState":true,"colAudit":false,"colSort":94,"colPage":null,"colStopTime":"2099-12-31 00:00:00.0","colReleaseTime":"2019-04-03 00:00:00.0","colMenuModel":"630858469599088640","colListModel":"630587709030666240","colInfoAlert":null,"colAuditId":"","colAuditName":"","colImg":null,"colKeyword":"","colReadLev":1,"colLink":null,"colIsCompany":false,"colAllowInfo":true,"colDesc":"","colNodeLevel":1,"remark":null,"colOther":null,"name":null,"children":null},{"colId":"630859153606184960","colName":"商务谈判","colCreateTime":"2019-04-03 11:43:57.0","colEditTime":"2019-04-03 16:06:56.0","colUpdateId":"20181248699","colUpdateName":"admin","colManageId":"","colCreateId":"20181342745","colCreateName":"学科竞赛","colManageName":"","colNode":"630857371081510912","colType":7,"colSign":"SWTP","colIsNode":true,"colNav":false,"colState":true,"colAudit":false,"colSort":0,"colPage":null,"colStopTime":"2099-12-31 00:00:00.0","colReleaseTime":"2019-04-02 00:00:00.0","colMenuModel":"630587944628916224","colListModel":"630587709030666240","colInfoAlert":null,"colAuditId":"","colAuditName":"","colImg":"/static/upload//column/1554263037731.jpg","colKeyword":"","colReadLev":1,"colLink":null,"colIsCompany":false,"colAllowInfo":true,"colDesc":" ","colNodeLevel":1,"remark":null,"colOther":null,"name":null,"children":null}],"leftMenuHead":{"colId":"630857371081510912","colName":"学科竞赛","colCreateTime":"2019-04-03 11:36:52.0","colEditTime":"2019-04-18 10:35:59.0","colUpdateId":"20181342745","colUpdateName":"guanli","colManageId":"","colCreateId":"20181342745","colCreateName":"根栏目","colManageName":"","colNode":"0","colType":2,"colSign":"XKJS","colIsNode":true,"colNav":true,"colState":true,"colAudit":false,"colSort":94,"colPage":null,"colStopTime":"2099-12-31 00:00:00.0","colReleaseTime":"2019-04-03 00:00:00.0","colMenuModel":"630858469599088640","colListModel":"630587709030666240","colInfoAlert":null,"colAuditId":"","colAuditName":"","colImg":null,"colKeyword":"","colReadLev":1,"colLink":null,"colIsCompany":false,"colAllowInfo":true,"colDesc":"","colNodeLevel":1,"remark":null,"colOther":null,"name":null,"children":null},"leftMenu":[{"colId":"630859153606184960","colName":"商务谈判","colCreateTime":"2019-04-03 11:43:57.0","colEditTime":"2019-04-03 16:06:56.0","colUpdateId":"20181248699","colUpdateName":"admin","colManageId":"","colCreateId":"20181342745","colCreateName":"学科竞赛","colManageName":"","colNode":"630857371081510912","colType":7,"colSign":"SWTP","colIsNode":true,"colNav":false,"colState":true,"colAudit":false,"colSort":0,"colPage":null,"colStopTime":"2099-12-31 00:00:00.0","colReleaseTime":"2019-04-02 00:00:00.0","colMenuModel":"630587944628916224","colListModel":"630587709030666240","colInfoAlert":null,"colAuditId":"","colAuditName":"","colImg":"/static/upload//column/1554263037731.jpg","colKeyword":"","colReadLev":1,"colLink":null,"colIsCompany":false,"colAllowInfo":true,"colDesc":" ","colNodeLevel":1,"remark":null,"colOther":null,"name":null,"children":null}],"info":[{"column":{"colId":"630859541155680256","colName":"竞赛介绍","colCreateTime":"2019-04-03 11:45:30.0","colEditTime":"2019-04-03 11:57:05.0","colUpdateId":"20181342745","colUpdateName":"杜康","colManageId":"","colCreateId":"20181342745","colCreateName":"商务谈判","colManageName":"","colNode":"630859153606184960","colType":2,"colSign":"JSJS","colIsNode":false,"colNav":false,"colState":true,"colAudit":false,"colSort":0,"colPage":null,"colStopTime":"2099-12-31 00:00:00.0","colReleaseTime":"2019-04-03 00:00:00.0","colMenuModel":"630587944628916224","colListModel":"630587709030666240","colInfoAlert":null,"colAuditId":"","colAuditName":"","colImg":"/static/upload//column/1554263152747.jpg","colKeyword":"","colReadLev":1,"colLink":null,"colIsCompany":true,"colAllowInfo":true,"colDesc":"","colNodeLevel":1,"remark":null,"colOther":null,"name":null,"children":null},"info":[{"ifId":"630892155761594368","ifSubhead":"","ifName":"商务谈判-竞赛介绍","ifRsce":"","colId":"630859541155680256","colAllId":"0","colName":"竞赛介绍","ifCreateTime":"2019-04-03 13:55:06.0","ifStopTime":"2099-12-31 00:00:00.0","ifReleaseTime":"2019-04-03 13:55:06.0","ifCreateUId":"20181342745","ifCreateUName":"其创始人尛尛于2016年在我平台学习至今，了解真实跨境电商经营失误、失败的风险，通过实训平台，使学员敢于尝试，敢于冒险并从失误重吸取教训，从成功中领悟跨境电商经营管理的真谛。全仿真模拟跨境电商B2B交易平台，以卖家店铺运营为核心点，增强学生店铺运营能力，帮助学生熟悉交易平台规则，熟悉店铺运营要点，同时提高教学效率和教学质量，帮助老师实时掌控学生学习情况，增加实战教学的可控性和趣味性。，了解真实跨境电商经营失误、失败的风险，通过实训平台，使学员敢于尝试，敢于冒险并从失误重吸取教训，从成功中领悟跨境电商经营管理的真谛。全仿真模拟跨境电商B2B交易平台，以卖家店铺运营为核心点，增强学生店铺运营能力，帮助学生熟悉交易平台规则，熟悉店铺运营要点，同时提高教学效率和教学质量，帮助老师实时掌控学生学习情况，增加实战教学的可控性和趣味性。","ifEditTime":null,"ifEditUId":null,"ifEditUName":null,"ifNeedVerify":false,"ifImg":"/static/upload/information/1554270906039.jpg ","ifRecommend":null,"ifHeadline":null,"ifLinehead":null,"stoId":null,"stoName":null,"stoAllId":null,"ifCreateName":"杜康","ifLink":"","ifKeyword":"","ifDesc":null,"remark":null,"ifContent":"其创始人尛尛于2016年在我平台学习至今，了解真实跨境电商经营失误、失败的风险，通过实训平台，使学员敢于尝试，敢于冒险并从失误重吸取教训，从成功中领悟跨境电商经营管理的真谛。全仿真模拟跨境电商B2B交易平台，以卖家店铺运营为核心点，增强学生店铺运营能力，帮助学生熟悉交易平台规则，熟悉店铺运营要点，同时提高教学效率和教学质量，帮助老师实时掌控学生学习情况，增加实战教学的可控性和趣味性。，了解真实跨境电商经营失误、失败的风险，通过实训平台，使学员敢于尝试，敢于冒险并从失误重吸取教训，从成功中领悟跨境电商经营管理的真谛。全仿真模拟跨境电商B2B交易平台，以卖家店铺运营为核心点，增强学生店铺运营能力，帮助学生熟悉交易平台规则，熟悉店铺运营要点，同时提高教学效率和教学质量，帮助老师实时掌控学生学习情况，增加实战教学的可控性和趣味性。其创始人尛尛于2016年在我平台学习至今，了解真实跨境电商经营失误、失败的风险，通过实训平台，使学员敢于尝试，敢于冒险并从失误重吸取教训，从成功中领悟跨境电商经营管理的真谛。全仿真模拟跨境电商B2B交易平台，以卖家店铺运营为核心点，增强学生店铺运营能力，帮助学生熟悉交易平台规则，熟悉店铺运营要点，同时提高教学效率和教学质量，帮助老师实时掌控学生学习情况，增加实战教学的可控性和趣味性。，了解真实跨境电商经营失误、失败的风险，通过实训平台，使学员敢于尝试，敢于冒险并从失误重吸取教训，从成功中领悟跨境电商经营管理的真谛。全仿真模拟跨境电商B2B交易平台，以卖家店铺运营为核心点，增强学生店铺运营能力，帮助学生熟悉交易平台规则，熟悉店铺运营要点，同时提高教学效率和教学质量，帮助老师实时掌控学生学习情况，增加实战教学的可控性和趣味性。其创始人尛尛于2016年在我平台学习至今，了解真实跨境电商经营失误、失败的风险，通过实训平台，使学员敢于尝试，敢于冒险并从失误重吸取教训，从成功中领悟跨境电商经营管理的真谛。全仿真模拟跨境电商B2B交易平台，以卖家店铺运营为核心点，增强学生店铺运营能力，帮助学生熟悉交易平台规则，熟悉店铺运营要点，同时提高教学效率和教学质量，帮助老师实时掌控学生学习情况，增加实战教学的可控性和趣味性。，了解真实跨境电商经营失误、失败的风险，通过实训平台，使学员敢于尝试，敢于冒险并从失误重吸取教训，从成功中领悟跨境电商经营管理的真谛。全仿真模拟跨境电商B2B交易平台，以卖家店铺运营为核心点，增强学生店铺运营能力，帮助学生熟悉交易平台规则，熟悉店铺运营要点，同时提高教学效率和教学质量，帮助老师实时掌控学生学习情况，增加实战教学的可控性和趣味性。"}]},{"column":{"colId":"630859748715008000","colName":"参赛团队","colCreateTime":"2019-04-03 11:46:19.0","colEditTime":"2019-04-03 11:57:05.0","colUpdateId":"20181342745","colUpdateName":"杜康","colManageId":"","colCreateId":"20181342745","colCreateName":"商务谈判","colManageName":"","colNode":"630859153606184960","colType":2,"colSign":"CSTD","colIsNode":false,"colNav":false,"colState":true,"colAudit":false,"colSort":0,"colPage":null,"colStopTime":"2099-12-31 00:00:00.0","colReleaseTime":"2019-04-03 00:00:00.0","colMenuModel":"630587944628916224","colListModel":"630587709030666240","colInfoAlert":null,"colAuditId":"","colAuditName":"","colImg":"/static/upload//column/1554263189687.jpg","colKeyword":"","colReadLev":1,"colLink":null,"colIsCompany":true,"colAllowInfo":true,"colDesc":"","colNodeLevel":1,"remark":null,"colOther":null,"name":null,"children":null},"info":[{"ifId":"630898330162958336","ifSubhead":"","ifName":"团队名称：叉叉团队","ifRsce":"","colId":"630859748715008000","colAllId":"0","colName":"参赛团队","ifCreateTime":"2019-04-03 14:19:38.0","ifStopTime":"2099-12-31 00:00:00.0","ifReleaseTime":"2019-04-03 14:19:28.0","ifCreateUId":"20181342745","ifCreateUName":"叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队","ifEditTime":null,"ifEditUId":null,"ifEditUName":null,"ifNeedVerify":false,"ifImg":"/static/upload/information/1554272368737.jpg ","ifRecommend":null,"ifHeadline":null,"ifLinehead":null,"stoId":null,"stoName":null,"stoAllId":null,"ifCreateName":"杜康","ifLink":"","ifKeyword":"","ifDesc":null,"remark":null,"ifContent":"<p>\r\n\t<span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span>\r\n<\/p>\r\n<p>\r\n\t<span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span>叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队<br />\r\n<\/span>\r\n<\/p>"}]},{"column":{"colId":"630890284070211584","colName":"赛前准备","colCreateTime":"2019-04-03 13:47:39.0","colEditTime":"2019-04-03 16:05:15.0","colUpdateId":"20181248699","colUpdateName":"admin","colManageId":null,"colCreateId":"20181342745","colCreateName":"商务谈判","colManageName":null,"colNode":"630859153606184960","colType":2,"colSign":"SQZB","colIsNode":false,"colNav":false,"colState":true,"colAudit":false,"colSort":0,"colPage":null,"colStopTime":"2099-12-31 00:00:00.0","colReleaseTime":"2019-04-03 13:47:39.0","colMenuModel":"630587944628916224","colListModel":"630587709030666240","colInfoAlert":null,"colAuditId":null,"colAuditName":null,"colImg":null,"colKeyword":"","colReadLev":1,"colLink":null,"colIsCompany":true,"colAllowInfo":true,"colDesc":"","colNodeLevel":1,"remark":null,"colOther":null,"name":null,"children":null},"info":[{"ifId":"630906341472342016","ifSubhead":"","ifName":"商务谈判-赛前准备","ifRsce":"","colId":"630890284070211584","colAllId":"0","colName":"赛前准备","ifCreateTime":"2019-04-03 14:51:28.0","ifStopTime":"2099-12-31 00:00:00.0","ifReleaseTime":"2019-04-03 14:31:38.0","ifCreateUId":"20181342745","ifCreateUName":"商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备","ifEditTime":null,"ifEditUId":null,"ifEditUName":null,"ifNeedVerify":false,"ifImg":"/static/upload/information/1554274288166.jpg /static/upload/information/1554274288166.jpg /static/upload/information/1554274288167.jpg ","ifRecommend":null,"ifHeadline":null,"ifLinehead":null,"stoId":null,"stoName":null,"stoAllId":null,"ifCreateName":"杜康","ifLink":"","ifKeyword":"","ifDesc":null,"remark":null,"ifContent":"<p>\r\n\t<p>\r\n\t\t商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备\r\n\t<\/p>\r\n\t<p>\r\n\t\t商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备\r\n\t<\/p>\r\n\t<p>\r\n\t\t商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备\r\n\t<\/p>\r\n\t<p>\r\n\t\t商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备\r\n\t<\/p>\r\n\t<p>\r\n\t\t商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备\r\n\t<\/p>\r\n\t<p>\r\n\t\t商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备\r\n\t<\/p>\r\n<\/p>\r\n<p>\r\n\t<br />\r\n<\/p>"}]},{"column":{"colId":"630890344845676544","colName":"过程演示","colCreateTime":"2019-04-03 13:47:54.0","colEditTime":"2019-04-03 16:05:16.0","colUpdateId":"20181248699","colUpdateName":"admin","colManageId":null,"colCreateId":"20181342745","colCreateName":"商务谈判","colManageName":null,"colNode":"630859153606184960","colType":2,"colSign":"GCYS","colIsNode":false,"colNav":false,"colState":true,"colAudit":false,"colSort":0,"colPage":null,"colStopTime":"2099-12-31 00:00:00.0","colReleaseTime":"2019-04-03 13:47:54.0","colMenuModel":"630587944628916224","colListModel":"630587709030666240","colInfoAlert":null,"colAuditId":null,"colAuditName":null,"colImg":null,"colKeyword":"","colReadLev":1,"colLink":null,"colIsCompany":true,"colAllowInfo":true,"colDesc":"","colNodeLevel":1,"remark":null,"colOther":null,"name":null,"children":null},"info":[{"ifId":"630908569331437568","ifSubhead":"","ifName":"过程展示","ifRsce":"","colId":"630890344845676544","colAllId":"0","colName":"过程演示","ifCreateTime":"2019-04-03 15:00:19.0","ifStopTime":"2099-12-31 00:00:00.0","ifReleaseTime":"2019-04-03 14:59:10.0","ifCreateUId":"20181342745","ifCreateUName":"过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示","ifEditTime":null,"ifEditUId":null,"ifEditUName":null,"ifNeedVerify":false,"ifImg":"/static/upload/information/1554274819329.jpg /static/upload/information/1554274819330.jpg /static/upload/information/1554274819331.jpg ","ifRecommend":null,"ifHeadline":null,"ifLinehead":null,"stoId":null,"stoName":null,"stoAllId":null,"ifCreateName":"杜康","ifLink":"","ifKeyword":"","ifDesc":null,"remark":null,"ifContent":"<p>\r\n\t过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示\r\n<\/p>\r\n<p>\r\n\t过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示\r\n<\/p>"}]},{"column":{"colId":"630890396687273984","colName":"荣誉展示","colCreateTime":"2019-04-03 13:48:06.0","colEditTime":"2019-04-03 16:07:37.0","colUpdateId":"20181248699","colUpdateName":"admin","colManageId":null,"colCreateId":"20181342745","colCreateName":"商务谈判","colManageName":null,"colNode":"630859153606184960","colType":2,"colSign":"RYZS","colIsNode":false,"colNav":false,"colState":true,"colAudit":false,"colSort":0,"colPage":null,"colStopTime":"2099-12-31 00:00:00.0","colReleaseTime":"2019-04-03 13:48:06.0","colMenuModel":"630587944628916224","colListModel":"630587709030666240","colInfoAlert":null,"colAuditId":null,"colAuditName":null,"colImg":null,"colKeyword":"","colReadLev":1,"colLink":null,"colIsCompany":true,"colAllowInfo":true,"colDesc":"","colNodeLevel":1,"remark":null,"colOther":null,"name":null,"children":null},"info":[{"ifId":"630910012071350272","ifSubhead":"","ifName":"荣誉展示","ifRsce":"","colId":"630890396687273984","colAllId":"0","colName":"荣誉展示","ifCreateTime":"2019-04-03 15:06:03.0","ifStopTime":"2099-12-31 00:00:00.0","ifReleaseTime":"2019-04-03 15:06:03.0","ifCreateUId":"20181342745","ifCreateUName":"荣誉展示荣誉展示荣誉展示荣誉展示","ifEditTime":null,"ifEditUId":null,"ifEditUName":null,"ifNeedVerify":false,"ifImg":"/static/upload/information/1554275163273.jpg /static/upload/information/1554275163283.jpg /static/upload/information/1554275163293.jpg ","ifRecommend":null,"ifHeadline":null,"ifLinehead":null,"stoId":null,"stoName":null,"stoAllId":null,"ifCreateName":"杜康","ifLink":"","ifKeyword":"","ifDesc":null,"remark":null,"ifContent":"荣誉展示荣誉展示荣誉展示荣誉展示荣誉展示荣誉展示荣誉展示荣誉展示荣誉展示"}]}]}
-     */
+public class ProjectDetailByIdEntity implements Serializable {
 
     private int code;
     private String msg;
@@ -38,15 +33,7 @@ public class ProjectDetailByIdEntity {
         this.data = data;
     }
 
-    public static class DataBean {
-        /**
-         * news : [{"ifId":"633492542125510656","ifSubhead":"教学文件教学文件","ifName":"教学文件教学文件","ifRsce":"","colId":"630915844938928128","colAllId":"0","colName":"教学文件","ifCreateTime":"2019-04-10 18:08:06.0","ifStopTime":"2099-12-31 00:00:00.0","ifReleaseTime":"2019-04-10 18:08:06.0","ifCreateUId":"20181342745","ifCreateUName":"教学文件教学文件","ifEditTime":null,"ifEditUId":null,"ifEditUName":null,"ifNeedVerify":false,"ifImg":"","ifRecommend":null,"ifHeadline":null,"ifLinehead":null,"stoId":null,"stoName":null,"stoAllId":null,"ifCreateName":"guanli","ifLink":"","ifKeyword":"","ifDesc":null,"remark":null,"ifContent":null},{"ifId":"633492504762650624","ifSubhead":"教学文件","ifName":"教学文件","ifRsce":"","colId":"630915844938928128","colAllId":"0","colName":"教学文件","ifCreateTime":"2019-04-10 18:07:57.0","ifStopTime":"2099-12-31 00:00:00.0","ifReleaseTime":"2019-04-10 18:07:57.0","ifCreateUId":"20181342745","ifCreateUName":"教学文件","ifEditTime":null,"ifEditUId":null,"ifEditUName":null,"ifNeedVerify":false,"ifImg":"","ifRecommend":null,"ifHeadline":null,"ifLinehead":null,"stoId":null,"stoName":null,"stoAllId":null,"ifCreateName":"guanli","ifLink":"","ifKeyword":"","ifDesc":null,"remark":null,"ifContent":null},{"ifId":"631320540618952704","ifSubhead":"","ifName":"伊朗洪灾肆虐 已造成至少57人死亡478人受伤","ifRsce":"","colId":"631316391999311872","colAllId":"0","colName":"通知公告","ifCreateTime":"2019-04-04 18:17:21.0","ifStopTime":"2099-12-31 00:00:00.0","ifReleaseTime":"2019-04-04 18:17:26.0","ifCreateUId":"20181248699","ifCreateUName":"伊朗洪灾肆虐 已造成至少57人死亡478人受伤","ifEditTime":null,"ifEditUId":null,"ifEditUName":null,"ifNeedVerify":false,"ifImg":"","ifRecommend":null,"ifHeadline":null,"ifLinehead":null,"stoId":null,"stoName":null,"stoAllId":null,"ifCreateName":"admin","ifLink":"","ifKeyword":"","ifDesc":null,"remark":null,"ifContent":null},{"ifId":"631320398000033792","ifSubhead":"","ifName":"抽检6000篇论文","ifRsce":"","colId":"631316391999311872","colAllId":"0","colName":"通知公告","ifCreateTime":"2019-04-04 18:16:47.0","ifStopTime":"2099-12-31 00:00:00.0","ifReleaseTime":"2019-04-04 18:16:52.0","ifCreateUId":"20181248699","ifCreateUName":"抽检6000篇论文","ifEditTime":null,"ifEditUId":null,"ifEditUName":null,"ifNeedVerify":false,"ifImg":"","ifRecommend":null,"ifHeadline":null,"ifLinehead":null,"stoId":null,"stoName":null,"stoAllId":null,"ifCreateName":"admin","ifLink":"","ifKeyword":"","ifDesc":null,"remark":null,"ifContent":null},{"ifId":"631320342995931136","ifSubhead":"","ifName":"赵立新被点名批评","ifRsce":"","colId":"631316391999311872","colAllId":"0","colName":"通知公告","ifCreateTime":"2019-04-04 18:16:33.0","ifStopTime":"2099-12-31 00:00:00.0","ifReleaseTime":"2019-04-04 18:16:39.0","ifCreateUId":"20181248699","ifCreateUName":"赵立新被点名批评","ifEditTime":null,"ifEditUId":null,"ifEditUName":null,"ifNeedVerify":false,"ifImg":"","ifRecommend":null,"ifHeadline":null,"ifLinehead":null,"stoId":null,"stoName":null,"stoAllId":null,"ifCreateName":"admin","ifLink":"","ifKeyword":"","ifDesc":null,"remark":null,"ifContent":null},{"ifId":"631320278512701440","ifSubhead":"","ifName":"习近平这些话，致敬民族最闪亮的坐标","ifRsce":"","colId":"631316391999311872","colAllId":"0","colName":"通知公告","ifCreateTime":"2019-04-04 18:16:18.0","ifStopTime":"2099-12-31 00:00:00.0","ifReleaseTime":"2019-04-04 18:16:24.0","ifCreateUId":"20181248699","ifCreateUName":"习近平这些话，致敬民族最闪亮的坐标","ifEditTime":null,"ifEditUId":null,"ifEditUName":null,"ifNeedVerify":false,"ifImg":"","ifRecommend":null,"ifHeadline":null,"ifLinehead":null,"stoId":null,"stoName":null,"stoAllId":null,"ifCreateName":"admin","ifLink":"","ifKeyword":"","ifDesc":null,"remark":null,"ifContent":null},{"ifId":"631320204479041536","ifSubhead":"","ifName":"又一直销企业被投诉传销","ifRsce":"","colId":"631316391999311872","colAllId":"0","colName":"通知公告","ifCreateTime":"2019-04-04 18:16:00.0","ifStopTime":"2099-12-31 00:00:00.0","ifReleaseTime":"2019-04-04 18:16:06.0","ifCreateUId":"20181248699","ifCreateUName":"又一直销企业被投诉传销","ifEditTime":null,"ifEditUId":null,"ifEditUName":null,"ifNeedVerify":false,"ifImg":"","ifRecommend":null,"ifHeadline":null,"ifLinehead":null,"stoId":null,"stoName":null,"stoAllId":null,"ifCreateName":"admin","ifLink":"","ifKeyword":"","ifDesc":null,"remark":null,"ifContent":null}]
-         * location : [{"colId":"630857371081510912","colName":"学科竞赛","colCreateTime":"2019-04-03 11:36:52.0","colEditTime":"2019-04-18 10:35:59.0","colUpdateId":"20181342745","colUpdateName":"guanli","colManageId":"","colCreateId":"20181342745","colCreateName":"根栏目","colManageName":"","colNode":"0","colType":2,"colSign":"XKJS","colIsNode":true,"colNav":true,"colState":true,"colAudit":false,"colSort":94,"colPage":null,"colStopTime":"2099-12-31 00:00:00.0","colReleaseTime":"2019-04-03 00:00:00.0","colMenuModel":"630858469599088640","colListModel":"630587709030666240","colInfoAlert":null,"colAuditId":"","colAuditName":"","colImg":null,"colKeyword":"","colReadLev":1,"colLink":null,"colIsCompany":false,"colAllowInfo":true,"colDesc":"","colNodeLevel":1,"remark":null,"colOther":null,"name":null,"children":null},{"colId":"630859153606184960","colName":"商务谈判","colCreateTime":"2019-04-03 11:43:57.0","colEditTime":"2019-04-03 16:06:56.0","colUpdateId":"20181248699","colUpdateName":"admin","colManageId":"","colCreateId":"20181342745","colCreateName":"学科竞赛","colManageName":"","colNode":"630857371081510912","colType":7,"colSign":"SWTP","colIsNode":true,"colNav":false,"colState":true,"colAudit":false,"colSort":0,"colPage":null,"colStopTime":"2099-12-31 00:00:00.0","colReleaseTime":"2019-04-02 00:00:00.0","colMenuModel":"630587944628916224","colListModel":"630587709030666240","colInfoAlert":null,"colAuditId":"","colAuditName":"","colImg":"/static/upload//column/1554263037731.jpg","colKeyword":"","colReadLev":1,"colLink":null,"colIsCompany":false,"colAllowInfo":true,"colDesc":" ","colNodeLevel":1,"remark":null,"colOther":null,"name":null,"children":null}]
-         * leftMenuHead : {"colId":"630857371081510912","colName":"学科竞赛","colCreateTime":"2019-04-03 11:36:52.0","colEditTime":"2019-04-18 10:35:59.0","colUpdateId":"20181342745","colUpdateName":"guanli","colManageId":"","colCreateId":"20181342745","colCreateName":"根栏目","colManageName":"","colNode":"0","colType":2,"colSign":"XKJS","colIsNode":true,"colNav":true,"colState":true,"colAudit":false,"colSort":94,"colPage":null,"colStopTime":"2099-12-31 00:00:00.0","colReleaseTime":"2019-04-03 00:00:00.0","colMenuModel":"630858469599088640","colListModel":"630587709030666240","colInfoAlert":null,"colAuditId":"","colAuditName":"","colImg":null,"colKeyword":"","colReadLev":1,"colLink":null,"colIsCompany":false,"colAllowInfo":true,"colDesc":"","colNodeLevel":1,"remark":null,"colOther":null,"name":null,"children":null}
-         * leftMenu : [{"colId":"630859153606184960","colName":"商务谈判","colCreateTime":"2019-04-03 11:43:57.0","colEditTime":"2019-04-03 16:06:56.0","colUpdateId":"20181248699","colUpdateName":"admin","colManageId":"","colCreateId":"20181342745","colCreateName":"学科竞赛","colManageName":"","colNode":"630857371081510912","colType":7,"colSign":"SWTP","colIsNode":true,"colNav":false,"colState":true,"colAudit":false,"colSort":0,"colPage":null,"colStopTime":"2099-12-31 00:00:00.0","colReleaseTime":"2019-04-02 00:00:00.0","colMenuModel":"630587944628916224","colListModel":"630587709030666240","colInfoAlert":null,"colAuditId":"","colAuditName":"","colImg":"/static/upload//column/1554263037731.jpg","colKeyword":"","colReadLev":1,"colLink":null,"colIsCompany":false,"colAllowInfo":true,"colDesc":" ","colNodeLevel":1,"remark":null,"colOther":null,"name":null,"children":null}]
-         * info : [{"column":{"colId":"630859541155680256","colName":"竞赛介绍","colCreateTime":"2019-04-03 11:45:30.0","colEditTime":"2019-04-03 11:57:05.0","colUpdateId":"20181342745","colUpdateName":"杜康","colManageId":"","colCreateId":"20181342745","colCreateName":"商务谈判","colManageName":"","colNode":"630859153606184960","colType":2,"colSign":"JSJS","colIsNode":false,"colNav":false,"colState":true,"colAudit":false,"colSort":0,"colPage":null,"colStopTime":"2099-12-31 00:00:00.0","colReleaseTime":"2019-04-03 00:00:00.0","colMenuModel":"630587944628916224","colListModel":"630587709030666240","colInfoAlert":null,"colAuditId":"","colAuditName":"","colImg":"/static/upload//column/1554263152747.jpg","colKeyword":"","colReadLev":1,"colLink":null,"colIsCompany":true,"colAllowInfo":true,"colDesc":"","colNodeLevel":1,"remark":null,"colOther":null,"name":null,"children":null},"info":[{"ifId":"630892155761594368","ifSubhead":"","ifName":"商务谈判-竞赛介绍","ifRsce":"","colId":"630859541155680256","colAllId":"0","colName":"竞赛介绍","ifCreateTime":"2019-04-03 13:55:06.0","ifStopTime":"2099-12-31 00:00:00.0","ifReleaseTime":"2019-04-03 13:55:06.0","ifCreateUId":"20181342745","ifCreateUName":"其创始人尛尛于2016年在我平台学习至今，了解真实跨境电商经营失误、失败的风险，通过实训平台，使学员敢于尝试，敢于冒险并从失误重吸取教训，从成功中领悟跨境电商经营管理的真谛。全仿真模拟跨境电商B2B交易平台，以卖家店铺运营为核心点，增强学生店铺运营能力，帮助学生熟悉交易平台规则，熟悉店铺运营要点，同时提高教学效率和教学质量，帮助老师实时掌控学生学习情况，增加实战教学的可控性和趣味性。，了解真实跨境电商经营失误、失败的风险，通过实训平台，使学员敢于尝试，敢于冒险并从失误重吸取教训，从成功中领悟跨境电商经营管理的真谛。全仿真模拟跨境电商B2B交易平台，以卖家店铺运营为核心点，增强学生店铺运营能力，帮助学生熟悉交易平台规则，熟悉店铺运营要点，同时提高教学效率和教学质量，帮助老师实时掌控学生学习情况，增加实战教学的可控性和趣味性。","ifEditTime":null,"ifEditUId":null,"ifEditUName":null,"ifNeedVerify":false,"ifImg":"/static/upload/information/1554270906039.jpg ","ifRecommend":null,"ifHeadline":null,"ifLinehead":null,"stoId":null,"stoName":null,"stoAllId":null,"ifCreateName":"杜康","ifLink":"","ifKeyword":"","ifDesc":null,"remark":null,"ifContent":"其创始人尛尛于2016年在我平台学习至今，了解真实跨境电商经营失误、失败的风险，通过实训平台，使学员敢于尝试，敢于冒险并从失误重吸取教训，从成功中领悟跨境电商经营管理的真谛。全仿真模拟跨境电商B2B交易平台，以卖家店铺运营为核心点，增强学生店铺运营能力，帮助学生熟悉交易平台规则，熟悉店铺运营要点，同时提高教学效率和教学质量，帮助老师实时掌控学生学习情况，增加实战教学的可控性和趣味性。，了解真实跨境电商经营失误、失败的风险，通过实训平台，使学员敢于尝试，敢于冒险并从失误重吸取教训，从成功中领悟跨境电商经营管理的真谛。全仿真模拟跨境电商B2B交易平台，以卖家店铺运营为核心点，增强学生店铺运营能力，帮助学生熟悉交易平台规则，熟悉店铺运营要点，同时提高教学效率和教学质量，帮助老师实时掌控学生学习情况，增加实战教学的可控性和趣味性。其创始人尛尛于2016年在我平台学习至今，了解真实跨境电商经营失误、失败的风险，通过实训平台，使学员敢于尝试，敢于冒险并从失误重吸取教训，从成功中领悟跨境电商经营管理的真谛。全仿真模拟跨境电商B2B交易平台，以卖家店铺运营为核心点，增强学生店铺运营能力，帮助学生熟悉交易平台规则，熟悉店铺运营要点，同时提高教学效率和教学质量，帮助老师实时掌控学生学习情况，增加实战教学的可控性和趣味性。，了解真实跨境电商经营失误、失败的风险，通过实训平台，使学员敢于尝试，敢于冒险并从失误重吸取教训，从成功中领悟跨境电商经营管理的真谛。全仿真模拟跨境电商B2B交易平台，以卖家店铺运营为核心点，增强学生店铺运营能力，帮助学生熟悉交易平台规则，熟悉店铺运营要点，同时提高教学效率和教学质量，帮助老师实时掌控学生学习情况，增加实战教学的可控性和趣味性。其创始人尛尛于2016年在我平台学习至今，了解真实跨境电商经营失误、失败的风险，通过实训平台，使学员敢于尝试，敢于冒险并从失误重吸取教训，从成功中领悟跨境电商经营管理的真谛。全仿真模拟跨境电商B2B交易平台，以卖家店铺运营为核心点，增强学生店铺运营能力，帮助学生熟悉交易平台规则，熟悉店铺运营要点，同时提高教学效率和教学质量，帮助老师实时掌控学生学习情况，增加实战教学的可控性和趣味性。，了解真实跨境电商经营失误、失败的风险，通过实训平台，使学员敢于尝试，敢于冒险并从失误重吸取教训，从成功中领悟跨境电商经营管理的真谛。全仿真模拟跨境电商B2B交易平台，以卖家店铺运营为核心点，增强学生店铺运营能力，帮助学生熟悉交易平台规则，熟悉店铺运营要点，同时提高教学效率和教学质量，帮助老师实时掌控学生学习情况，增加实战教学的可控性和趣味性。"}]},{"column":{"colId":"630859748715008000","colName":"参赛团队","colCreateTime":"2019-04-03 11:46:19.0","colEditTime":"2019-04-03 11:57:05.0","colUpdateId":"20181342745","colUpdateName":"杜康","colManageId":"","colCreateId":"20181342745","colCreateName":"商务谈判","colManageName":"","colNode":"630859153606184960","colType":2,"colSign":"CSTD","colIsNode":false,"colNav":false,"colState":true,"colAudit":false,"colSort":0,"colPage":null,"colStopTime":"2099-12-31 00:00:00.0","colReleaseTime":"2019-04-03 00:00:00.0","colMenuModel":"630587944628916224","colListModel":"630587709030666240","colInfoAlert":null,"colAuditId":"","colAuditName":"","colImg":"/static/upload//column/1554263189687.jpg","colKeyword":"","colReadLev":1,"colLink":null,"colIsCompany":true,"colAllowInfo":true,"colDesc":"","colNodeLevel":1,"remark":null,"colOther":null,"name":null,"children":null},"info":[{"ifId":"630898330162958336","ifSubhead":"","ifName":"团队名称：叉叉团队","ifRsce":"","colId":"630859748715008000","colAllId":"0","colName":"参赛团队","ifCreateTime":"2019-04-03 14:19:38.0","ifStopTime":"2099-12-31 00:00:00.0","ifReleaseTime":"2019-04-03 14:19:28.0","ifCreateUId":"20181342745","ifCreateUName":"叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队","ifEditTime":null,"ifEditUId":null,"ifEditUName":null,"ifNeedVerify":false,"ifImg":"/static/upload/information/1554272368737.jpg ","ifRecommend":null,"ifHeadline":null,"ifLinehead":null,"stoId":null,"stoName":null,"stoAllId":null,"ifCreateName":"杜康","ifLink":"","ifKeyword":"","ifDesc":null,"remark":null,"ifContent":"<p>\r\n\t<span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span>\r\n<\/p>\r\n<p>\r\n\t<span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span><span>叉叉团队是一个大型的团队<\/span>叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队叉叉团队是一个大型的团队<br />\r\n<\/span>\r\n<\/p>"}]},{"column":{"colId":"630890284070211584","colName":"赛前准备","colCreateTime":"2019-04-03 13:47:39.0","colEditTime":"2019-04-03 16:05:15.0","colUpdateId":"20181248699","colUpdateName":"admin","colManageId":null,"colCreateId":"20181342745","colCreateName":"商务谈判","colManageName":null,"colNode":"630859153606184960","colType":2,"colSign":"SQZB","colIsNode":false,"colNav":false,"colState":true,"colAudit":false,"colSort":0,"colPage":null,"colStopTime":"2099-12-31 00:00:00.0","colReleaseTime":"2019-04-03 13:47:39.0","colMenuModel":"630587944628916224","colListModel":"630587709030666240","colInfoAlert":null,"colAuditId":null,"colAuditName":null,"colImg":null,"colKeyword":"","colReadLev":1,"colLink":null,"colIsCompany":true,"colAllowInfo":true,"colDesc":"","colNodeLevel":1,"remark":null,"colOther":null,"name":null,"children":null},"info":[{"ifId":"630906341472342016","ifSubhead":"","ifName":"商务谈判-赛前准备","ifRsce":"","colId":"630890284070211584","colAllId":"0","colName":"赛前准备","ifCreateTime":"2019-04-03 14:51:28.0","ifStopTime":"2099-12-31 00:00:00.0","ifReleaseTime":"2019-04-03 14:31:38.0","ifCreateUId":"20181342745","ifCreateUName":"商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备","ifEditTime":null,"ifEditUId":null,"ifEditUName":null,"ifNeedVerify":false,"ifImg":"/static/upload/information/1554274288166.jpg /static/upload/information/1554274288166.jpg /static/upload/information/1554274288167.jpg ","ifRecommend":null,"ifHeadline":null,"ifLinehead":null,"stoId":null,"stoName":null,"stoAllId":null,"ifCreateName":"杜康","ifLink":"","ifKeyword":"","ifDesc":null,"remark":null,"ifContent":"<p>\r\n\t<p>\r\n\t\t商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备\r\n\t<\/p>\r\n\t<p>\r\n\t\t商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备\r\n\t<\/p>\r\n\t<p>\r\n\t\t商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备\r\n\t<\/p>\r\n\t<p>\r\n\t\t商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备\r\n\t<\/p>\r\n\t<p>\r\n\t\t商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备\r\n\t<\/p>\r\n\t<p>\r\n\t\t商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备商务谈判-赛前准备\r\n\t<\/p>\r\n<\/p>\r\n<p>\r\n\t<br />\r\n<\/p>"}]},{"column":{"colId":"630890344845676544","colName":"过程演示","colCreateTime":"2019-04-03 13:47:54.0","colEditTime":"2019-04-03 16:05:16.0","colUpdateId":"20181248699","colUpdateName":"admin","colManageId":null,"colCreateId":"20181342745","colCreateName":"商务谈判","colManageName":null,"colNode":"630859153606184960","colType":2,"colSign":"GCYS","colIsNode":false,"colNav":false,"colState":true,"colAudit":false,"colSort":0,"colPage":null,"colStopTime":"2099-12-31 00:00:00.0","colReleaseTime":"2019-04-03 13:47:54.0","colMenuModel":"630587944628916224","colListModel":"630587709030666240","colInfoAlert":null,"colAuditId":null,"colAuditName":null,"colImg":null,"colKeyword":"","colReadLev":1,"colLink":null,"colIsCompany":true,"colAllowInfo":true,"colDesc":"","colNodeLevel":1,"remark":null,"colOther":null,"name":null,"children":null},"info":[{"ifId":"630908569331437568","ifSubhead":"","ifName":"过程展示","ifRsce":"","colId":"630890344845676544","colAllId":"0","colName":"过程演示","ifCreateTime":"2019-04-03 15:00:19.0","ifStopTime":"2099-12-31 00:00:00.0","ifReleaseTime":"2019-04-03 14:59:10.0","ifCreateUId":"20181342745","ifCreateUName":"过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示","ifEditTime":null,"ifEditUId":null,"ifEditUName":null,"ifNeedVerify":false,"ifImg":"/static/upload/information/1554274819329.jpg /static/upload/information/1554274819330.jpg /static/upload/information/1554274819331.jpg ","ifRecommend":null,"ifHeadline":null,"ifLinehead":null,"stoId":null,"stoName":null,"stoAllId":null,"ifCreateName":"杜康","ifLink":"","ifKeyword":"","ifDesc":null,"remark":null,"ifContent":"<p>\r\n\t过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示\r\n<\/p>\r\n<p>\r\n\t过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示过程展示\r\n<\/p>"}]},{"column":{"colId":"630890396687273984","colName":"荣誉展示","colCreateTime":"2019-04-03 13:48:06.0","colEditTime":"2019-04-03 16:07:37.0","colUpdateId":"20181248699","colUpdateName":"admin","colManageId":null,"colCreateId":"20181342745","colCreateName":"商务谈判","colManageName":null,"colNode":"630859153606184960","colType":2,"colSign":"RYZS","colIsNode":false,"colNav":false,"colState":true,"colAudit":false,"colSort":0,"colPage":null,"colStopTime":"2099-12-31 00:00:00.0","colReleaseTime":"2019-04-03 13:48:06.0","colMenuModel":"630587944628916224","colListModel":"630587709030666240","colInfoAlert":null,"colAuditId":null,"colAuditName":null,"colImg":null,"colKeyword":"","colReadLev":1,"colLink":null,"colIsCompany":true,"colAllowInfo":true,"colDesc":"","colNodeLevel":1,"remark":null,"colOther":null,"name":null,"children":null},"info":[{"ifId":"630910012071350272","ifSubhead":"","ifName":"荣誉展示","ifRsce":"","colId":"630890396687273984","colAllId":"0","colName":"荣誉展示","ifCreateTime":"2019-04-03 15:06:03.0","ifStopTime":"2099-12-31 00:00:00.0","ifReleaseTime":"2019-04-03 15:06:03.0","ifCreateUId":"20181342745","ifCreateUName":"荣誉展示荣誉展示荣誉展示荣誉展示","ifEditTime":null,"ifEditUId":null,"ifEditUName":null,"ifNeedVerify":false,"ifImg":"/static/upload/information/1554275163273.jpg /static/upload/information/1554275163283.jpg /static/upload/information/1554275163293.jpg ","ifRecommend":null,"ifHeadline":null,"ifLinehead":null,"stoId":null,"stoName":null,"stoAllId":null,"ifCreateName":"杜康","ifLink":"","ifKeyword":"","ifDesc":null,"remark":null,"ifContent":"荣誉展示荣誉展示荣誉展示荣誉展示荣誉展示荣誉展示荣誉展示荣誉展示荣誉展示"}]}]
-         */
-
+    public static class DataBean implements Serializable {
         private LeftMenuHeadBean leftMenuHead;
         private List<NewsBean> news;
         private List<LocationBean> location;
@@ -93,48 +80,7 @@ public class ProjectDetailByIdEntity {
             this.info = info;
         }
 
-        public static class LeftMenuHeadBean {
-            /**
-             * colId : 630857371081510912
-             * colName : 学科竞赛
-             * colCreateTime : 2019-04-03 11:36:52.0
-             * colEditTime : 2019-04-18 10:35:59.0
-             * colUpdateId : 20181342745
-             * colUpdateName : guanli
-             * colManageId :
-             * colCreateId : 20181342745
-             * colCreateName : 根栏目
-             * colManageName :
-             * colNode : 0
-             * colType : 2
-             * colSign : XKJS
-             * colIsNode : true
-             * colNav : true
-             * colState : true
-             * colAudit : false
-             * colSort : 94
-             * colPage : null
-             * colStopTime : 2099-12-31 00:00:00.0
-             * colReleaseTime : 2019-04-03 00:00:00.0
-             * colMenuModel : 630858469599088640
-             * colListModel : 630587709030666240
-             * colInfoAlert : null
-             * colAuditId :
-             * colAuditName :
-             * colImg : null
-             * colKeyword :
-             * colReadLev : 1
-             * colLink : null
-             * colIsCompany : false
-             * colAllowInfo : true
-             * colDesc :
-             * colNodeLevel : 1
-             * remark : null
-             * colOther : null
-             * name : null
-             * children : null
-             */
-
+        public static class LeftMenuHeadBean implements Serializable {
             private String colId;
             private String colName;
             private String colCreateTime;
@@ -479,39 +425,7 @@ public class ProjectDetailByIdEntity {
             }
         }
 
-        public static class NewsBean {
-            /**
-             * ifId : 633492542125510656
-             * ifSubhead : 教学文件教学文件
-             * ifName : 教学文件教学文件
-             * ifRsce :
-             * colId : 630915844938928128
-             * colAllId : 0
-             * colName : 教学文件
-             * ifCreateTime : 2019-04-10 18:08:06.0
-             * ifStopTime : 2099-12-31 00:00:00.0
-             * ifReleaseTime : 2019-04-10 18:08:06.0
-             * ifCreateUId : 20181342745
-             * ifCreateUName : 教学文件教学文件
-             * ifEditTime : null
-             * ifEditUId : null
-             * ifEditUName : null
-             * ifNeedVerify : false
-             * ifImg :
-             * ifRecommend : null
-             * ifHeadline : null
-             * ifLinehead : null
-             * stoId : null
-             * stoName : null
-             * stoAllId : null
-             * ifCreateName : guanli
-             * ifLink :
-             * ifKeyword :
-             * ifDesc : null
-             * remark : null
-             * ifContent : null
-             */
-
+        public static class NewsBean implements Serializable  {
             private String ifId;
             private String ifSubhead;
             private String ifName;
@@ -539,8 +453,12 @@ public class ProjectDetailByIdEntity {
             private String ifLink;
             private String ifKeyword;
             private Object ifDesc;
-            private Object remark;
+            private String remark;
             private Object ifContent;
+            private Object lsId;
+            private Object lsName;
+            private Object lsCreateTime;
+            private Object lsDscb;
 
             public String getIfId() {
                 return ifId;
@@ -758,11 +676,11 @@ public class ProjectDetailByIdEntity {
                 this.ifDesc = ifDesc;
             }
 
-            public Object getRemark() {
+            public String getRemark() {
                 return remark;
             }
 
-            public void setRemark(Object remark) {
+            public void setRemark(String remark) {
                 this.remark = remark;
             }
 
@@ -773,50 +691,41 @@ public class ProjectDetailByIdEntity {
             public void setIfContent(Object ifContent) {
                 this.ifContent = ifContent;
             }
+
+            public Object getLsId() {
+                return lsId;
+            }
+
+            public void setLsId(Object lsId) {
+                this.lsId = lsId;
+            }
+
+            public Object getLsName() {
+                return lsName;
+            }
+
+            public void setLsName(Object lsName) {
+                this.lsName = lsName;
+            }
+
+            public Object getLsCreateTime() {
+                return lsCreateTime;
+            }
+
+            public void setLsCreateTime(Object lsCreateTime) {
+                this.lsCreateTime = lsCreateTime;
+            }
+
+            public Object getLsDscb() {
+                return lsDscb;
+            }
+
+            public void setLsDscb(Object lsDscb) {
+                this.lsDscb = lsDscb;
+            }
         }
 
-        public static class LocationBean {
-            /**
-             * colId : 630857371081510912
-             * colName : 学科竞赛
-             * colCreateTime : 2019-04-03 11:36:52.0
-             * colEditTime : 2019-04-18 10:35:59.0
-             * colUpdateId : 20181342745
-             * colUpdateName : guanli
-             * colManageId :
-             * colCreateId : 20181342745
-             * colCreateName : 根栏目
-             * colManageName :
-             * colNode : 0
-             * colType : 2
-             * colSign : XKJS
-             * colIsNode : true
-             * colNav : true
-             * colState : true
-             * colAudit : false
-             * colSort : 94
-             * colPage : null
-             * colStopTime : 2099-12-31 00:00:00.0
-             * colReleaseTime : 2019-04-03 00:00:00.0
-             * colMenuModel : 630858469599088640
-             * colListModel : 630587709030666240
-             * colInfoAlert : null
-             * colAuditId :
-             * colAuditName :
-             * colImg : null
-             * colKeyword :
-             * colReadLev : 1
-             * colLink : null
-             * colIsCompany : false
-             * colAllowInfo : true
-             * colDesc :
-             * colNodeLevel : 1
-             * remark : null
-             * colOther : null
-             * name : null
-             * children : null
-             */
-
+        public static class LocationBean  implements Serializable {
             private String colId;
             private String colName;
             private String colCreateTime;
@@ -1161,52 +1070,11 @@ public class ProjectDetailByIdEntity {
             }
         }
 
-        public static class LeftMenuBean {
-            /**
-             * colId : 630859153606184960
-             * colName : 商务谈判
-             * colCreateTime : 2019-04-03 11:43:57.0
-             * colEditTime : 2019-04-03 16:06:56.0
-             * colUpdateId : 20181248699
-             * colUpdateName : admin
-             * colManageId :
-             * colCreateId : 20181342745
-             * colCreateName : 学科竞赛
-             * colManageName :
-             * colNode : 630857371081510912
-             * colType : 7
-             * colSign : SWTP
-             * colIsNode : true
-             * colNav : false
-             * colState : true
-             * colAudit : false
-             * colSort : 0
-             * colPage : null
-             * colStopTime : 2099-12-31 00:00:00.0
-             * colReleaseTime : 2019-04-02 00:00:00.0
-             * colMenuModel : 630587944628916224
-             * colListModel : 630587709030666240
-             * colInfoAlert : null
-             * colAuditId :
-             * colAuditName :
-             * colImg : /static/upload//column/1554263037731.jpg
-             * colKeyword :
-             * colReadLev : 1
-             * colLink : null
-             * colIsCompany : false
-             * colAllowInfo : true
-             * colDesc :
-             * colNodeLevel : 1
-             * remark : null
-             * colOther : null
-             * name : null
-             * children : null
-             */
-
+        public static class LeftMenuBean implements Serializable  {
             private String colId;
             private String colName;
             private String colCreateTime;
-            private String colEditTime;
+            private Object colEditTime;
             private String colUpdateId;
             private String colUpdateName;
             private String colManageId;
@@ -1266,11 +1134,11 @@ public class ProjectDetailByIdEntity {
                 this.colCreateTime = colCreateTime;
             }
 
-            public String getColEditTime() {
+            public Object getColEditTime() {
                 return colEditTime;
             }
 
-            public void setColEditTime(String colEditTime) {
+            public void setColEditTime(Object colEditTime) {
                 this.colEditTime = colEditTime;
             }
 
@@ -1547,14 +1415,11 @@ public class ProjectDetailByIdEntity {
             }
         }
 
-        public static class InfoBeanX {
-            /**
-             * column : {"colId":"630859541155680256","colName":"竞赛介绍","colCreateTime":"2019-04-03 11:45:30.0","colEditTime":"2019-04-03 11:57:05.0","colUpdateId":"20181342745","colUpdateName":"杜康","colManageId":"","colCreateId":"20181342745","colCreateName":"商务谈判","colManageName":"","colNode":"630859153606184960","colType":2,"colSign":"JSJS","colIsNode":false,"colNav":false,"colState":true,"colAudit":false,"colSort":0,"colPage":null,"colStopTime":"2099-12-31 00:00:00.0","colReleaseTime":"2019-04-03 00:00:00.0","colMenuModel":"630587944628916224","colListModel":"630587709030666240","colInfoAlert":null,"colAuditId":"","colAuditName":"","colImg":"/static/upload//column/1554263152747.jpg","colKeyword":"","colReadLev":1,"colLink":null,"colIsCompany":true,"colAllowInfo":true,"colDesc":"","colNodeLevel":1,"remark":null,"colOther":null,"name":null,"children":null}
-             * info : [{"ifId":"630892155761594368","ifSubhead":"","ifName":"商务谈判-竞赛介绍","ifRsce":"","colId":"630859541155680256","colAllId":"0","colName":"竞赛介绍","ifCreateTime":"2019-04-03 13:55:06.0","ifStopTime":"2099-12-31 00:00:00.0","ifReleaseTime":"2019-04-03 13:55:06.0","ifCreateUId":"20181342745","ifCreateUName":"其创始人尛尛于2016年在我平台学习至今，了解真实跨境电商经营失误、失败的风险，通过实训平台，使学员敢于尝试，敢于冒险并从失误重吸取教训，从成功中领悟跨境电商经营管理的真谛。全仿真模拟跨境电商B2B交易平台，以卖家店铺运营为核心点，增强学生店铺运营能力，帮助学生熟悉交易平台规则，熟悉店铺运营要点，同时提高教学效率和教学质量，帮助老师实时掌控学生学习情况，增加实战教学的可控性和趣味性。，了解真实跨境电商经营失误、失败的风险，通过实训平台，使学员敢于尝试，敢于冒险并从失误重吸取教训，从成功中领悟跨境电商经营管理的真谛。全仿真模拟跨境电商B2B交易平台，以卖家店铺运营为核心点，增强学生店铺运营能力，帮助学生熟悉交易平台规则，熟悉店铺运营要点，同时提高教学效率和教学质量，帮助老师实时掌控学生学习情况，增加实战教学的可控性和趣味性。","ifEditTime":null,"ifEditUId":null,"ifEditUName":null,"ifNeedVerify":false,"ifImg":"/static/upload/information/1554270906039.jpg ","ifRecommend":null,"ifHeadline":null,"ifLinehead":null,"stoId":null,"stoName":null,"stoAllId":null,"ifCreateName":"杜康","ifLink":"","ifKeyword":"","ifDesc":null,"remark":null,"ifContent":"其创始人尛尛于2016年在我平台学习至今，了解真实跨境电商经营失误、失败的风险，通过实训平台，使学员敢于尝试，敢于冒险并从失误重吸取教训，从成功中领悟跨境电商经营管理的真谛。全仿真模拟跨境电商B2B交易平台，以卖家店铺运营为核心点，增强学生店铺运营能力，帮助学生熟悉交易平台规则，熟悉店铺运营要点，同时提高教学效率和教学质量，帮助老师实时掌控学生学习情况，增加实战教学的可控性和趣味性。，了解真实跨境电商经营失误、失败的风险，通过实训平台，使学员敢于尝试，敢于冒险并从失误重吸取教训，从成功中领悟跨境电商经营管理的真谛。全仿真模拟跨境电商B2B交易平台，以卖家店铺运营为核心点，增强学生店铺运营能力，帮助学生熟悉交易平台规则，熟悉店铺运营要点，同时提高教学效率和教学质量，帮助老师实时掌控学生学习情况，增加实战教学的可控性和趣味性。其创始人尛尛于2016年在我平台学习至今，了解真实跨境电商经营失误、失败的风险，通过实训平台，使学员敢于尝试，敢于冒险并从失误重吸取教训，从成功中领悟跨境电商经营管理的真谛。全仿真模拟跨境电商B2B交易平台，以卖家店铺运营为核心点，增强学生店铺运营能力，帮助学生熟悉交易平台规则，熟悉店铺运营要点，同时提高教学效率和教学质量，帮助老师实时掌控学生学习情况，增加实战教学的可控性和趣味性。，了解真实跨境电商经营失误、失败的风险，通过实训平台，使学员敢于尝试，敢于冒险并从失误重吸取教训，从成功中领悟跨境电商经营管理的真谛。全仿真模拟跨境电商B2B交易平台，以卖家店铺运营为核心点，增强学生店铺运营能力，帮助学生熟悉交易平台规则，熟悉店铺运营要点，同时提高教学效率和教学质量，帮助老师实时掌控学生学习情况，增加实战教学的可控性和趣味性。其创始人尛尛于2016年在我平台学习至今，了解真实跨境电商经营失误、失败的风险，通过实训平台，使学员敢于尝试，敢于冒险并从失误重吸取教训，从成功中领悟跨境电商经营管理的真谛。全仿真模拟跨境电商B2B交易平台，以卖家店铺运营为核心点，增强学生店铺运营能力，帮助学生熟悉交易平台规则，熟悉店铺运营要点，同时提高教学效率和教学质量，帮助老师实时掌控学生学习情况，增加实战教学的可控性和趣味性。，了解真实跨境电商经营失误、失败的风险，通过实训平台，使学员敢于尝试，敢于冒险并从失误重吸取教训，从成功中领悟跨境电商经营管理的真谛。全仿真模拟跨境电商B2B交易平台，以卖家店铺运营为核心点，增强学生店铺运营能力，帮助学生熟悉交易平台规则，熟悉店铺运营要点，同时提高教学效率和教学质量，帮助老师实时掌控学生学习情况，增加实战教学的可控性和趣味性。"}]
-             */
-
+        public static class InfoBeanX implements Serializable {
             private ColumnBean column;
-            private List<InfoBean> info;
+            private long colId;
+            private int type;
+            private InfoBean info;
 
             public ColumnBean getColumn() {
                 return column;
@@ -1564,60 +1429,35 @@ public class ProjectDetailByIdEntity {
                 this.column = column;
             }
 
-            public List<InfoBean> getInfo() {
+            public long getColId() {
+                return colId;
+            }
+
+            public void setColId(long colId) {
+                this.colId = colId;
+            }
+
+            public int getType() {
+                return type;
+            }
+
+            public void setType(int type) {
+                this.type = type;
+            }
+
+            public InfoBean getInfo() {
                 return info;
             }
 
-            public void setInfo(List<InfoBean> info) {
+            public void setInfo(InfoBean info) {
                 this.info = info;
             }
 
-            public static class ColumnBean {
-                /**
-                 * colId : 630859541155680256
-                 * colName : 竞赛介绍
-                 * colCreateTime : 2019-04-03 11:45:30.0
-                 * colEditTime : 2019-04-03 11:57:05.0
-                 * colUpdateId : 20181342745
-                 * colUpdateName : 杜康
-                 * colManageId :
-                 * colCreateId : 20181342745
-                 * colCreateName : 商务谈判
-                 * colManageName :
-                 * colNode : 630859153606184960
-                 * colType : 2
-                 * colSign : JSJS
-                 * colIsNode : false
-                 * colNav : false
-                 * colState : true
-                 * colAudit : false
-                 * colSort : 0
-                 * colPage : null
-                 * colStopTime : 2099-12-31 00:00:00.0
-                 * colReleaseTime : 2019-04-03 00:00:00.0
-                 * colMenuModel : 630587944628916224
-                 * colListModel : 630587709030666240
-                 * colInfoAlert : null
-                 * colAuditId :
-                 * colAuditName :
-                 * colImg : /static/upload//column/1554263152747.jpg
-                 * colKeyword :
-                 * colReadLev : 1
-                 * colLink : null
-                 * colIsCompany : true
-                 * colAllowInfo : true
-                 * colDesc :
-                 * colNodeLevel : 1
-                 * remark : null
-                 * colOther : null
-                 * name : null
-                 * children : null
-                 */
-
+            public static class ColumnBean implements  Serializable{
                 private String colId;
                 private String colName;
                 private String colCreateTime;
-                private String colEditTime;
+                private Object colEditTime;
                 private String colUpdateId;
                 private String colUpdateName;
                 private String colManageId;
@@ -1640,7 +1480,7 @@ public class ProjectDetailByIdEntity {
                 private Object colInfoAlert;
                 private String colAuditId;
                 private String colAuditName;
-                private String colImg;
+                private Object colImg;
                 private String colKeyword;
                 private int colReadLev;
                 private Object colLink;
@@ -1677,11 +1517,11 @@ public class ProjectDetailByIdEntity {
                     this.colCreateTime = colCreateTime;
                 }
 
-                public String getColEditTime() {
+                public Object getColEditTime() {
                     return colEditTime;
                 }
 
-                public void setColEditTime(String colEditTime) {
+                public void setColEditTime(Object colEditTime) {
                     this.colEditTime = colEditTime;
                 }
 
@@ -1861,11 +1701,11 @@ public class ProjectDetailByIdEntity {
                     this.colAuditName = colAuditName;
                 }
 
-                public String getColImg() {
+                public Object getColImg() {
                     return colImg;
                 }
 
-                public void setColImg(String colImg) {
+                public void setColImg(Object colImg) {
                     this.colImg = colImg;
                 }
 
@@ -1958,299 +1798,378 @@ public class ProjectDetailByIdEntity {
                 }
             }
 
-            public static class InfoBean {
-                /**
-                 * ifId : 630892155761594368
-                 * ifSubhead :
-                 * ifName : 商务谈判-竞赛介绍
-                 * ifRsce :
-                 * colId : 630859541155680256
-                 * colAllId : 0
-                 * colName : 竞赛介绍
-                 * ifCreateTime : 2019-04-03 13:55:06.0
-                 * ifStopTime : 2099-12-31 00:00:00.0
-                 * ifReleaseTime : 2019-04-03 13:55:06.0
-                 * ifCreateUId : 20181342745
-                 * ifCreateUName : 其创始人尛尛于2016年在我平台学习至今，了解真实跨境电商经营失误、失败的风险，通过实训平台，使学员敢于尝试，敢于冒险并从失误重吸取教训，从成功中领悟跨境电商经营管理的真谛。全仿真模拟跨境电商B2B交易平台，以卖家店铺运营为核心点，增强学生店铺运营能力，帮助学生熟悉交易平台规则，熟悉店铺运营要点，同时提高教学效率和教学质量，帮助老师实时掌控学生学习情况，增加实战教学的可控性和趣味性。，了解真实跨境电商经营失误、失败的风险，通过实训平台，使学员敢于尝试，敢于冒险并从失误重吸取教训，从成功中领悟跨境电商经营管理的真谛。全仿真模拟跨境电商B2B交易平台，以卖家店铺运营为核心点，增强学生店铺运营能力，帮助学生熟悉交易平台规则，熟悉店铺运营要点，同时提高教学效率和教学质量，帮助老师实时掌控学生学习情况，增加实战教学的可控性和趣味性。
-                 * ifEditTime : null
-                 * ifEditUId : null
-                 * ifEditUName : null
-                 * ifNeedVerify : false
-                 * ifImg : /static/upload/information/1554270906039.jpg
-                 * ifRecommend : null
-                 * ifHeadline : null
-                 * ifLinehead : null
-                 * stoId : null
-                 * stoName : null
-                 * stoAllId : null
-                 * ifCreateName : 杜康
-                 * ifLink :
-                 * ifKeyword :
-                 * ifDesc : null
-                 * remark : null
-                 * ifContent : 其创始人尛尛于2016年在我平台学习至今，了解真实跨境电商经营失误、失败的风险，通过实训平台，使学员敢于尝试，敢于冒险并从失误重吸取教训，从成功中领悟跨境电商经营管理的真谛。全仿真模拟跨境电商B2B交易平台，以卖家店铺运营为核心点，增强学生店铺运营能力，帮助学生熟悉交易平台规则，熟悉店铺运营要点，同时提高教学效率和教学质量，帮助老师实时掌控学生学习情况，增加实战教学的可控性和趣味性。，了解真实跨境电商经营失误、失败的风险，通过实训平台，使学员敢于尝试，敢于冒险并从失误重吸取教训，从成功中领悟跨境电商经营管理的真谛。全仿真模拟跨境电商B2B交易平台，以卖家店铺运营为核心点，增强学生店铺运营能力，帮助学生熟悉交易平台规则，熟悉店铺运营要点，同时提高教学效率和教学质量，帮助老师实时掌控学生学习情况，增加实战教学的可控性和趣味性。其创始人尛尛于2016年在我平台学习至今，了解真实跨境电商经营失误、失败的风险，通过实训平台，使学员敢于尝试，敢于冒险并从失误重吸取教训，从成功中领悟跨境电商经营管理的真谛。全仿真模拟跨境电商B2B交易平台，以卖家店铺运营为核心点，增强学生店铺运营能力，帮助学生熟悉交易平台规则，熟悉店铺运营要点，同时提高教学效率和教学质量，帮助老师实时掌控学生学习情况，增加实战教学的可控性和趣味性。，了解真实跨境电商经营失误、失败的风险，通过实训平台，使学员敢于尝试，敢于冒险并从失误重吸取教训，从成功中领悟跨境电商经营管理的真谛。全仿真模拟跨境电商B2B交易平台，以卖家店铺运营为核心点，增强学生店铺运营能力，帮助学生熟悉交易平台规则，熟悉店铺运营要点，同时提高教学效率和教学质量，帮助老师实时掌控学生学习情况，增加实战教学的可控性和趣味性。其创始人尛尛于2016年在我平台学习至今，了解真实跨境电商经营失误、失败的风险，通过实训平台，使学员敢于尝试，敢于冒险并从失误重吸取教训，从成功中领悟跨境电商经营管理的真谛。全仿真模拟跨境电商B2B交易平台，以卖家店铺运营为核心点，增强学生店铺运营能力，帮助学生熟悉交易平台规则，熟悉店铺运营要点，同时提高教学效率和教学质量，帮助老师实时掌控学生学习情况，增加实战教学的可控性和趣味性。，了解真实跨境电商经营失误、失败的风险，通过实训平台，使学员敢于尝试，敢于冒险并从失误重吸取教训，从成功中领悟跨境电商经营管理的真谛。全仿真模拟跨境电商B2B交易平台，以卖家店铺运营为核心点，增强学生店铺运营能力，帮助学生熟悉交易平台规则，熟悉店铺运营要点，同时提高教学效率和教学质量，帮助老师实时掌控学生学习情况，增加实战教学的可控性和趣味性。
-                 */
+            public static class InfoBean  implements Serializable{
+                private int pageSize;
+                private int totalRows;
+                private int pageNo;
+                private Object query;
+                private int offset;
+                private int endIndex;
+                private int totalPages;
+                private List<ResultListBean> resultList;
 
-                private String ifId;
-                private String ifSubhead;
-                private String ifName;
-                private String ifRsce;
-                private String colId;
-                private String colAllId;
-                private String colName;
-                private String ifCreateTime;
-                private String ifStopTime;
-                private String ifReleaseTime;
-                private String ifCreateUId;
-                private String ifCreateUName;
-                private Object ifEditTime;
-                private Object ifEditUId;
-                private Object ifEditUName;
-                private boolean ifNeedVerify;
-                private String ifImg;
-                private Object ifRecommend;
-                private Object ifHeadline;
-                private Object ifLinehead;
-                private Object stoId;
-                private Object stoName;
-                private Object stoAllId;
-                private String ifCreateName;
-                private String ifLink;
-                private String ifKeyword;
-                private Object ifDesc;
-                private Object remark;
-                private String ifContent;
-
-                public String getIfId() {
-                    return ifId;
+                public int getPageSize() {
+                    return pageSize;
                 }
 
-                public void setIfId(String ifId) {
-                    this.ifId = ifId;
+                public void setPageSize(int pageSize) {
+                    this.pageSize = pageSize;
                 }
 
-                public String getIfSubhead() {
-                    return ifSubhead;
+                public int getTotalRows() {
+                    return totalRows;
                 }
 
-                public void setIfSubhead(String ifSubhead) {
-                    this.ifSubhead = ifSubhead;
+                public void setTotalRows(int totalRows) {
+                    this.totalRows = totalRows;
                 }
 
-                public String getIfName() {
-                    return ifName;
+                public int getPageNo() {
+                    return pageNo;
                 }
 
-                public void setIfName(String ifName) {
-                    this.ifName = ifName;
+                public void setPageNo(int pageNo) {
+                    this.pageNo = pageNo;
                 }
 
-                public String getIfRsce() {
-                    return ifRsce;
+                public Object getQuery() {
+                    return query;
                 }
 
-                public void setIfRsce(String ifRsce) {
-                    this.ifRsce = ifRsce;
+                public void setQuery(Object query) {
+                    this.query = query;
                 }
 
-                public String getColId() {
-                    return colId;
+                public int getOffset() {
+                    return offset;
                 }
 
-                public void setColId(String colId) {
-                    this.colId = colId;
+                public void setOffset(int offset) {
+                    this.offset = offset;
                 }
 
-                public String getColAllId() {
-                    return colAllId;
+                public int getEndIndex() {
+                    return endIndex;
                 }
 
-                public void setColAllId(String colAllId) {
-                    this.colAllId = colAllId;
+                public void setEndIndex(int endIndex) {
+                    this.endIndex = endIndex;
                 }
 
-                public String getColName() {
-                    return colName;
+                public int getTotalPages() {
+                    return totalPages;
                 }
 
-                public void setColName(String colName) {
-                    this.colName = colName;
+                public void setTotalPages(int totalPages) {
+                    this.totalPages = totalPages;
                 }
 
-                public String getIfCreateTime() {
-                    return ifCreateTime;
+                public List<ResultListBean> getResultList() {
+                    return resultList;
                 }
 
-                public void setIfCreateTime(String ifCreateTime) {
-                    this.ifCreateTime = ifCreateTime;
+                public void setResultList(List<ResultListBean> resultList) {
+                    this.resultList = resultList;
                 }
 
-                public String getIfStopTime() {
-                    return ifStopTime;
-                }
+                public static class ResultListBean  implements Serializable{
+                    private String ifId;
+                    private String ifSubhead;
+                    private String ifName;
+                    private String ifRsce;
+                    private String colId;
+                    private String colAllId;
+                    private String colName;
+                    private String ifCreateTime;
+                    private String ifStopTime;
+                    private String ifReleaseTime;
+                    private String ifCreateUId;
+                    private String ifCreateUName;
+                    private Object ifEditTime;
+                    private Object ifEditUId;
+                    private Object ifEditUName;
+                    private boolean ifNeedVerify;
+                    private String ifImg;
+                    private Object ifRecommend;
+                    private Object ifHeadline;
+                    private Object ifLinehead;
+                    private Object stoId;
+                    private Object stoName;
+                    private Object stoAllId;
+                    private String ifCreateName;
+                    private String ifLink;
+                    private String ifKeyword;
+                    private Object ifDesc;
+                    private Object remark;
+                    private String ifContent;
+                    private Object lsId;
+                    private Object lsName;
+                    private Object lsCreateTime;
+                    private Object lsDscb;
 
-                public void setIfStopTime(String ifStopTime) {
-                    this.ifStopTime = ifStopTime;
-                }
+                    public String getIfId() {
+                        return ifId;
+                    }
 
-                public String getIfReleaseTime() {
-                    return ifReleaseTime;
-                }
+                    public void setIfId(String ifId) {
+                        this.ifId = ifId;
+                    }
 
-                public void setIfReleaseTime(String ifReleaseTime) {
-                    this.ifReleaseTime = ifReleaseTime;
-                }
+                    public String getIfSubhead() {
+                        return ifSubhead;
+                    }
 
-                public String getIfCreateUId() {
-                    return ifCreateUId;
-                }
+                    public void setIfSubhead(String ifSubhead) {
+                        this.ifSubhead = ifSubhead;
+                    }
 
-                public void setIfCreateUId(String ifCreateUId) {
-                    this.ifCreateUId = ifCreateUId;
-                }
+                    public String getIfName() {
+                        return ifName;
+                    }
 
-                public String getIfCreateUName() {
-                    return ifCreateUName;
-                }
+                    public void setIfName(String ifName) {
+                        this.ifName = ifName;
+                    }
 
-                public void setIfCreateUName(String ifCreateUName) {
-                    this.ifCreateUName = ifCreateUName;
-                }
+                    public String getIfRsce() {
+                        return ifRsce;
+                    }
 
-                public Object getIfEditTime() {
-                    return ifEditTime;
-                }
+                    public void setIfRsce(String ifRsce) {
+                        this.ifRsce = ifRsce;
+                    }
 
-                public void setIfEditTime(Object ifEditTime) {
-                    this.ifEditTime = ifEditTime;
-                }
+                    public String getColId() {
+                        return colId;
+                    }
 
-                public Object getIfEditUId() {
-                    return ifEditUId;
-                }
+                    public void setColId(String colId) {
+                        this.colId = colId;
+                    }
 
-                public void setIfEditUId(Object ifEditUId) {
-                    this.ifEditUId = ifEditUId;
-                }
+                    public String getColAllId() {
+                        return colAllId;
+                    }
 
-                public Object getIfEditUName() {
-                    return ifEditUName;
-                }
+                    public void setColAllId(String colAllId) {
+                        this.colAllId = colAllId;
+                    }
 
-                public void setIfEditUName(Object ifEditUName) {
-                    this.ifEditUName = ifEditUName;
-                }
+                    public String getColName() {
+                        return colName;
+                    }
 
-                public boolean isIfNeedVerify() {
-                    return ifNeedVerify;
-                }
+                    public void setColName(String colName) {
+                        this.colName = colName;
+                    }
 
-                public void setIfNeedVerify(boolean ifNeedVerify) {
-                    this.ifNeedVerify = ifNeedVerify;
-                }
+                    public String getIfCreateTime() {
+                        return ifCreateTime;
+                    }
 
-                public String getIfImg() {
-                    return ifImg;
-                }
+                    public void setIfCreateTime(String ifCreateTime) {
+                        this.ifCreateTime = ifCreateTime;
+                    }
 
-                public void setIfImg(String ifImg) {
-                    this.ifImg = ifImg;
-                }
+                    public String getIfStopTime() {
+                        return ifStopTime;
+                    }
 
-                public Object getIfRecommend() {
-                    return ifRecommend;
-                }
+                    public void setIfStopTime(String ifStopTime) {
+                        this.ifStopTime = ifStopTime;
+                    }
 
-                public void setIfRecommend(Object ifRecommend) {
-                    this.ifRecommend = ifRecommend;
-                }
+                    public String getIfReleaseTime() {
+                        return ifReleaseTime;
+                    }
 
-                public Object getIfHeadline() {
-                    return ifHeadline;
-                }
+                    public void setIfReleaseTime(String ifReleaseTime) {
+                        this.ifReleaseTime = ifReleaseTime;
+                    }
 
-                public void setIfHeadline(Object ifHeadline) {
-                    this.ifHeadline = ifHeadline;
-                }
+                    public String getIfCreateUId() {
+                        return ifCreateUId;
+                    }
 
-                public Object getIfLinehead() {
-                    return ifLinehead;
-                }
+                    public void setIfCreateUId(String ifCreateUId) {
+                        this.ifCreateUId = ifCreateUId;
+                    }
 
-                public void setIfLinehead(Object ifLinehead) {
-                    this.ifLinehead = ifLinehead;
-                }
+                    public String getIfCreateUName() {
+                        return ifCreateUName;
+                    }
 
-                public Object getStoId() {
-                    return stoId;
-                }
+                    public void setIfCreateUName(String ifCreateUName) {
+                        this.ifCreateUName = ifCreateUName;
+                    }
 
-                public void setStoId(Object stoId) {
-                    this.stoId = stoId;
-                }
+                    public Object getIfEditTime() {
+                        return ifEditTime;
+                    }
 
-                public Object getStoName() {
-                    return stoName;
-                }
+                    public void setIfEditTime(Object ifEditTime) {
+                        this.ifEditTime = ifEditTime;
+                    }
 
-                public void setStoName(Object stoName) {
-                    this.stoName = stoName;
-                }
+                    public Object getIfEditUId() {
+                        return ifEditUId;
+                    }
 
-                public Object getStoAllId() {
-                    return stoAllId;
-                }
+                    public void setIfEditUId(Object ifEditUId) {
+                        this.ifEditUId = ifEditUId;
+                    }
 
-                public void setStoAllId(Object stoAllId) {
-                    this.stoAllId = stoAllId;
-                }
+                    public Object getIfEditUName() {
+                        return ifEditUName;
+                    }
 
-                public String getIfCreateName() {
-                    return ifCreateName;
-                }
+                    public void setIfEditUName(Object ifEditUName) {
+                        this.ifEditUName = ifEditUName;
+                    }
 
-                public void setIfCreateName(String ifCreateName) {
-                    this.ifCreateName = ifCreateName;
-                }
+                    public boolean isIfNeedVerify() {
+                        return ifNeedVerify;
+                    }
 
-                public String getIfLink() {
-                    return ifLink;
-                }
+                    public void setIfNeedVerify(boolean ifNeedVerify) {
+                        this.ifNeedVerify = ifNeedVerify;
+                    }
 
-                public void setIfLink(String ifLink) {
-                    this.ifLink = ifLink;
-                }
+                    public String getIfImg() {
+                        return ifImg;
+                    }
 
-                public String getIfKeyword() {
-                    return ifKeyword;
-                }
+                    public void setIfImg(String ifImg) {
+                        this.ifImg = ifImg;
+                    }
 
-                public void setIfKeyword(String ifKeyword) {
-                    this.ifKeyword = ifKeyword;
-                }
+                    public Object getIfRecommend() {
+                        return ifRecommend;
+                    }
 
-                public Object getIfDesc() {
-                    return ifDesc;
-                }
+                    public void setIfRecommend(Object ifRecommend) {
+                        this.ifRecommend = ifRecommend;
+                    }
 
-                public void setIfDesc(Object ifDesc) {
-                    this.ifDesc = ifDesc;
-                }
+                    public Object getIfHeadline() {
+                        return ifHeadline;
+                    }
 
-                public Object getRemark() {
-                    return remark;
-                }
+                    public void setIfHeadline(Object ifHeadline) {
+                        this.ifHeadline = ifHeadline;
+                    }
 
-                public void setRemark(Object remark) {
-                    this.remark = remark;
-                }
+                    public Object getIfLinehead() {
+                        return ifLinehead;
+                    }
 
-                public String getIfContent() {
-                    return ifContent;
-                }
+                    public void setIfLinehead(Object ifLinehead) {
+                        this.ifLinehead = ifLinehead;
+                    }
 
-                public void setIfContent(String ifContent) {
-                    this.ifContent = ifContent;
+                    public Object getStoId() {
+                        return stoId;
+                    }
+
+                    public void setStoId(Object stoId) {
+                        this.stoId = stoId;
+                    }
+
+                    public Object getStoName() {
+                        return stoName;
+                    }
+
+                    public void setStoName(Object stoName) {
+                        this.stoName = stoName;
+                    }
+
+                    public Object getStoAllId() {
+                        return stoAllId;
+                    }
+
+                    public void setStoAllId(Object stoAllId) {
+                        this.stoAllId = stoAllId;
+                    }
+
+                    public String getIfCreateName() {
+                        return ifCreateName;
+                    }
+
+                    public void setIfCreateName(String ifCreateName) {
+                        this.ifCreateName = ifCreateName;
+                    }
+
+                    public String getIfLink() {
+                        return ifLink;
+                    }
+
+                    public void setIfLink(String ifLink) {
+                        this.ifLink = ifLink;
+                    }
+
+                    public String getIfKeyword() {
+                        return ifKeyword;
+                    }
+
+                    public void setIfKeyword(String ifKeyword) {
+                        this.ifKeyword = ifKeyword;
+                    }
+
+                    public Object getIfDesc() {
+                        return ifDesc;
+                    }
+
+                    public void setIfDesc(Object ifDesc) {
+                        this.ifDesc = ifDesc;
+                    }
+
+                    public Object getRemark() {
+                        return remark;
+                    }
+
+                    public void setRemark(Object remark) {
+                        this.remark = remark;
+                    }
+
+                    public String getIfContent() {
+                        return ifContent;
+                    }
+
+                    public void setIfContent(String ifContent) {
+                        this.ifContent = ifContent;
+                    }
+
+                    public Object getLsId() {
+                        return lsId;
+                    }
+
+                    public void setLsId(Object lsId) {
+                        this.lsId = lsId;
+                    }
+
+                    public Object getLsName() {
+                        return lsName;
+                    }
+
+                    public void setLsName(Object lsName) {
+                        this.lsName = lsName;
+                    }
+
+                    public Object getLsCreateTime() {
+                        return lsCreateTime;
+                    }
+
+                    public void setLsCreateTime(Object lsCreateTime) {
+                        this.lsCreateTime = lsCreateTime;
+                    }
+
+                    public Object getLsDscb() {
+                        return lsDscb;
+                    }
+
+                    public void setLsDscb(Object lsDscb) {
+                        this.lsDscb = lsDscb;
+                    }
                 }
             }
         }

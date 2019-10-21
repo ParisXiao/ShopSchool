@@ -296,6 +296,7 @@
 }
 /*线下实验室*/
 .under{
+	display: none;
 	margin-top: 1rem;
 }
 .un-banner{
