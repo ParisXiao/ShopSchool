@@ -42,7 +42,7 @@ class FZSXDetailActivity : BaseActivity() {
             //左上角加上一个返回图标
             actionBar.setDisplayHomeAsUpEnabled(true)
         }
-        DialogUtils.getInstance(this@FZSXDetailActivity).showLoadDialog("正在加载...")
+
         fzsxInfoAdapter = FzsxInfoAdapter(supportFragmentManager)
         project_detail_viewpager.adapter = fzsxInfoAdapter
         project_detail_tab.setupWithViewPager(project_detail_viewpager)
@@ -77,7 +77,6 @@ class FZSXDetailActivity : BaseActivity() {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(object : DisposableObserver<Response<ProjectDetailByIdEntity>>() {
                     override fun onNext(response: Response<ProjectDetailByIdEntity>) {
-                        DialogUtils.getInstance(this@FZSXDetailActivity).dismisDialog()
                         var entity = response.body()
                         if (entity==null){
                             var intent =Intent(this@FZSXDetailActivity,LoginActivity::class.java)
