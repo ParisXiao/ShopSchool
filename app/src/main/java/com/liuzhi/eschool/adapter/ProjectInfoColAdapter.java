@@ -1,21 +1,18 @@
 package com.liuzhi.eschool.adapter;
 
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.text.Html;
-import android.util.Log;
-import com.liuzhi.eschool.entity.ProjectInfoColEntity;
-import com.liuzhi.eschool.view.fragment.DanyeFragment;
 
-import java.net.URL;
+import com.liuzhi.eschool.entity.FirstResponseEntity;
+import com.liuzhi.eschool.view.fragment.DetailFragment;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class ProjectInfoColAdapter extends FragmentPagerAdapter {
-    private List<ProjectInfoColEntity.DataBean> dataBeans = null;
+    private List<FirstResponseEntity.DataBean.ColumnBean> dataBeans = null;
 
     public ProjectInfoColAdapter(FragmentManager fm) {
         super(fm);
@@ -27,7 +24,7 @@ public class ProjectInfoColAdapter extends FragmentPagerAdapter {
      *
      * @param datas
      */
-    public void setDataList(List<ProjectInfoColEntity.DataBean> datas) {
+    public void setDataList(List<FirstResponseEntity.DataBean.ColumnBean> datas) {
         this.dataBeans.clear();
         this.dataBeans.addAll(datas);
         notifyDataSetChanged();
@@ -35,9 +32,10 @@ public class ProjectInfoColAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        DanyeFragment fragment = new DanyeFragment();
+        DetailFragment fragment = new DetailFragment();
         Bundle bundle = new Bundle();
-        bundle.putString("ProjectInfoById", dataBeans.get(position).getColId());
+        bundle.putString("colId", dataBeans.get(position).getColId());
+        bundle.putInt("colType", dataBeans.get(position).getColType());
         fragment.setArguments(bundle);
         return fragment;
     }

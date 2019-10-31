@@ -58,7 +58,7 @@ class ProjectDetailActivity : BaseActivity() {
         project_detail_btn.setOnClickListener {
 
         }
-        getProjectInfoCol(projectBean.colId)
+//        getProjectInfoCol(projectBean.colId)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -71,37 +71,37 @@ class ProjectDetailActivity : BaseActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    fun getProjectInfoCol(colId: String) {
-        projectInfoColConvert = ProjectInfoColConvert()
-        projectInfoColResponse = ObservableResponse()
-        OkGo.get<ProjectInfoColEntity>(UrlConstans.ProjectInfoCol)
-            .headers("Content-Type", "application/json;charset=UTF-8")
-            .params("colId", colId)
-            .converter(projectInfoColConvert)
-            .adapt(projectInfoColResponse)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : DisposableObserver<Response<ProjectInfoColEntity>>() {
-                override fun onNext(response: Response<ProjectInfoColEntity>) {
-                    var entity = response.body()
-                    if (entity==null){
-                        var intent =Intent(this@ProjectDetailActivity,LoginActivity::class.java)
-                        startActivity(intent)
-                        return
-                    }
-
-                    if (entity.code == 0) {
-                        projectInfoCOlBeans = entity.data
-                        projectInfoColAdapter.setDataList(projectInfoCOlBeans)
-                    }
-                }
-
-                override fun onError(e: Throwable) {
-                    Log.e("OKGO", e.message)
-                }
-
-                override fun onComplete() {
-                }
-            })
-    }
+//    fun getProjectInfoCol(colId: String) {
+//        projectInfoColConvert = ProjectInfoColConvert()
+//        projectInfoColResponse = ObservableResponse()
+//        OkGo.get<ProjectInfoColEntity>(UrlConstans.ProjectInfoCol)
+//            .headers("Content-Type", "application/json;charset=UTF-8")
+//            .params("colId", colId)
+//            .converter(projectInfoColConvert)
+//            .adapt(projectInfoColResponse)
+//            .subscribeOn(Schedulers.io())
+//            .observeOn(AndroidSchedulers.mainThread())
+//            .subscribe(object : DisposableObserver<Response<ProjectInfoColEntity>>() {
+//                override fun onNext(response: Response<ProjectInfoColEntity>) {
+//                    var entity = response.body()
+//                    if (entity==null){
+//                        var intent =Intent(this@ProjectDetailActivity,LoginActivity::class.java)
+//                        startActivity(intent)
+//                        return
+//                    }
+//
+//                    if (entity.code == 0) {
+//                        projectInfoCOlBeans = entity.data
+//                        projectInfoColAdapter.setDataList(projectInfoCOlBeans)
+//                    }
+//                }
+//
+//                override fun onError(e: Throwable) {
+//                    Log.e("OKGO", e.message)
+//                }
+//
+//                override fun onComplete() {
+//                }
+//            })
+//    }
 }

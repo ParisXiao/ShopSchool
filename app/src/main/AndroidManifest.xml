@@ -136,6 +136,9 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".view.activity.NewsListActivity" />
         <activity android:name=".view.activity.NewsDetailActivity" />
+        <activity android:name=".view.activity.DetailActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

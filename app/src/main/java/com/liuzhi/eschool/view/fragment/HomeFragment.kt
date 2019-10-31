@@ -212,17 +212,21 @@ class HomeFragment : BaseFragment() {
             Log.e(TAG, "divId$divId")
             when (divId) {
                 0 -> {
-                    getProjectColumn("PTGK")
+//                    getProjectColumn("PTGK")
+                    intent.putExtra("ProjectName", "PTGK")
+                    activity.startActivity(intent)
                 }
+
                 1 -> {
                     var intent = Intent(activity, MineListActivity::class.java)
                     intent.putExtra("MineListType", 1)
                     activity.startActivity(intent)
                 }
                 2 -> {
-                    var tt =Intent(activity,FZSXDetailActivity::class.java)
-                    activity.startActivity(tt)
-
+//                    var tt =Intent(activity,FZSXDetailActivity::class.java)
+//                    activity.startActivity(tt)
+                    intent.putExtra("ProjectName", "FZSX")
+                    activity.startActivity(intent)
                 }
                 3 -> {
                     intent.putExtra("ProjectName", "XNFZSFXM")
@@ -265,7 +269,8 @@ class HomeFragment : BaseFragment() {
 
         @JavascriptInterface
         fun newMore() {
-            var intentWeb = Intent(activity, NewsListActivity::class.java)
+            var intentWeb = Intent(activity, ProjectListActivity::class.java)
+            intentWeb.putExtra("ProjectName", "XWZX")
             startActivity(intentWeb)
         }
 

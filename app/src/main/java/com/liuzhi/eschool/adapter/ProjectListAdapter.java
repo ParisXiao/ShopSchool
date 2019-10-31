@@ -8,20 +8,21 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.liuzhi.eschool.R;
 import com.liuzhi.eschool.constants.UrlConstans;
 import com.liuzhi.eschool.entity.AllProjectEntity;
+import com.liuzhi.eschool.entity.FirstResponseEntity;
 import com.liuzhi.eschool.utils.common.DateUtil;
 import com.liuzhi.eschool.utils.common.ImageUtils;
 
 import java.util.List;
 
-public class ProjectListAdapter extends BaseQuickAdapter<AllProjectEntity.DataBean,BaseViewHolder> {
+public class ProjectListAdapter extends BaseQuickAdapter<FirstResponseEntity.DataBean.ColumnBean,BaseViewHolder> {
     private Context context;
-    public ProjectListAdapter(Context context, List<AllProjectEntity.DataBean> data) {
+    public ProjectListAdapter(Context context, List<FirstResponseEntity.DataBean.ColumnBean> data) {
         super(R.layout.item_project, data);
         this.context=context;
     }
 
     @Override
-    protected void convert(BaseViewHolder helper,AllProjectEntity.DataBean item) {
+    protected void convert(BaseViewHolder helper,FirstResponseEntity.DataBean.ColumnBean item) {
         if (null == item) return;
         ImageView projectImg=helper.getView(R.id.item_project_img);
         TextView projectName=helper.getView(R.id.item_project_name);
@@ -31,7 +32,7 @@ public class ProjectListAdapter extends BaseQuickAdapter<AllProjectEntity.DataBe
         projectName.setText(item.getColName());
         projectXueke.setText("上传者："+item.getColUpdateName());
         projectMsg.setText(item.getColDesc());
-        projectTime.setText(DateUtil.getYM(item.getColCreateTime()));
+        projectTime.setText(DateUtil.getYM(item.getColReleaseTime()));
         ImageUtils.setImageBitmapUrl(context,projectImg,UrlConstans.Companion.getBaseUrl()+item.getColImg());
     }
 }

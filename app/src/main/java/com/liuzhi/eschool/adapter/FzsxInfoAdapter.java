@@ -6,8 +6,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.liuzhi.eschool.entity.ProjectDetailByIdEntity;
-import com.liuzhi.eschool.entity.ProjectInfoColEntity;
-import com.liuzhi.eschool.view.fragment.DanyeFragment;
 import com.liuzhi.eschool.view.fragment.RichTextFragment;
 
 import java.util.ArrayList;
