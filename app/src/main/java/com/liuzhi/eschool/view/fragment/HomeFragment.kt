@@ -292,7 +292,12 @@ class HomeFragment : BaseFragment() {
 //            630857371081510912
             Log.e(TAG, "XKJSReturn$id")
             Log.e(TAG, "XKJSMore")
-            getProjectById(id)
+//            getProjectById(id)
+            var intent=Intent(activity,ColumnListActivity::class.java)
+            intent.putExtra("toColId",id)
+            intent.putExtra("colName","学科竞赛")
+            intent.putExtra("colType",7)
+            startActivity(intent)
         }
 
         @JavascriptInterface

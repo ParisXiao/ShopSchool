@@ -139,6 +139,9 @@
         <activity android:name=".view.activity.DetailActivity"
             android:windowSoftInputMode="stateHidden|adjustPan"
             android:screenOrientation="portrait"/>
+        <activity android:name=".view.activity.ColumnListActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

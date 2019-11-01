@@ -50,5 +50,8 @@ class UrlConstans {
 
         /**第二个接口**/
         val SecondPost = "$BaseUrl/front/columnOrInfomation"
+        /**第三个接口**/
+        val GetInfoPost = "$BaseUrl/front/informationUpdateSelect"
+
     }
 }

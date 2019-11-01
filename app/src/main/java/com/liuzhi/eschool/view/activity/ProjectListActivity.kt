@@ -153,6 +153,7 @@ class ProjectListActivity : BaseActivity() {
                 project_refresh.isEnabled=train_recycler.getChildCount() == 0 || train_recycler.getChildAt(0).getTop() >= 0
             }
         })
+
     }
 
 //    fun getAllProject(projectClId: String) {
@@ -271,6 +272,13 @@ class ProjectListActivity : BaseActivity() {
                                     train_recycler.layoutManager = layoutManager
                                     train_recycler.adapter = projectListAdapter
                                     projectListAdapter.setNewData(firstResponseDatas)
+                                    projectListAdapter.setOnItemClickListener { adapter, view, position ->
+                                        var intent=Intent(this@ProjectListActivity,ColumnListActivity::class.java)
+                                        intent.putExtra("toColId",firstResponseDatas[position].colId)
+                                        intent.putExtra("colName",firstResponseDatas[position].colName)
+                                        intent.putExtra("colType",firstResponseDatas[position].colType)
+                                        startActivity(intent)
+                                    }
                                 }else{
                                     train_recycler.visibility=View.GONE
                                     train_tab.visibility=View.VISIBLE

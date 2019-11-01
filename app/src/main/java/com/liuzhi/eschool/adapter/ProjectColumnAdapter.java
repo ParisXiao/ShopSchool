@@ -6,15 +6,16 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.liuzhi.eschool.entity.FirstResponseEntity;
+import com.liuzhi.eschool.entity.SecondResponseEntity;
 import com.liuzhi.eschool.view.fragment.DetailFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProjectInfoColAdapter extends FragmentPagerAdapter {
-    private List<FirstResponseEntity.DataBean.ColumnBean> dataBeans = null;
+public class ProjectColumnAdapter extends FragmentPagerAdapter {
+    private List<SecondResponseEntity.DataBean.ColumnBean> dataBeans = null;
 
-    public ProjectInfoColAdapter(FragmentManager fm) {
+    public ProjectColumnAdapter(FragmentManager fm) {
         super(fm);
         this.dataBeans = new ArrayList<>();
     }
@@ -24,7 +25,7 @@ public class ProjectInfoColAdapter extends FragmentPagerAdapter {
      *
      * @param datas
      */
-    public void setDataList(List<FirstResponseEntity.DataBean.ColumnBean> datas) {
+    public void setDataList(List<SecondResponseEntity.DataBean.ColumnBean> datas) {
         this.dataBeans.clear();
         this.dataBeans.addAll(datas);
         notifyDataSetChanged();

@@ -18,6 +18,7 @@ import com.liuzhi.eschool.constants.UrlConstans
 import com.liuzhi.eschool.entity.ProjectInfoByEntity
 import com.liuzhi.eschool.entity.SecondResponseEntity
 import com.liuzhi.eschool.entity.convert.SecondResponseConvert
+import com.liuzhi.eschool.view.activity.DetailActivity
 import com.liuzhi.eschool.view.activity.LoginActivity
 import com.lzy.okgo.OkGo
 import com.lzy.okgo.model.Response
@@ -34,13 +35,9 @@ import kotlinx.android.synthetic.main.fragment_richtext.view.*
  * 列表页
  */
 class DetailFragment : BaseFragment() {
-    var projectInfoByList: MutableList<ProjectInfoByEntity.ResultListBean> = ArrayList()
     var pageNo = 1
     var colId = ""
     var colType = 0
-    var danyeText: TextView? = null
-    var htmlText = ""
-    lateinit var imgGetter: Html.ImageGetter
 
     private lateinit var secondResponseConvert: SecondResponseConvert
     private lateinit var secondResponseObserver: ObservableResponse<SecondResponseEntity>
@@ -56,34 +53,6 @@ class DetailFragment : BaseFragment() {
     override fun initView(view: View) {
         getSecondResponse(view, colId)
 
-//        val headerView = activity.getLayoutInflater().inflate(R.layout.layout_project_head, null)
-//        danyeText= headerView.findViewById(R.id.danye_text) as TextView
-//        imgGetter  = Html.ImageGetter { source ->
-//            Log.i("RG", "source---?>>>$source")
-//            var drawable: Drawable? = null
-//            val url: URL
-//            try {
-//                url = URL(source)
-//                Log.i("RG", "url---?>>>$url")
-//                drawable = Drawable.createFromStream(url.openStream(), "") // 获取网路图片
-//            } catch (e: Exception) {
-//                e.printStackTrace()
-//                return@ImageGetter null
-//            }
-//
-//            drawable!!.setBounds(
-//                0, 0, drawable.intrinsicWidth,
-//                drawable.intrinsicHeight
-//            )
-//            Log.i("RG", "url---?>>>$url")
-//            drawable
-//        }
-//
-//        headerView.layoutParams = ViewGroup.LayoutParams(
-//            ViewGroup.LayoutParams.MATCH_PARENT,
-//            ViewGroup.LayoutParams.WRAP_CONTENT
-//        )
-//        ifPhotoAdapter.addHeaderView(headerView)
     }
 
     override fun initData() {
@@ -100,65 +69,8 @@ class DetailFragment : BaseFragment() {
         var bundle: Bundle = arguments
         colId = bundle.getString("colId")
         colType = bundle.getInt("colType")
-//        getProjectInfoById(colId)
-
-
     }
 
-//    fun getProjectInfoById(colId: String) {
-//        projectInfoByConvert = ProjectInfoByConvert()
-//        projecInfoByResponse = ObservableResponse()
-//        OkGo.post<ProjectInfoByEntity>(UrlConstans.InformationByCol)
-//            .headers("Content-Type", "application/json;charset=UTF-8")
-//            .params("colId", colId)
-//            .params("pageNo", pageNo)
-//            .params("pageSize", 10)
-//            .converter(projectInfoByConvert)
-//            .adapt(projecInfoByResponse)
-//            .subscribeOn(Schedulers.io())
-//            .observeOn(AndroidSchedulers.mainThread())
-//            .subscribe(object : DisposableObserver<Response<ProjectInfoByEntity>>() {
-//                @RequiresApi(Build.VERSION_CODES.N)
-//                override fun onNext(response: Response<ProjectInfoByEntity>) {
-//                    var entity = response.body()
-//                    if (entity==null){
-//                        var intent =Intent(activity,LoginActivity::class.java)
-//                        startActivity(intent)
-//                        return
-//                    }
-//
-//                    if (1 == pageNo) {
-//                        projectInfoByList.clear()
-//                        projectInfoByList = entity.resultList
-//                        ifPhotoAdapter.setNewData(projectInfoByList)
-//                    } else {
-//                        if (entity.resultList.size > 0) {
-//                            for (listBean in entity.resultList) {
-//                                projectInfoByList.add(listBean)
-//                            }
-//                        }
-//                        ifPhotoAdapter.addData(entity.resultList)
-//                        if (pageNo >= entity.totalPages) {
-//                            pageNo = entity.totalPages
-//                            ifPhotoAdapter.loadMoreEnd()
-//                        } else {
-//                            ifPhotoAdapter.loadMoreComplete()
-//                        }
-//                    }
-//                    if (projectInfoByList.size > 0) {
-//                        htmlText=projectInfoByList[0].ifContent
-//                        danyeText!!.setText(Html.fromHtml(htmlText,imgGetter,null))
-//                    }
-//                }
-//
-//                override fun onError(e: Throwable) {
-//                    Log.e("OKGO", e.message)
-//                }
-//
-//                override fun onComplete() {
-//                }
-//            })
-//    }
 
 
     fun getSecondResponse(view: View, colId: String) {
@@ -211,6 +123,11 @@ class DetailFragment : BaseFragment() {
                                         mifInfoAdapter= IfListInfoAdapter(activity,mSecondResponseInfos)
                                         view.danye_recycle.adapter=mifInfoAdapter
                                         mifInfoAdapter.setNewData(mSecondResponseInfos)
+                                        mifInfoAdapter.setOnItemClickListener { adapter, view, position ->
+                                            var intent=Intent(activity,DetailActivity::class.java)
+                                            intent.putExtra("ifId",mSecondResponseInfos[position].ifId)
+                                            startActivity(intent)
+                                        }
                                     }
                                 }
                             }
