@@ -20,8 +20,16 @@
             app:layout_constraintBottom_toTopOf="@id/guideline6"
             app:layout_constraintTop_toBottomOf="@+id/title"
             android:id="@+id/relativeLayout2">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/class_detail_collection"
+            android:layout_toLeftOf="@+id/class_detail_img"
+            android:orientation="vertical"
+            android:id="@+id/ll_detail_name"
+            >
 
-        <TextView
+            <TextView
                 android:id="@+id/class_detail_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -33,49 +41,46 @@
                 android:maxLength="10"
                 />
 
-        <TextView
+            <TextView
                 android:id="@+id/class_detail_teacher"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="授课人：张教授"
                 android:textColor="#ff787878"
                 android:textSize="12sp"
-                android:layout_alignLeft="@+id/class_detail_name"
-                android:layout_below="@+id/class_detail_name"
+                android:layout_marginLeft="15dp"
                 android:layout_marginTop="10dp"
                 />
 
-        <TextView
+            <TextView
                 android:id="@+id/class_detail_subject"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="所属学科：市场营销专业"
                 android:textColor="#ff787878"
                 android:textSize="12sp"
-                android:layout_alignLeft="@+id/class_detail_teacher"
-                android:layout_below="@+id/class_detail_teacher"
+                android:layout_marginLeft="15dp"
                 android:layout_marginTop="5dp"
                 />
 
-        <TextView
+            <TextView
                 android:id="@+id/class_detail_teach_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="授课时间：第二周至第十八周"
                 android:textColor="#ff787878"
                 android:textSize="12sp"
-                android:layout_alignLeft="@+id/class_detail_subject"
-                android:layout_below="@+id/class_detail_subject"
+                android:layout_marginLeft="15dp"
                 android:layout_marginTop="5dp"
                 />
 
+        </LinearLayout>
         <LinearLayout
                 android:id="@+id/class_detail_down"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/btn_class_down_bg"
                 android:layout_alignParentBottom="true"
-                android:layout_alignLeft="@+id/class_detail_teach_time"
                 android:orientation="horizontal"
                 android:gravity="center"
                 android:visibility="gone"
@@ -144,8 +149,8 @@
 
         <ImageView
                 android:id="@+id/class_detail_img"
-                android:layout_width="80dp"
-                android:layout_height="100dp"
+                android:layout_width="100dp"
+                android:layout_height="120dp"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="40dp"
@@ -254,7 +259,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/guideline6"
-            app:layout_constraintGuide_percent="0.30"
+            app:layout_constraintGuide_percent="0.35"
             android:orientation="horizontal"/>
 
 

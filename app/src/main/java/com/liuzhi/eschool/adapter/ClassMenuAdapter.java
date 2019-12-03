@@ -40,12 +40,15 @@ public class ClassMenuAdapter extends BaseMultiItemQuickAdapter<MultiItemEntity,
 
                     if (chapterEntity.getChapterName()!=null) {
                         helper.setText(R.id.item_chapter_name, chapterEntity.getChapterName());
+                        if (chapterEntity.isHaveSc()) {
+                            helper.setVisible(R.id.item_chapter_img, true);
+                        }else {
+                            helper.setVisible(R.id.item_chapter_img, false);
+                        }
                         helper.itemView.setOnClickListener(new View.OnClickListener() {
                             @Override
 
                             public void onClick(View v) {
-                                if (chapterEntity.isHaveSc()) {
-                                    helper.setVisible(R.id.item_chapter_img, true);
                                     int pos = helper.getAdapterPosition();
                                     if (chapterEntity.isExpanded()) {
                                         collapse(pos);
@@ -54,9 +57,6 @@ public class ClassMenuAdapter extends BaseMultiItemQuickAdapter<MultiItemEntity,
                                         expand(pos);
                                         helper.setImageResource(R.id.item_chapter_img,R.drawable.ic_return_right_blue);
                                     }
-                                } else {
-                                    helper.setVisible(R.id.item_chapter_img, false);
-                                }
 
                             }
                         });

@@ -212,9 +212,9 @@ class HomeFragment : BaseFragment() {
             Log.e(TAG, "divId$divId")
             when (divId) {
                 0 -> {
-//                    getProjectColumn("PTGK")
-                    intent.putExtra("ProjectName", "PTGK")
-                    activity.startActivity(intent)
+                    getProjectColumn("PTGK")
+//                    intent.putExtra("ProjectName", "PTGK")
+//                    activity.startActivity(intent)
                 }
 
                 1 -> {
