@@ -233,7 +233,7 @@ class HomeFragment : BaseFragment() {
                     activity.startActivity(intent)
                 }
                 4 -> {
-                    intent.putExtra("ProjectName", "CYFH")
+                    intent.putExtra("ProjectName", "XXSYS")
                     activity.startActivity(intent)
                 }
                 5 -> {

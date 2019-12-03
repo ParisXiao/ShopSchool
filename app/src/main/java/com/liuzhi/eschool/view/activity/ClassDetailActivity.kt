@@ -133,6 +133,8 @@ class ClassDetailActivity : BaseActivity(), View.OnClickListener {
             if (chapterBean.chapter!=null) {
                 chapterEntity.chapterId = chapterBean.chapter.cpId
                 chapterEntity.chapterName = chapterBean.chapter.cpName
+            }else{
+                chapterEntity.chapterName ="第一章"
             }
             if (chapterBean.sections.size > 0) {
                 chapterEntity.isHaveSc = true

@@ -60,7 +60,7 @@ class ProjectListActivity : BaseActivity() {
             "FZSX" -> title_name.text = "仿真实训"
             "XNFZSFXM" -> title_name.text = "虚拟仿真示范项目"
             "XWZX" -> title_name.text = "新闻资讯"
-            "XXSYS" -> title_name.text = "线下实验室"
+            "XXSYS" -> title_name.text = "实训店铺"
         }
 
         toolbar.title = ""

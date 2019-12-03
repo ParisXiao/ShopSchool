@@ -67,6 +67,11 @@ class ClassTypeFragment : BaseFragment() {
             .subscribe(object : DisposableObserver<Response<ClassTypeEntity>>() {
                 override fun onNext(response: Response<ClassTypeEntity>) {
                     var entity:ClassTypeEntity=response.body()
+                    if (entity==null){
+                        var intent =Intent(activity,LoginActivity::class.java)
+                        startActivity(intent)
+                        return
+                    }
                     classTypes=entity.data
                     classTypeAdapter.setDataList(classTypes)
                 }

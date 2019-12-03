@@ -37,26 +37,30 @@ public class ClassMenuAdapter extends BaseMultiItemQuickAdapter<MultiItemEntity,
         switch (helper.getItemViewType()) {
             case TYPE_LEVEL_0:
                 final ChapterEntity chapterEntity = (ChapterEntity) item;
-                helper.setText(R.id.item_chapter_name,chapterEntity.getChapterName());
-                helper.itemView.setOnClickListener(new View.OnClickListener() {
-                    @Override
 
-                    public void onClick(View v) {
-                        if (chapterEntity.isHaveSc()) {
-                            helper.setVisible(R.id.item_chapter_img, true);
-                            int pos = helper.getAdapterPosition();
-                            if (chapterEntity.isExpanded()) {
-                                collapse(pos);
-                            } else {
-                                expand(pos);
+                    if (chapterEntity.getChapterName()!=null) {
+                        helper.setText(R.id.item_chapter_name, chapterEntity.getChapterName());
+                        helper.itemView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+
+                            public void onClick(View v) {
+                                if (chapterEntity.isHaveSc()) {
+                                    helper.setVisible(R.id.item_chapter_img, true);
+                                    int pos = helper.getAdapterPosition();
+                                    if (chapterEntity.isExpanded()) {
+                                        collapse(pos);
+                                        helper.setImageResource(R.id.item_chapter_img,R.drawable.ic_return_down_blue);
+                                    } else {
+                                        expand(pos);
+                                        helper.setImageResource(R.id.item_chapter_img,R.drawable.ic_return_right_blue);
+                                    }
+                                } else {
+                                    helper.setVisible(R.id.item_chapter_img, false);
+                                }
+
                             }
-                        } else {
-                            helper.setVisible(R.id.item_chapter_img, false);
-                        }
-
-                    }
-                });
-
+                        });
+                }
                 break;
             case TYPE_LEVEL_1:
                 final SectionEntity sectionEntity = (SectionEntity) item;

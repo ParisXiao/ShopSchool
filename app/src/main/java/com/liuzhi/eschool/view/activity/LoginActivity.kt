@@ -32,6 +32,7 @@ import io.reactivex.observers.DisposableObserver
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_login.*
 import okhttp3.Cookie
+import org.json.JSONException
 import org.json.JSONObject
 import java.util.concurrent.TimeUnit
 
@@ -168,8 +169,8 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
     fun login(userId: String, password: String, imgCode: String) {
         OkGo.post<String>(UrlConstans.Login)
             .headers("Content-Type", "application/json;charset=UTF-8")
-            .params("userName", Base64.encodeToString(userId.toByteArray(),Base64.DEFAULT))
-            .params("userPass", Base64.encodeToString(password.toByteArray(),Base64.DEFAULT))
+            .params("userName", Base64.encodeToString(userId.toByteArray(),Base64.NO_WRAP))
+            .params("userPass", Base64.encodeToString(password.toByteArray(),Base64.NO_WRAP))
             .params("regCode", imgCode)
             .converter(StringConvert())
             .adapt(ObservableResponse<String>())
@@ -177,21 +178,22 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableObserver<Response<String>>() {
                 override fun onNext(response: Response<String>) {
-                    Log.e("OKGO", response.body().toString())
-                    var jsonObject = JSONObject(response.body())
-                    if (jsonObject.optInt("code") == 0) {
-                        var data = jsonObject.optString("data")
-                        var jsonObject1 = JSONObject(data)
-                        var LZSESSIONID = jsonObject1.optString("LZSESSIONID")
-                        DialogUtils.getInstance(this@LoginActivity).shortToast("登陆成功")
-                        var intent = Intent(this@LoginActivity, MainActivity::class.java)
-                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-                        startActivity(intent)
-                        finish()
-                        SPUtils.getInstance().set(this@LoginActivity, UserInfoConstans.CookieId, LZSESSIONID)
-                        SPUtils.getInstance().set(this@LoginActivity, UserInfoConstans.USERID, userId)
-                        SPUtils.getInstance().set(this@LoginActivity, UserInfoConstans.USERPASSWORD, password)
-                        CookieSyncManager.createInstance(getApplicationContext())
+                    try {
+                        Log.e("OKGO", response.body().toString())
+                        var jsonObject = JSONObject(response.body())
+                        if (jsonObject.optInt("code") == 0) {
+                            var data = jsonObject.optString("data")
+                            var jsonObject1 = JSONObject(data)
+                            var LZSESSIONID = jsonObject1.optString("LZSESSIONID")
+                            DialogUtils.getInstance(this@LoginActivity).shortToast("登陆成功")
+                            var intent = Intent(this@LoginActivity, MainActivity::class.java)
+                            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                            startActivity(intent)
+                            finish()
+                            SPUtils.getInstance().set(this@LoginActivity, UserInfoConstans.CookieId, LZSESSIONID)
+                            SPUtils.getInstance().set(this@LoginActivity, UserInfoConstans.USERID, userId)
+                            SPUtils.getInstance().set(this@LoginActivity, UserInfoConstans.USERPASSWORD, password)
+                            CookieSyncManager.createInstance(getApplicationContext())
 //                        var  cookieManager =CookieManager.getInstance()
 //                        var cookies :MutableList<Cookie> = ArrayList()
 //                        cookies= OkGo.getInstance().cookieJar.cookieStore.allCookie
@@ -202,10 +204,15 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
 //                        }
 //
 //                        CookieSyncManager.getInstance().sync()
-                    } else {
-                        DialogUtils.getInstance(this@LoginActivity).shortToast("登陆失败：" + jsonObject.optString("msg"))
-                        getImgCode()
+                        } else {
+                            DialogUtils.getInstance(this@LoginActivity).shortToast("登陆失败：" + jsonObject.optString("msg"))
+                            getImgCode()
+                        }
+                    }catch (e:JSONException){
+                        DialogUtils.getInstance(this@LoginActivity).shortToast("服务器异常，稍后重试" )
+
                     }
+
                 }
 
                 override fun onError(e: Throwable) {

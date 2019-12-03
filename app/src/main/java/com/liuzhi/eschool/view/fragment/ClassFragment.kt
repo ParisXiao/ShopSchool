@@ -36,7 +36,7 @@ class ClassFragment : BaseFragment() {
     private lateinit var refresh_class : VpSwipeRefreshLayout
     override fun initView(view: View) {
         refresh_class= view.findViewById(R.id.refresh_class) as VpSwipeRefreshLayout
-        var layoutManager: RecyclerView.LayoutManager  = LinearLayoutManager(context)
+        var layoutManager: RecyclerView.LayoutManager  = LinearLayoutManager(context) as RecyclerView.LayoutManager
         view.vertical_class_tab.layoutManager = layoutManager
         refresh_class.setColorSchemeResources(android.R.color.holo_blue_light,
             android.R.color.holo_green_light, android.R.color.holo_orange_light)
@@ -49,7 +49,7 @@ class ClassFragment : BaseFragment() {
             }
             classLists[position].isTpIsChoosed=true
             adapter.setNewData(classLists)
-            goSecondClass(classLists[position].tpId)
+            goSecondClass(classLists[position].tpNodeId,classLists[position].tpId)
         }
         view.edit_class_search.setOnClickListener {
             var intent=Intent(activity, SearchActivity::class.java)
@@ -91,7 +91,7 @@ class ClassFragment : BaseFragment() {
                         classLists=entity.data
                         if (classLists.isNotEmpty()){
                             classLists[0].isTpIsChoosed=true
-                            goSecondClass(classLists[0].tpId)
+                            goSecondClass(classLists[0].tpNodeId,classLists[0].tpId)
                         }
                         classAdapter.setNewData(classLists)
                     } else {
@@ -116,10 +116,11 @@ class ClassFragment : BaseFragment() {
                 }
             })
     }
-    fun goSecondClass(classId:String){
-        val fragment = ClassTypeFragment()
+    fun goSecondClass(classId:String,classTypeId:String){
+        val fragment = ClassListFragment()
         val bundle = Bundle()
-        bundle.putString("classId",classId)
+        bundle.putString("classId", classId)
+        bundle.putString("classTypeId", classTypeId)
         fragment.arguments = bundle
         val fm:FragmentManager=activity.supportFragmentManager
         fm.beginTransaction().replace(R.id.frame_second_class,fragment).commit()

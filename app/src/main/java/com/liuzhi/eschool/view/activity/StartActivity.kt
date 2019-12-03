@@ -32,6 +32,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DisposableObserver
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_login.*
+import org.json.JSONException
 import org.json.JSONObject
 
 class StartActivity : Activity() {
@@ -177,8 +178,8 @@ class StartActivity : Activity() {
     fun login(userId: String, password: String, imgCode: String) {
         OkGo.post<String>(UrlConstans.Login)
                 .headers("Content-Type", "application/json;charset=UTF-8")
-                .params("userName", Base64.encodeToString(userId.toByteArray(), Base64.DEFAULT))
-                .params("userPass", Base64.encodeToString(password.toByteArray(), Base64.DEFAULT))
+                .params("userName", Base64.encodeToString(userId.toByteArray(), Base64.NO_WRAP))
+                .params("userPass", Base64.encodeToString(password.toByteArray(), Base64.NO_WRAP))
                 .params("regCode", imgCode)
                 .converter(StringConvert())
                 .adapt(ObservableResponse<String>())
@@ -186,31 +187,43 @@ class StartActivity : Activity() {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(object : DisposableObserver<Response<String>>() {
                     override fun onNext(response: Response<String>) {
-                        Log.e("OKGO", response.body().toString())
-                        var jsonObject = JSONObject(response.body())
-                        if (jsonObject.optInt("code") == 0) {
-                            var data = jsonObject.optString("data")
-                            var jsonObject1 = JSONObject(data)
-                            var LZSESSIONID = jsonObject1.optString("LZSESSIONID")
-                            SPUtils.getInstance().set(this@StartActivity, UserInfoConstans.CookieId, LZSESSIONID)
-                            SPUtils.getInstance().set(this@StartActivity, UserInfoConstans.USERID, userId)
-                            SPUtils.getInstance().set(this@StartActivity, UserInfoConstans.USERPASSWORD, password)
-                            CookieSyncManager.createInstance(getApplicationContext())
-                            var intent = Intent(this@StartActivity, MainActivity::class.java)
-                            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-                            startActivity(intent)
-                            finish()
+                        try {
+                            Log.e("OKGO", response.body().toString())
+                            var jsonObject = JSONObject(response.body())
+                            if (jsonObject.optInt("code") == 0) {
+                                var data = jsonObject.optString("data")
+                                var jsonObject1 = JSONObject(data)
+                                var LZSESSIONID = jsonObject1.optString("LZSESSIONID")
+                                SPUtils.getInstance().set(this@StartActivity, UserInfoConstans.CookieId, LZSESSIONID)
+                                SPUtils.getInstance().set(this@StartActivity, UserInfoConstans.USERID, userId)
+                                SPUtils.getInstance().set(this@StartActivity, UserInfoConstans.USERPASSWORD, password)
+                                CookieSyncManager.createInstance(getApplicationContext())
+                                var intent = Intent(this@StartActivity, MainActivity::class.java)
+                                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                                startActivity(intent)
+                                finish()
 
-                        } else {
+                            } else {
+                                var intent = Intent(this@StartActivity, LoginActivity::class.java)
+                                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                                startActivity(intent)
+                                finish()
+                            }
+                        }catch (e:JSONException){
                             var intent = Intent(this@StartActivity, LoginActivity::class.java)
                             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
                             startActivity(intent)
                             finish()
                         }
+
                     }
 
                     override fun onError(e: Throwable) {
                         Log.e("OKGO", e.message)
+                        var intent = Intent(this@StartActivity, LoginActivity::class.java)
+                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                        startActivity(intent)
+                        finish()
                     }
 
                     override fun onComplete() {
